@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import voiceRecording from "@/assets/voice-recording.webp";
 import magneticDesign from "@/assets/magnetic-design.png";
 import scrollerMode from "@/assets/scroller-mode.webp";
+import presentationMode from "@/assets/presentation-mode.webp";
 
 const containerVariants = {
   hidden: {},
@@ -101,21 +102,18 @@ const FeatureGrid = () => (
 
         {/* Card 4: Apresentador - Horizontal Largo */}
         <motion.div variants={cardVariants} className="lg:col-span-2 h-full">
-          <div className="h-full bg-primary rounded-3xl shadow-md transition-all duration-300 overflow-hidden flex flex-col md:flex-row relative">
-            <div className="absolute inset-0 opacity-10 mix-blend-overlay bg-black"></div>
+          <div className="h-full bg-white rounded-3xl border border-border/60 shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden flex flex-col md:flex-row relative">
             <div className="p-8 flex flex-col justify-center relative z-10 w-full md:w-1/2">
-              <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center mb-5 backdrop-blur-sm">
-                <Presentation className="w-6 h-6 text-white" />
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
+                <Presentation className="w-6 h-6 text-primary" />
               </div>
-              <h3 className="text-2xl font-bold mb-3 text-white leading-tight">Apresentador Laser Digital</h3>
-              <p className="text-primary-foreground/90 text-base leading-relaxed">
+              <h3 className="text-2xl font-bold mb-3 text-foreground leading-tight">Apresentador Laser Digital</h3>
+              <p className="text-muted-foreground text-base leading-relaxed">
                 Laser pointer digital integrado, marcação em tela e avanço de slides preciso. Transmita autoridade nas suas apresentações.
               </p>
             </div>
-            <div className="relative z-10 md:w-1/2 flex items-center justify-center p-6">
-                <div className="w-full h-full border-2 border-white/20 rounded-2xl bg-black/20 backdrop-blur-md flex items-center justify-center">
-                    <span className="text-white/80 font-medium">✨ Spotlight Mode Ativado</span>
-                </div>
+            <div className="relative md:w-1/2 min-h-[250px] bg-gray-50">
+               <img src={presentationMode} alt="Apresentador Mode" className="absolute inset-0 w-full h-full object-cover object-top" />
             </div>
           </div>
         </motion.div>

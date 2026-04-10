@@ -1,98 +1,97 @@
 import heroProduct from "@/assets/hero-product.png";
-import { Star, ShieldCheck } from "lucide-react";
+import { Star, ShieldCheck, Truck, CreditCard, Monitor } from "lucide-react";
 import { motion } from "framer-motion";
 import { useCheckoutRedirect } from "@/hooks/useCheckoutRedirect";
+
+const trustBadges = [
+  { icon: ShieldCheck, label: "Garantia 12 meses" },
+  { icon: Truck, label: "Frete com rastreio" },
+  { icon: CreditCard, label: "12x sem juros" },
+  { icon: Monitor, label: "Mac & Windows" },
+];
 
 const HeroSection = () => {
   const { isRedirecting, handleCheckoutRedirect } = useCheckoutRedirect();
   return (
-  <section className="relative overflow-hidden pt-24 pb-20 md:pt-32 md:pb-28 bg-white">
-    <div className="container mx-auto px-4 relative z-10">
-      <motion.div
-        className="text-center max-w-4xl mx-auto mb-16"
-        initial={{ opacity: 0, scale: 0.95, y: 30 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <motion.div
-          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 text-primary font-semibold text-xs tracking-wide uppercase mb-6 border border-blue-100"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-        >
-          <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-          Lançamento Oficial
-        </motion.div>
-
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight mb-6 text-gray-900">
-          O Mouse Evoluiu.<br className="hidden md:block" />{" "}
-          <span className="text-primary">
-            Assistente de IA de Bolso.
-          </span>
-        </h1>
-
-        <motion.p
-          className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-medium"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.8 }}
-        >
-          Grava reuniões, transcreve áudios com ChatGPT, controla apresentações e telas à distância. O futuro da produtividade está nas suas mãos.
-        </motion.p>
-
-        <motion.div
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.6 }}
-        >
-          <button
-            onClick={handleCheckoutRedirect}
-            disabled={isRedirecting}
-            className="w-full sm:w-auto bg-primary text-primary-foreground px-10 py-4 rounded-xl text-lg font-bold transition-all hover:bg-primary/90 shadow-lg hover:shadow-xl hover:-translate-y-0.5 disabled:opacity-70 disabled:hover:translate-y-0 disabled:hover:shadow-lg"
+    <section className="relative overflow-hidden pt-28 pb-16 md:pt-36 md:pb-24 bg-white">
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Copy */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
-            {isRedirecting ? "Redirecionando..." : "Garantir Lote Promocional"}
-          </button>
-        </motion.div>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/5 text-primary font-semibold text-xs tracking-wide uppercase mb-6 border border-primary/10">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+              Lançamento Oficial no Brasil
+            </div>
 
-        <motion.div
-          className="flex flex-wrap items-center justify-center gap-4 mt-8 text-sm text-gray-500 font-medium"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.7, duration: 0.6 }}
-        >
-          <div className="flex items-center gap-1.5 bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">
-            <div className="flex -space-x-1">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
+            <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.08] tracking-tight mb-5 text-foreground">
+              O mouse evoluiu.{" "}
+              <span className="text-gradient-blue">
+                Sua produtividade também.
+              </span>
+            </h1>
+
+            <p className="text-muted-foreground text-lg md:text-xl leading-relaxed mb-8 max-w-xl">
+              Mouse, touchpad, air mouse, apresentador de slides, ponteiro laser e gravador com IA — tudo em um dispositivo de 70g que cabe no bolso.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-start gap-3 mb-8">
+              <button
+                onClick={handleCheckoutRedirect}
+                disabled={isRedirecting}
+                className="w-full sm:w-auto bg-primary text-primary-foreground px-8 py-4 rounded-xl text-base font-bold transition-all hover:bg-primary/90 shadow-md hover:shadow-lg hover:-translate-y-0.5 disabled:opacity-70 disabled:hover:translate-y-0"
+              >
+                {isRedirecting ? "Redirecionando..." : "Comprar com 50% OFF"}
+              </button>
+              <a
+                href="#funcoes"
+                className="w-full sm:w-auto text-center px-8 py-4 rounded-xl text-base font-semibold text-foreground border border-border hover:bg-muted/50 transition-all"
+              >
+                Ver Funções
+              </a>
+            </div>
+
+            <div className="flex items-center gap-2 mb-6">
+              <div className="flex -space-x-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                ))}
+              </div>
+              <span className="text-sm font-semibold text-foreground">4.9</span>
+              <span className="text-sm text-muted-foreground">(1.240+ avaliações)</span>
+            </div>
+
+            <div className="grid grid-cols-2 gap-3">
+              {trustBadges.map((b) => (
+                <div key={b.label} className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <b.icon className="w-4 h-4 text-primary/70 flex-shrink-0" />
+                  <span className="font-medium">{b.label}</span>
+                </div>
               ))}
             </div>
-            <span className="ml-1 text-gray-900 font-bold">4.9/5</span>
-            <span>(1.240)</span>
-          </div>
-          <div className="flex items-center gap-1.5 bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">
-            <ShieldCheck className="w-4 h-4 text-green-600" />
-            <span>Compra Segura</span>
-          </div>
-        </motion.div>
-      </motion.div>
+          </motion.div>
 
-      <motion.div
-        className="max-w-5xl mx-auto"
-        initial={{ opacity: 0, scale: 0.95, y: 40 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        transition={{ delay: 0.4, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <div className="relative rounded-3xl overflow-hidden bg-white flex justify-center py-10">
-           <img
-            src={heroProduct}
-            alt="CheerDots 2 - Design Completo com Laser e Touchpad"
-            className="w-full max-w-3xl h-auto object-contain transform hover:scale-105 transition-transform duration-700"
-          />
+          {/* Product Image */}
+          <motion.div
+            className="relative"
+            initial={{ opacity: 0, scale: 0.95, y: 30 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div className="relative rounded-3xl bg-secondary/50 p-8 flex justify-center items-center">
+              <img
+                src={heroProduct}
+                alt="CheerDots 2 — Assistente de Produtividade Portátil"
+                className="w-full max-w-md h-auto object-contain drop-shadow-lg"
+              />
+            </div>
+          </motion.div>
         </div>
-      </motion.div>
-    </div>
-  </section>
+      </div>
+    </section>
   );
 };
 

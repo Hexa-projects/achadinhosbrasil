@@ -1,123 +1,130 @@
-import { Mic, Mouse, Presentation, Smartphone } from "lucide-react";
+import { Mic, Mouse, Presentation, Smartphone, Hand, Crosshair } from "lucide-react";
 import { motion } from "framer-motion";
 import voiceRecording from "@/assets/voice-recording.webp";
 import magneticDesign from "@/assets/magnetic-design.png";
 import scrollerMode from "@/assets/scroller-mode.webp";
 import presentationMode from "@/assets/presentation-mode.webp";
+import airMouse from "@/assets/air-mouse.png";
 
 const containerVariants = {
   hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.12 },
-  },
+  visible: { transition: { staggerChildren: 0.1 } },
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 50 },
+  hidden: { opacity: 0, y: 40 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
   },
 };
 
+const features = [
+  {
+    icon: Mic,
+    title: "Gravador Inteligente com IA",
+    desc: "Aperte um botão, grave a reunião inteira. O software com ChatGPT integrado transcreve o áudio e gera atas e resumos automaticamente.",
+    benefit: "Nunca mais perca um insight de reunião.",
+    image: voiceRecording,
+    wide: true,
+  },
+  {
+    icon: Mouse,
+    title: "Mouse Bluetooth",
+    desc: "Na mesa, funciona como um touchpad preciso e silencioso. Design magnético que une as duas metades.",
+    benefit: "Trabalho silencioso em qualquer superfície.",
+    image: magneticDesign,
+  },
+  {
+    icon: Hand,
+    title: "Air Mouse",
+    desc: "Destaque e mova o cursor no ar com giroscópio de 6 eixos. Controle natural e intuitivo.",
+    benefit: "Liberdade para apresentar de pé.",
+    image: airMouse,
+  },
+  {
+    icon: Presentation,
+    title: "Apresentador de Slides",
+    desc: "Avance slides, volte páginas e controle apresentações a até 20 metros de distância via Bluetooth.",
+    benefit: "Domine qualquer palco ou sala de reunião.",
+    image: presentationMode,
+    wide: true,
+  },
+  {
+    icon: Crosshair,
+    title: "Ponteiro Laser Digital",
+    desc: "Destaque áreas da tela com precisão cirúrgica. Sem laser físico — funciona em qualquer projetor ou TV.",
+    benefit: "Destaque o que importa na sua apresentação.",
+  },
+  {
+    icon: Smartphone,
+    title: "Scroller Remoto",
+    desc: "Role TikTok, Kindle, YouTube e feeds do sofá. Use como controle remoto do celular ou tablet.",
+    benefit: "Seu momento de descanso também merece conforto.",
+    image: scrollerMode,
+  },
+];
+
 const FeatureGrid = () => (
-  <section className="py-24 relative bg-gray-50 border-t border-border/50">
-    <div className="container mx-auto px-4 relative z-10">
+  <section id="funcoes" className="py-24 bg-white">
+    <div className="container mx-auto px-4">
       <motion.div
-        className="text-center mb-16"
-        initial={{ opacity: 0, y: 30 }}
+        className="text-center mb-16 max-w-2xl mx-auto"
+        initial={{ opacity: 0, y: 25 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.5 }}
+        viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <p className="text-primary font-bold text-xs tracking-[0.2em] uppercase mb-3">
-          1+1+1+1+1 = CheerDots 2
+        <p className="text-primary font-semibold text-xs tracking-[0.2em] uppercase mb-3">
+          6 funções em 1 dispositivo
         </p>
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground tracking-tight">
-          O Canivete Suíço da <span className="text-primary">Produtividade</span>
+        <h2 className="text-3xl md:text-4xl font-extrabold text-foreground tracking-tight">
+          Cada função resolve{" "}
+          <span className="text-gradient-blue">um problema real</span>
         </h2>
+        <p className="text-muted-foreground text-base mt-4 leading-relaxed">
+          Não é sobre ter muitas funções. É sobre ter as funções certas para quem trabalha em movimento.
+        </p>
       </motion.div>
 
       <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto"
+        className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-6xl mx-auto"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.15 }}
+        viewport={{ once: true, amount: 0.1 }}
       >
-        {/* Card 1: IA - Grande */}
-        <motion.div variants={cardVariants} className="lg:col-span-2 h-full">
-          <div className="h-full bg-white rounded-3xl border border-border/60 shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden flex flex-col md:flex-row">
-            <div className="p-8 md:w-1/2 flex flex-col justify-center">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
-                <Mic className="w-6 h-6 text-primary" />
+        {features.map((f) => (
+          <motion.div
+            key={f.title}
+            variants={cardVariants}
+            className={`group bg-secondary/40 rounded-2xl border border-border/50 overflow-hidden hover:shadow-md hover:border-primary/15 transition-all duration-300 ${
+              f.wide ? "md:col-span-2" : ""
+            }`}
+          >
+            <div className={`flex flex-col ${f.wide && f.image ? "md:flex-row" : ""}`}>
+              <div className={`p-8 ${f.wide && f.image ? "md:w-1/2" : ""} flex flex-col justify-center`}>
+                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                  <f.icon className="w-5 h-5 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold text-foreground mb-2">{f.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed mb-3">{f.desc}</p>
+                <p className="text-primary text-sm font-semibold">{f.benefit}</p>
               </div>
-              <h3 className="text-2xl font-bold mb-3 text-foreground leading-tight">Gravador com IA</h3>
-              <p className="text-muted-foreground text-base leading-relaxed">
-                Aperte um botão, grave a reunião, e a Inteligência Artificial do ChatGPT cria a ata e o resumo automáticos para você no aplicativo.
-              </p>
+              {f.image && (
+                <div className={`${f.wide ? "md:w-1/2" : ""} bg-muted/30 flex items-center justify-center p-6 overflow-hidden`}>
+                  <img
+                    src={f.image}
+                    alt={f.title}
+                    className="w-full h-auto max-h-[300px] object-contain"
+                    loading="lazy"
+                  />
+                </div>
+              )}
             </div>
-            <div className="md:w-1/2 bg-gray-50 flex items-center justify-center overflow-hidden">
-               <img src={voiceRecording} alt="Gravador IA em Português" className="w-full h-auto object-contain" />
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Card 2: Air Mouse - Vertical */}
-        <motion.div variants={cardVariants} className="lg:col-span-1 h-full">
-          <div className="h-full bg-white rounded-3xl border border-border/60 shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden flex flex-col">
-            <div className="p-8 pb-4">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
-                <Mouse className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-2xl font-bold mb-3 text-foreground leading-tight">Design Magnético</h3>
-              <p className="text-muted-foreground text-base leading-relaxed">
-                O corpo se divide ao meio para virar um Air Mouse ultra-leve.
-              </p>
-            </div>
-            <div className="flex-grow mt-4 flex items-center justify-center p-4">
-               <img src={magneticDesign} alt="Design Magnético" className="w-[80%] h-auto object-contain drop-shadow-xl" />
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Card 3: Touchpad - Vertical */}
-        <motion.div variants={cardVariants} className="lg:col-span-1 h-full">
-          <div className="h-full bg-white rounded-3xl border border-border/60 shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden flex flex-col">
-            <div className="p-8 pb-4">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
-                <Smartphone className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-2xl font-bold mb-3 text-foreground leading-tight">Scroller de Lazer</h3>
-              <p className="text-muted-foreground text-base leading-relaxed">
-                Role o TikTok, Kindle e YouTube direto do sofá.
-              </p>
-            </div>
-            <div className="flex-grow bg-gray-50 overflow-hidden">
-               <img src={scrollerMode} alt="Touchpad e Scroller" className="w-full h-auto object-contain" />
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Card 4: Apresentador - Horizontal Largo */}
-        <motion.div variants={cardVariants} className="lg:col-span-2 h-full">
-          <div className="h-full bg-white rounded-3xl border border-border/60 shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden flex flex-col md:flex-row relative">
-            <div className="p-8 flex flex-col justify-center relative z-10 w-full md:w-1/2">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
-                <Presentation className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-2xl font-bold mb-3 text-foreground leading-tight">Apresentador Laser Digital</h3>
-              <p className="text-muted-foreground text-base leading-relaxed">
-                Laser pointer digital integrado, marcação em tela e avanço de slides preciso. Transmita autoridade nas suas apresentações.
-              </p>
-            </div>
-            <div className="md:w-1/2 bg-gray-50 flex items-center justify-center overflow-hidden">
-               <img src={presentationMode} alt="Apresentador Mode" className="w-full h-auto object-contain" />
-            </div>
-          </div>
-        </motion.div>
-
+          </motion.div>
+        ))}
       </motion.div>
     </div>
   </section>

@@ -1,37 +1,38 @@
 import heroProduct from "@/assets/hero-product.webp";
-import { Star } from "lucide-react";
+import { Star, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
 import { useCheckoutRedirect } from "@/hooks/useCheckoutRedirect";
 
 const HeroSection = () => {
   const { isRedirecting, handleCheckoutRedirect } = useCheckoutRedirect();
   return (
-  <section className="relative overflow-hidden py-20 md:py-28 lg:py-36 bg-background">
+  <section className="relative overflow-hidden pt-24 pb-20 md:pt-32 md:pb-28 bg-white">
     <div className="container mx-auto px-4 relative z-10">
       <motion.div
         className="text-center max-w-4xl mx-auto mb-16"
-        initial={{ opacity: 0, scale: 0.85, y: 40 }}
+        initial={{ opacity: 0, scale: 0.95, y: 30 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       >
-        <motion.p
-          className="text-primary font-semibold text-sm tracking-[0.2em] uppercase mb-5"
+        <motion.div
+          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 text-primary font-semibold text-xs tracking-wide uppercase mb-6 border border-blue-100"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.6 }}
         >
-          Cheerdots 2 — 6 em 1
-        </motion.p>
+          <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+          Lançamento Oficial
+        </motion.div>
 
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.05] mb-7 text-foreground">
-          O Mouse Evoluiu.{" "}
-          <span className="text-gradient-blue">
-            O 1º Assistente de IA de Bolso.
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight mb-6 text-gray-900">
+          O Mouse Evoluiu.<br className="hidden md:block" />{" "}
+          <span className="text-primary">
+            Assistente de IA de Bolso.
           </span>
         </h1>
 
         <motion.p
-          className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
+          className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-medium"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.8 }}
@@ -48,43 +49,47 @@ const HeroSection = () => {
           <button
             onClick={handleCheckoutRedirect}
             disabled={isRedirecting}
-            className="bg-primary text-primary-foreground px-10 py-4 rounded-lg text-lg font-bold transition-all hover:bg-primary/90 shadow-md disabled:opacity-70"
+            className="w-full sm:w-auto bg-primary text-primary-foreground px-10 py-4 rounded-xl text-lg font-bold transition-all hover:bg-primary/90 shadow-lg hover:shadow-xl hover:-translate-y-0.5 disabled:opacity-70 disabled:hover:translate-y-0 disabled:hover:shadow-lg"
           >
             {isRedirecting ? "Redirecionando..." : "Garantir Lote Promocional"}
           </button>
         </motion.div>
 
         <motion.div
-          className="flex items-center justify-center gap-4 mt-7 text-sm text-muted-foreground"
+          className="flex flex-wrap items-center justify-center gap-4 mt-8 text-sm text-gray-500 font-medium"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.7, duration: 0.6 }}
         >
-          <span className="flex items-center gap-1">
-            {[...Array(5)].map((_, i) => (
-              <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-            ))}
-            <span className="ml-1 font-semibold text-foreground">4.9/5</span>
-          </span>
-          <span>(1.240 Avaliações)</span>
-          <span className="hidden sm:inline">•</span>
-          <span className="hidden sm:inline">Compra Segura</span>
+          <div className="flex items-center gap-1.5 bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">
+            <div className="flex -space-x-1">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
+              ))}
+            </div>
+            <span className="ml-1 text-gray-900 font-bold">4.9/5</span>
+            <span>(1.240)</span>
+          </div>
+          <div className="flex items-center gap-1.5 bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">
+            <ShieldCheck className="w-4 h-4 text-green-600" />
+            <span>Compra Segura</span>
+          </div>
         </motion.div>
       </motion.div>
 
       <motion.div
-        className="max-w-3xl mx-auto"
-        initial={{ opacity: 0, scale: 0.9, y: 60 }}
+        className="max-w-4xl mx-auto"
+        initial={{ opacity: 0, scale: 0.95, y: 40 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ delay: 0.4, duration: 1, ease: [0.16, 1, 0.3, 1] }}
       >
-        <motion.img
-          src={heroProduct}
-          alt="CheerDots 2 - Mouse com Inteligência Artificial"
-          className="w-full rounded-2xl shadow-lg"
-          animate={{ y: [0, -12, 0] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        />
+        <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-200/50 bg-gray-50">
+           <img
+            src={heroProduct}
+            alt="CheerDots 2 - Mouse com Inteligência Artificial"
+            className="w-full h-auto object-cover"
+          />
+        </div>
       </motion.div>
     </div>
   </section>

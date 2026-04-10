@@ -1,17 +1,20 @@
-import { Lock, MessageCircle } from "lucide-react";
+import { Lock, ShieldCheck, Headphones } from "lucide-react";
 
 const FooterSection = () => (
   <footer className="border-t border-border">
-    {/* Achadinhos Brasil trust block */}
-    <div className="bg-secondary py-10 border-b border-border">
+    <div className="bg-secondary py-12">
       <div className="container mx-auto px-4 text-center max-w-2xl">
-        <div className="inline-flex items-center gap-2 text-primary font-bold text-lg mb-4">
-          <MessageCircle className="w-5 h-5" />
-          Achadinhos Brasil
+        <div className="inline-flex items-center gap-2 text-primary font-bold text-base mb-4">
+          <ShieldCheck className="w-5 h-5" />
+          Achadinhos Brasil — Tecnologia com Confiança
         </div>
-        <p className="text-muted-foreground leading-relaxed text-sm">
-          O CheerDots 2 é trazido ao país exclusivamente pela Achadinhos Brasil. Já transformamos a rotina de milhares de brasileiros com produtos inovadores testados e aprovados. Sua compra é processada em território nacional e você conta com suporte 100% humanizado via WhatsApp.
+        <p className="text-muted-foreground leading-relaxed text-sm mb-4">
+          O CheerDots 2 é trazido ao Brasil exclusivamente pela Achadinhos Brasil. Somos especializados em produtos de tecnologia e produtividade com curadoria, testes e suporte local. Sua compra é processada em território nacional com atendimento humanizado via WhatsApp.
         </p>
+        <div className="inline-flex items-center gap-2 text-sm text-muted-foreground">
+          <Headphones className="w-4 h-4 text-primary/60" />
+          <span className="font-medium">Suporte dedicado em português</span>
+        </div>
       </div>
     </div>
 

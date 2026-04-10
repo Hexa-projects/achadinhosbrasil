@@ -1,8 +1,11 @@
 import heroProduct from "@/assets/hero-product.jpg";
 import { Star } from "lucide-react";
 import { motion } from "framer-motion";
+import { useCheckoutRedirect } from "@/hooks/useCheckoutRedirect";
 
-const HeroSection = () => (
+const HeroSection = () => {
+  const { isRedirecting, handleCheckoutRedirect } = useCheckoutRedirect();
+  return (
   <section className="relative overflow-hidden py-20 md:py-28 lg:py-36 bg-background">
     <div className="container mx-auto px-4 relative z-10">
       <motion.div
@@ -42,12 +45,13 @@ const HeroSection = () => (
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.6 }}
         >
-          <a
-            href="#oferta"
-            className="bg-primary text-primary-foreground px-10 py-4 rounded-lg text-lg font-bold transition-all hover:bg-primary/90 shadow-md"
+          <button
+            onClick={handleCheckoutRedirect}
+            disabled={isRedirecting}
+            className="bg-primary text-primary-foreground px-10 py-4 rounded-lg text-lg font-bold transition-all hover:bg-primary/90 shadow-md disabled:opacity-70"
           >
-            Garantir Lote Promocional
-          </a>
+            {isRedirecting ? "Redirecionando..." : "Garantir Lote Promocional"}
+          </button>
         </motion.div>
 
         <motion.div
@@ -84,6 +88,7 @@ const HeroSection = () => (
       </motion.div>
     </div>
   </section>
-);
+  );
+};
 
 export default HeroSection;

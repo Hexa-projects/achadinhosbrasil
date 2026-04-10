@@ -39,7 +39,7 @@ const ProblemSection = () => (
             <img
               src={voiceRecording}
               alt="Integração ChatGPT - Gravação e transcrição"
-              className="w-full h-[400px] object-cover object-left-top"
+              className="w-full h-auto max-h-[500px] object-contain object-center"
             />
           </motion.div>
 

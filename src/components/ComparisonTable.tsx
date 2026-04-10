@@ -15,7 +15,7 @@ const rows = [
 ];
 
 const ComparisonTable = () => (
-  <section className="py-24 relative overflow-hidden section-alt">
+  <section className="py-24 relative overflow-hidden bg-white border-t border-border/50">
     <div className="container mx-auto px-4 relative z-10">
       <motion.div
         className="text-center mb-16"
@@ -24,32 +24,32 @@ const ComparisonTable = () => (
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <p className="text-primary font-semibold text-sm tracking-[0.2em] uppercase mb-3">
+        <p className="text-primary font-bold text-xs tracking-[0.2em] uppercase mb-3">
           A diferença é clara
         </p>
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
-          CheerDots 2 <span className="text-gradient-blue">vs Outros</span>
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground tracking-tight">
+          CheerDots 2 <span className="text-primary">vs Outros</span>
         </h2>
       </motion.div>
 
       <motion.div
-        className="max-w-3xl mx-auto"
+        className="max-w-4xl mx-auto"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7 }}
       >
         {/* Header */}
-        <div className="grid grid-cols-[1fr_120px_120px] md:grid-cols-[1fr_140px_140px] gap-0 mb-1">
+        <div className="grid grid-cols-[1fr_120px_120px] md:grid-cols-[1fr_180px_180px] gap-0 mb-2">
           <div />
-          <div className="bg-primary text-primary-foreground rounded-t-xl py-4 text-center relative">
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-foreground text-background text-[10px] font-bold px-3 py-0.5 rounded-full uppercase tracking-wider">
-              Melhor
+          <div className="bg-primary text-white rounded-t-2xl py-6 text-center relative shadow-lg z-10 scale-105 border-b-0">
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-yellow-400 text-yellow-900 text-[11px] font-black px-4 py-1 rounded-full uppercase tracking-widest shadow-sm">
+              Sua Escolha
             </div>
-            <p className="text-sm font-bold">CheerDots 2</p>
+            <p className="text-lg md:text-xl font-black tracking-tight">CheerDots 2</p>
           </div>
-          <div className="bg-muted rounded-t-xl py-4 text-center border border-border">
-            <p className="text-sm font-medium text-muted-foreground">Outros</p>
+          <div className="bg-gray-100 rounded-t-2xl py-6 text-center border-t border-l border-r border-gray-200 mt-2">
+            <p className="text-base font-bold text-gray-500 uppercase tracking-wide">Comuns</p>
           </div>
         </div>
 
@@ -57,44 +57,44 @@ const ComparisonTable = () => (
         {rows.map((row, i) => (
           <motion.div
             key={row.feature}
-            className={`grid grid-cols-[1fr_120px_120px] md:grid-cols-[1fr_140px_140px] gap-0 ${
-              i % 2 === 0 ? "bg-background" : "bg-muted/50"
+            className={`grid grid-cols-[1fr_120px_120px] md:grid-cols-[1fr_180px_180px] gap-0 ${
+              i % 2 === 0 ? "bg-white" : "bg-gray-50/50"
             }`}
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: i * 0.04 }}
           >
-            <div className="py-3.5 px-4 flex items-center text-sm text-foreground border-b border-border">
+            <div className="py-4 px-6 flex items-center text-sm md:text-base text-gray-700 font-medium border-b border-gray-100">
               {row.feature}
             </div>
-            <div className="py-3.5 flex items-center justify-center border-l border-r border-b border-primary/20 bg-primary/5">
+            <div className="py-4 flex items-center justify-center border-l-2 border-r-2 border-b border-primary/20 bg-blue-50/30 relative z-10 scale-105 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.02)]">
               {row.us ? (
-                <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center">
-                  <Check className="w-3.5 h-3.5 text-primary" />
+                <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow-md">
+                  <Check className="w-5 h-5 text-white" strokeWidth={3} />
                 </div>
               ) : (
-                <X className="w-4 h-4 text-muted-foreground/40" />
+                <X className="w-5 h-5 text-gray-300" />
               )}
             </div>
-            <div className="py-3.5 flex items-center justify-center border-b border-border bg-muted/30">
+            <div className="py-4 flex items-center justify-center border-b border-r border-gray-200 bg-gray-50">
               {row.them ? (
-                <Check className="w-4 h-4 text-muted-foreground/50" />
+                <Check className="w-5 h-5 text-gray-400" />
               ) : (
-                <X className="w-4 h-4 text-muted-foreground/30" />
+                <X className="w-5 h-5 text-gray-300" />
               )}
             </div>
           </motion.div>
         ))}
 
         {/* Bottom row */}
-        <div className="grid grid-cols-[1fr_120px_120px] md:grid-cols-[1fr_140px_140px] gap-0">
+        <div className="grid grid-cols-[1fr_120px_120px] md:grid-cols-[1fr_180px_180px] gap-0">
           <div />
-          <div className="bg-primary text-primary-foreground rounded-b-xl py-4 text-center">
-            <p className="text-xs font-bold">8/10 exclusivos</p>
+          <div className="bg-primary text-primary-foreground rounded-b-2xl py-5 text-center relative z-10 scale-105 shadow-lg">
+            <p className="text-sm font-bold uppercase tracking-widest text-blue-100">O Único 6-em-1</p>
           </div>
-          <div className="bg-muted rounded-b-xl py-4 text-center border border-border border-t-0">
-            <p className="text-xs text-muted-foreground">3/10 recursos</p>
+          <div className="bg-gray-100 rounded-b-2xl py-5 text-center border-b border-l border-r border-gray-200">
+            <p className="text-sm font-bold text-gray-400 uppercase tracking-widest">Limitados</p>
           </div>
         </div>
       </motion.div>

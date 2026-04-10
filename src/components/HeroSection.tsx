@@ -3,12 +3,7 @@ import { Star } from "lucide-react";
 import { motion } from "framer-motion";
 
 const HeroSection = () => (
-  <section className="relative overflow-hidden py-20 md:py-28 lg:py-36">
-    {/* Aurora glows */}
-    <div className="absolute inset-0 aurora-bg pointer-events-none" />
-    <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/[0.07] rounded-full blur-[160px] pointer-events-none" />
-    <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-cyan-soft/[0.05] rounded-full blur-[120px] pointer-events-none" />
-
+  <section className="relative overflow-hidden py-20 md:py-28 lg:py-36 bg-background">
     <div className="container mx-auto px-4 relative z-10">
       <motion.div
         className="text-center max-w-4xl mx-auto mb-16"
@@ -25,9 +20,9 @@ const HeroSection = () => (
           Cheerdots 2 — 6 em 1
         </motion.p>
 
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.05] mb-7 text-glow">
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.05] mb-7 text-foreground">
           O Mouse Evoluiu.{" "}
-          <span className="text-gradient-cyan">
+          <span className="text-gradient-blue">
             O 1º Assistente de IA de Bolso.
           </span>
         </h1>
@@ -49,7 +44,7 @@ const HeroSection = () => (
         >
           <a
             href="#oferta"
-            className="relative bg-primary text-primary-foreground px-10 py-5 rounded-xl text-lg font-bold transition-all hover:brightness-110 shadow-[0_0_30px_hsl(190_100%_50%/0.4),inset_0_1px_0_hsl(0_0%_100%/0.2)] animate-pulse-glow"
+            className="bg-primary text-primary-foreground px-10 py-4 rounded-lg text-lg font-bold transition-all hover:bg-primary/90 shadow-md"
           >
             Garantir Lote Promocional
           </a>
@@ -63,7 +58,7 @@ const HeroSection = () => (
         >
           <span className="flex items-center gap-1">
             {[...Array(5)].map((_, i) => (
-              <Star key={i} className="w-4 h-4 fill-primary text-primary" />
+              <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
             ))}
             <span className="ml-1 font-semibold text-foreground">4.9/5</span>
           </span>
@@ -82,12 +77,10 @@ const HeroSection = () => (
         <motion.img
           src={heroProduct}
           alt="CheerDots 2 - Mouse com Inteligência Artificial"
-          className="w-full rounded-2xl"
+          className="w-full rounded-2xl shadow-lg"
           animate={{ y: [0, -12, 0] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
         />
-        {/* Reflection glow under image */}
-        <div className="h-20 bg-gradient-to-b from-primary/10 to-transparent blur-2xl -mt-10 mx-10 rounded-full" />
       </motion.div>
     </div>
   </section>

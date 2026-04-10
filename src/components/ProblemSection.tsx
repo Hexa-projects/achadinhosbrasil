@@ -3,10 +3,7 @@ import { motion } from "framer-motion";
 import voiceRecording from "@/assets/voice-recording.jpg";
 
 const ProblemSection = () => (
-  <section className="py-24 relative overflow-hidden">
-    <div className="absolute inset-0 bg-secondary/30 pointer-events-none" />
-    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/[0.04] rounded-full blur-[140px] pointer-events-none" />
-
+  <section className="py-24 relative overflow-hidden bg-background">
     <div className="container mx-auto px-4 relative z-10">
       <div className="max-w-5xl mx-auto">
         <motion.div
@@ -20,9 +17,9 @@ const ProblemSection = () => (
             <AlertTriangle className="w-4 h-4" />
             O problema que você ignora
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground">
             Ainda perdendo horas digitando{" "}
-            <span className="text-gradient-cyan">atas de reunião?</span>
+            <span className="text-gradient-blue">atas de reunião?</span>
           </h2>
           <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
             Profissionais de alta performance não perdem tempo com anotações manuais. Eles automatizam.
@@ -31,7 +28,7 @@ const ProblemSection = () => (
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <motion.div
-            className="rounded-2xl overflow-hidden glass"
+            className="rounded-2xl overflow-hidden shadow-md border border-border"
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -45,14 +42,14 @@ const ProblemSection = () => (
           </motion.div>
 
           <motion.div
-            className="glass rounded-2xl p-8 md:p-10"
+            className="bg-secondary rounded-2xl p-8 md:p-10 border border-border"
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.15 }}
           >
             <Zap className="w-10 h-10 text-primary mb-4" />
-            <p className="text-xl md:text-2xl font-semibold mb-3">
+            <p className="text-xl md:text-2xl font-semibold mb-3 text-foreground">
               Aperte um botão. Pronto.
             </p>
             <p className="text-muted-foreground text-lg leading-relaxed mb-4">

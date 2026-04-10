@@ -1,6 +1,5 @@
 import { Star, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
-import TiltCard from "./TiltCard";
 
 const reviews = [
   {
@@ -29,17 +28,15 @@ const containerVariants = {
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 40, rotateX: 10 },
+  hidden: { opacity: 0, y: 40 },
   visible: {
-    opacity: 1, y: 0, rotateX: 0,
+    opacity: 1, y: 0,
     transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const },
   },
 };
 
 const SocialProof = () => (
-  <section className="py-24 relative">
-    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-primary/[0.03] rounded-full blur-[120px] pointer-events-none" />
-
+  <section className="py-24 relative section-alt">
     <div className="container mx-auto px-4 relative z-10">
       <motion.div
         className="text-center mb-16"
@@ -51,15 +48,14 @@ const SocialProof = () => (
         <p className="text-primary font-semibold text-sm tracking-[0.2em] uppercase mb-3">
           +15.000 pessoas já aprovaram
         </p>
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
           O segredo dos profissionais de{" "}
-          <span className="text-gradient-cyan">alta performance</span>
+          <span className="text-gradient-blue">alta performance</span>
         </h2>
       </motion.div>
 
       <motion.div
         className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto"
-        style={{ perspective: "1000px" }}
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -67,26 +63,26 @@ const SocialProof = () => (
       >
         {reviews.map((r) => (
           <motion.div key={r.name} variants={cardVariants}>
-            <TiltCard className="p-6 h-full">
+            <div className="p-6 h-full bg-card rounded-2xl border border-border shadow-sm">
               <div className="flex items-center gap-1 mb-4">
                 {[...Array(r.stars)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-primary text-primary" />
+                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                 ))}
               </div>
               <p className="text-foreground mb-5 leading-relaxed">"{r.text}"</p>
               <div className="flex items-center gap-2">
-                <div className="w-9 h-9 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-sm">
+                <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-sm">
                   {r.name[0]}
                 </div>
                 <div>
-                  <p className="font-semibold text-sm flex items-center gap-1">
+                  <p className="font-semibold text-sm flex items-center gap-1 text-foreground">
                     {r.name}
                     <CheckCircle className="w-3.5 h-3.5 text-green-accent" />
                   </p>
                   <p className="text-xs text-muted-foreground">{r.role}</p>
                 </div>
               </div>
-            </TiltCard>
+            </div>
           </motion.div>
         ))}
       </motion.div>

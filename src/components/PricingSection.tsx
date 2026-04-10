@@ -3,10 +3,7 @@ import { motion } from "framer-motion";
 import batteryStandby from "@/assets/battery-standby.jpg";
 
 const PricingSection = () => (
-  <section id="oferta" className="py-24 relative overflow-hidden">
-    <div className="absolute inset-0 bg-secondary/20 pointer-events-none" />
-    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-primary/[0.06] rounded-full blur-[160px] pointer-events-none" />
-
+  <section id="oferta" className="py-24 relative overflow-hidden bg-background">
     <div className="container mx-auto px-4 relative z-10">
       <div className="max-w-4xl mx-auto">
         <motion.div
@@ -19,15 +16,15 @@ const PricingSection = () => (
           <p className="text-primary font-semibold text-sm tracking-[0.2em] uppercase mb-3">
             Lançamento Exclusivo no Brasil
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold">
-            Oferta por <span className="text-gradient-cyan">Tempo Limitado</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+            Oferta por <span className="text-gradient-blue">Tempo Limitado</span>
           </h2>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           {/* Battery objection killer */}
           <motion.div
-            className="rounded-2xl overflow-hidden glass"
+            className="rounded-2xl overflow-hidden border border-border shadow-sm bg-card"
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -39,29 +36,29 @@ const PricingSection = () => (
               className="w-full h-auto object-cover"
             />
             <div className="p-5 text-center">
-              <p className="text-lg font-semibold">Bateria que não te abandona</p>
+              <p className="text-lg font-semibold text-foreground">Bateria que não te abandona</p>
               <p className="text-sm text-muted-foreground">20+ dias em standby, um dia inteiro de uso contínuo</p>
             </div>
           </motion.div>
 
           {/* Pricing card */}
           <motion.div
-            className="animated-border rounded-3xl"
+            className="rounded-2xl border-2 border-primary shadow-lg bg-card"
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.15 }}
           >
-            <div className="glass-strong rounded-3xl p-8 md:p-10 text-center">
+            <div className="p-8 md:p-10 text-center">
               <p className="text-muted-foreground line-through text-lg mb-1">De R$ 997,00</p>
-              <p className="text-4xl md:text-5xl font-extrabold text-primary mb-1 text-glow">
+              <p className="text-4xl md:text-5xl font-extrabold text-primary mb-1">
                 12x de R$ 49,90
               </p>
               <p className="text-muted-foreground mb-8">ou R$ 497 à vista</p>
 
               <a
                 href="#"
-                className="block w-full bg-primary text-primary-foreground py-4 rounded-xl text-lg font-bold animate-pulse-glow hover:brightness-110 transition-all shadow-[0_0_30px_hsl(190_100%_50%/0.3),inset_0_1px_0_hsl(0_0%_100%/0.2)] mb-6"
+                className="block w-full bg-primary text-primary-foreground py-4 rounded-lg text-lg font-bold hover:bg-primary/90 transition-all shadow-md mb-6"
               >
                 Finalizar Compra Agora
               </a>

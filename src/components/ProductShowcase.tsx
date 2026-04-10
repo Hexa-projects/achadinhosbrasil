@@ -13,13 +13,13 @@ const ProductShowcase = () => (
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
         <div className="md:col-span-2 rounded-2xl overflow-hidden border border-border shadow-sm">
-          <img src={touchControls} alt="Controles touch intuitivos do CheerDots 2" className="w-full h-64 md:h-80 object-cover" />
+          <img src={touchControls} alt="Controles touch intuitivos do CheerDots 2" className="w-full h-auto object-contain" />
         </div>
         <div className="rounded-2xl overflow-hidden bg-card border border-border shadow-sm">
-          <img src={designCompact} alt="Design compacto de 70g" className="w-full h-64 object-cover" />
+          <img src={designCompact} alt="Design compacto de 70g" className="w-full h-auto object-contain" />
         </div>
         <div className="rounded-2xl overflow-hidden bg-card border border-border shadow-sm">
-          <img src={batteryStandby} alt="20+ dias de bateria em standby" className="w-full h-64 object-cover" />
+          <img src={batteryStandby} alt="20+ dias de bateria em standby" className="w-full h-auto object-contain" />
         </div>
       </div>
 

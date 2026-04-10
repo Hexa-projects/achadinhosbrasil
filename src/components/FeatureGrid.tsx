@@ -58,8 +58,8 @@ const FeatureGrid = () => (
                 Aperte um botão, grave a reunião, e a Inteligência Artificial do ChatGPT cria a ata e o resumo automáticos para você no aplicativo.
               </p>
             </div>
-            <div className="md:w-1/2 bg-gray-50 min-h-[250px] relative overflow-hidden">
-               <img src={voiceRecording} alt="Gravador IA em Português" className="absolute inset-0 w-full h-full object-cover" />
+            <div className="md:w-1/2 bg-gray-50 flex items-center justify-center overflow-hidden">
+               <img src={voiceRecording} alt="Gravador IA em Português" className="w-full h-auto object-contain" />
             </div>
           </div>
         </motion.div>
@@ -76,7 +76,7 @@ const FeatureGrid = () => (
                 O corpo se divide ao meio para virar um Air Mouse ultra-leve.
               </p>
             </div>
-            <div className="flex-grow mt-4 relative min-h-[200px] flex items-center justify-center">
+            <div className="flex-grow mt-4 flex items-center justify-center p-4">
                <img src={magneticDesign} alt="Design Magnético" className="w-[80%] h-auto object-contain drop-shadow-xl" />
             </div>
           </div>
@@ -94,8 +94,8 @@ const FeatureGrid = () => (
                 Role o TikTok, Kindle e YouTube direto do sofá.
               </p>
             </div>
-            <div className="flex-grow relative min-h-[200px] bg-gray-50">
-               <img src={scrollerMode} alt="Touchpad e Scroller" className="absolute inset-0 w-full h-full object-cover object-top" />
+            <div className="flex-grow bg-gray-50 overflow-hidden">
+               <img src={scrollerMode} alt="Touchpad e Scroller" className="w-full h-auto object-contain" />
             </div>
           </div>
         </motion.div>
@@ -112,8 +112,8 @@ const FeatureGrid = () => (
                 Laser pointer digital integrado, marcação em tela e avanço de slides preciso. Transmita autoridade nas suas apresentações.
               </p>
             </div>
-            <div className="relative md:w-1/2 min-h-[250px] bg-gray-50">
-               <img src={presentationMode} alt="Apresentador Mode" className="absolute inset-0 w-full h-full object-cover object-top" />
+            <div className="md:w-1/2 bg-gray-50 flex items-center justify-center overflow-hidden">
+               <img src={presentationMode} alt="Apresentador Mode" className="w-full h-auto object-contain" />
             </div>
           </div>
         </motion.div>

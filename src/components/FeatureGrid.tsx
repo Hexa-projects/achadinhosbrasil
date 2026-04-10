@@ -12,6 +12,7 @@ const features = [
     description: "Transcrição e resumos automáticos via ChatGPT. Fim das atas manuais.",
     image: voiceRecording,
     imageAlt: "Gravação de áudio com microfone de alta precisão integrado",
+    span: "md:col-span-2 md:row-span-1", // wide
   },
   {
     icon: Mouse,
@@ -19,6 +20,7 @@ const features = [
     description: "Controle o cursor por gestos no ar. Design 2-em-1 que se divide ao meio.",
     image: null,
     imageAlt: "",
+    span: "md:col-span-1 md:row-span-1",
   },
   {
     icon: Presentation,
@@ -26,6 +28,7 @@ const features = [
     description: "Laser pointer digital integrado. Perfeito para palestras corporativas.",
     image: touchControls,
     imageAlt: "CheerDots 2 em modo apresentação sobre a mesa",
+    span: "md:col-span-1 md:row-span-1",
   },
   {
     icon: Smartphone,
@@ -33,18 +36,19 @@ const features = [
     description: "Controle TikTok, Kindle e YouTube do sofá. Role páginas à distância.",
     image: null,
     imageAlt: "",
+    span: "md:col-span-2 md:row-span-1",
   },
 ];
 
 const containerVariants = {
   hidden: {},
   visible: {
-    transition: { staggerChildren: 0.15 },
+    transition: { staggerChildren: 0.12 },
   },
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 60, rotateX: 15 },
+  hidden: { opacity: 0, y: 50, rotateX: 12 },
   visible: {
     opacity: 1,
     y: 0,
@@ -55,7 +59,6 @@ const cardVariants = {
 
 const FeatureGrid = () => (
   <section className="py-24 relative">
-    {/* Ambient glow */}
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-primary/[0.04] rounded-full blur-[120px] pointer-events-none" />
 
     <div className="container mx-auto px-4 relative z-10">
@@ -74,19 +77,20 @@ const FeatureGrid = () => (
         </h2>
       </motion.div>
 
+      {/* Bento Grid - asymmetric */}
       <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto"
+        className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-5xl mx-auto"
         style={{ perspective: "1200px" }}
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.15 }}
       >
         {features.map((f) => (
-          <motion.div key={f.title} variants={cardVariants}>
+          <motion.div key={f.title} variants={cardVariants} className={f.span}>
             <TiltCard className="h-full overflow-hidden">
               {f.image && (
-                <div className="h-44 overflow-hidden">
+                <div className={`overflow-hidden ${f.span.includes("col-span-2") ? "h-52" : "h-40"}`}>
                   <img
                     src={f.image}
                     alt={f.imageAlt}
@@ -94,21 +98,21 @@ const FeatureGrid = () => (
                   />
                 </div>
               )}
-              <div className="p-8">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
-                  <f.icon className="w-6 h-6 text-primary" />
+              <div className="p-7">
+                <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                  <f.icon className="w-5 h-5 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold mb-2">{f.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{f.description}</p>
+                <h3 className="text-lg font-bold mb-1.5">{f.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{f.description}</p>
               </div>
             </TiltCard>
           </motion.div>
         ))}
       </motion.div>
 
-      {/* Desktop authority image */}
+      {/* Desktop authority */}
       <motion.div
-        className="max-w-4xl mx-auto mt-12 rounded-2xl overflow-hidden glass"
+        className="max-w-5xl mx-auto mt-10 rounded-2xl overflow-hidden glass"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}

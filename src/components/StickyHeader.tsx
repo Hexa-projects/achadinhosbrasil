@@ -24,10 +24,10 @@ const StickyHeader = () => {
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
+      className={`sticky top-0 inset-x-0 z-50 transition-all duration-300 ${
         scrolled
           ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-border/50"
-          : "bg-transparent"
+          : "bg-white"
       }`}
     >
       <div className="container mx-auto px-4 flex items-center justify-between h-16">

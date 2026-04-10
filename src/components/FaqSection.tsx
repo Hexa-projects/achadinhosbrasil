@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import {
   Accordion,
   AccordionContent,
@@ -14,21 +15,33 @@ const faqs = [
 ];
 
 const FaqSection = () => (
-  <section className="py-20">
+  <section className="py-24 relative">
     <div className="container mx-auto px-4">
-      <div className="text-center mb-14">
+      <motion.div
+        className="text-center mb-14"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
         <h2 className="text-3xl md:text-4xl font-bold">
           Perguntas <span className="text-gradient-cyan">Frequentes</span>
         </h2>
-      </div>
+      </motion.div>
 
-      <div className="max-w-2xl mx-auto">
+      <motion.div
+        className="max-w-2xl mx-auto"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.15 }}
+      >
         <Accordion type="single" collapsible className="space-y-3">
           {faqs.map((faq, i) => (
             <AccordionItem
               key={i}
               value={`faq-${i}`}
-              className="bg-card border border-border rounded-xl px-6 overflow-hidden"
+              className="glass rounded-xl px-6 overflow-hidden"
             >
               <AccordionTrigger className="text-left font-semibold hover:no-underline py-5">
                 {faq.q}
@@ -39,7 +52,7 @@ const FaqSection = () => (
             </AccordionItem>
           ))}
         </Accordion>
-      </div>
+      </motion.div>
     </div>
   </section>
 );

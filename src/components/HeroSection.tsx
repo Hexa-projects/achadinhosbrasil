@@ -13,7 +13,7 @@ const trustBadges = [
 const HeroSection = () => {
   const { isRedirecting, handleCheckoutRedirect } = useCheckoutRedirect();
   return (
-    <section className="relative overflow-hidden pt-24 pb-12 md:pt-36 md:pb-24 bg-white">
+    <section className="relative overflow-hidden pt-10 pb-12 md:pt-20 md:pb-24 bg-white">
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Copy */}

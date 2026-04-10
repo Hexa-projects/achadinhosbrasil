@@ -1,8 +1,8 @@
 import { Mic, Mouse, Presentation, Smartphone } from "lucide-react";
 import { motion } from "framer-motion";
-import voiceRecording from "@/assets/voice-recording.jpg";
-import touchControls from "@/assets/touch-controls.jpg";
-import productGallery from "@/assets/product-gallery.jpg";
+import voiceRecording from "@/assets/voice-recording.webp";
+import touchControls from "@/assets/touch-controls.webp";
+import productGallery from "@/assets/product-gallery.webp";
 
 const features = [
   {

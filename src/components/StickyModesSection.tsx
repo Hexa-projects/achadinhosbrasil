@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Crosshair, MonitorSmartphone, Hand } from "lucide-react";
-import heroProduct from "@/assets/hero-product.jpg";
-import touchControls from "@/assets/touch-controls.jpg";
-import voiceRecording from "@/assets/voice-recording.jpg";
+import heroProduct from "@/assets/hero-product.webp";
+import touchControls from "@/assets/touch-controls.webp";
+import voiceRecording from "@/assets/voice-recording.webp";
 
 const modes = [
   {

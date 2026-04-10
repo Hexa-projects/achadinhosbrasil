@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import designCompact from "@/assets/design-compact.jpg";
+import designCompact from "@/assets/design-compact.webp";
 
 const PortabilitySection = () => (
   <section className="py-24 relative overflow-hidden bg-background">

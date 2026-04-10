@@ -1,7 +1,11 @@
 import { ShieldCheck, Truck, Clock } from "lucide-react";
 import { motion } from "framer-motion";
-import batteryStandby from "@/assets/battery-standby.jpg";
+ 
+ 
 import { useCheckoutRedirect } from "@/hooks/useCheckoutRedirect";
+ 
+import batteryStandby from "@/assets/battery-standby.webp";
+ 
 
 const PricingSection = () => {
   const { isRedirecting, handleCheckoutRedirect } = useCheckoutRedirect();

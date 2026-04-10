@@ -1,6 +1,6 @@
-import touchControls from "@/assets/touch-controls.jpg";
-import designCompact from "@/assets/design-compact.jpg";
-import batteryStandby from "@/assets/battery-standby.jpg";
+import touchControls from "@/assets/touch-controls.webp";
+import designCompact from "@/assets/design-compact.webp";
+import batteryStandby from "@/assets/battery-standby.webp";
 
 const ProductShowcase = () => (
   <section className="py-20 section-alt">

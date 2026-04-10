@@ -1,6 +1,6 @@
 import { AlertTriangle, Zap } from "lucide-react";
 import { motion } from "framer-motion";
-import voiceRecording from "@/assets/voice-recording.jpg";
+import voiceRecording from "@/assets/voice-recording.webp";
 
 const ProblemSection = () => (
   <section className="py-24 relative overflow-hidden bg-background">

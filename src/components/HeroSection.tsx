@@ -1,4 +1,4 @@
-import heroProduct from "@/assets/hero-product.jpg";
+import heroProduct from "@/assets/hero-product.webp";
 import { Star } from "lucide-react";
 import { motion } from "framer-motion";
 import { useCheckoutRedirect } from "@/hooks/useCheckoutRedirect";

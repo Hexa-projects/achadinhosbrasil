@@ -1,8 +1,11 @@
 import { ShieldCheck, Truck, Clock } from "lucide-react";
 import { motion } from "framer-motion";
 import batteryStandby from "@/assets/battery-standby.jpg";
+import { useCheckoutRedirect } from "@/hooks/useCheckoutRedirect";
 
-const PricingSection = () => (
+const PricingSection = () => {
+  const { isRedirecting, handleCheckoutRedirect } = useCheckoutRedirect();
+  return (
   <section id="oferta" className="py-24 relative overflow-hidden bg-background">
     <div className="container mx-auto px-4 relative z-10">
       <div className="max-w-4xl mx-auto">
@@ -56,12 +59,13 @@ const PricingSection = () => (
               </p>
               <p className="text-muted-foreground mb-8">ou R$ 497 à vista</p>
 
-              <a
-                href="#"
-                className="block w-full bg-primary text-primary-foreground py-4 rounded-lg text-lg font-bold hover:bg-primary/90 transition-all shadow-md mb-6"
+              <button
+                onClick={handleCheckoutRedirect}
+                disabled={isRedirecting}
+                className="block w-full bg-primary text-primary-foreground py-4 rounded-lg text-lg font-bold hover:bg-primary/90 transition-all shadow-md mb-6 disabled:opacity-70"
               >
-                Finalizar Compra Agora
-              </a>
+                {isRedirecting ? "Redirecionando..." : "Finalizar Compra Agora"}
+              </button>
 
               <p className="text-sm text-destructive font-semibold flex items-center justify-center gap-1.5 mb-6">
                 <Clock className="w-4 h-4" />
@@ -78,6 +82,7 @@ const PricingSection = () => (
       </div>
     </div>
   </section>
-);
+  );
+};
 
 export default PricingSection;

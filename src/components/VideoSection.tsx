@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
+import { useCheckoutRedirect } from "@/hooks/useCheckoutRedirect";
 
-const VideoSection = () => (
+const VideoSection = () => {
+  const { isRedirecting, handleCheckoutRedirect } = useCheckoutRedirect();
+  return (
   <section className="py-16 relative overflow-hidden section-alt">
     <div className="container mx-auto px-4 relative z-10">
       <motion.div
@@ -43,15 +46,17 @@ const VideoSection = () => (
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.4 }}
       >
-        <a
-          href="#oferta"
-          className="inline-block bg-primary text-primary-foreground px-10 py-4 rounded-lg text-lg font-bold transition-all hover:bg-primary/90 shadow-md"
+        <button
+          onClick={handleCheckoutRedirect}
+          disabled={isRedirecting}
+          className="inline-block bg-primary text-primary-foreground px-10 py-4 rounded-lg text-lg font-bold transition-all hover:bg-primary/90 shadow-md disabled:opacity-70"
         >
-          Garantir Lote com 50% OFF
-        </a>
+          {isRedirecting ? "Redirecionando..." : "Garantir Lote com 50% OFF"}
+        </button>
       </motion.div>
     </div>
   </section>
-);
+  );
+};
 
 export default VideoSection;

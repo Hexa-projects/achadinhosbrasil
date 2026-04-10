@@ -1,5 +1,6 @@
 import AnnouncementBar from "@/components/AnnouncementBar";
 import HeroSection from "@/components/HeroSection";
+import VideoSection from "@/components/VideoSection";
 import ProblemSection from "@/components/ProblemSection";
 import FeatureGrid from "@/components/FeatureGrid";
 import StickyModesSection from "@/components/StickyModesSection";
@@ -14,6 +15,7 @@ const Index = () => (
   <div className="min-h-screen aurora-bg text-foreground">
     <AnnouncementBar />
     <HeroSection />
+    <VideoSection />
     <ProblemSection />
     <FeatureGrid />
     <StickyModesSection />

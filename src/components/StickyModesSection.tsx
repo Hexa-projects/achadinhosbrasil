@@ -39,10 +39,7 @@ const StickyModesSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0 bg-secondary/20 pointer-events-none" />
-      <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-primary/[0.05] rounded-full blur-[140px] pointer-events-none" />
-
+    <section className="py-24 relative overflow-hidden bg-background">
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           className="text-center mb-16"
@@ -54,23 +51,22 @@ const StickyModesSection = () => {
           <p className="text-primary font-semibold text-sm tracking-[0.2em] uppercase mb-3">
             3 Modos de Operação
           </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
-            Um dispositivo, <span className="text-gradient-cyan">infinitas possibilidades</span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
+            Um dispositivo, <span className="text-gradient-blue">infinitas possibilidades</span>
           </h2>
         </motion.div>
 
         <div className="max-w-5xl mx-auto">
           {/* Desktop: sticky layout */}
           <div className="hidden md:grid grid-cols-2 gap-12">
-            {/* Left: scrolling cards */}
-            <div className="space-y-8">
+            <div className="space-y-6">
               {modes.map((mode, i) => (
                 <motion.div
                   key={mode.id}
-                  className={`glass rounded-2xl p-8 cursor-pointer transition-all duration-300 ${
+                  className={`rounded-2xl p-8 cursor-pointer transition-all duration-300 border ${
                     activeIndex === i
-                      ? "ring-1 ring-primary/40 glow-cyan"
-                      : "opacity-50 hover:opacity-80"
+                      ? "bg-primary/5 border-primary/30 shadow-md"
+                      : "bg-card border-border opacity-60 hover:opacity-90"
                   }`}
                   onClick={() => setActiveIndex(i)}
                   initial={{ opacity: 0, x: -40 }}
@@ -83,7 +79,7 @@ const StickyModesSection = () => {
                       <mode.icon className="w-5 h-5 text-primary" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-bold">{mode.title}</h3>
+                      <h3 className="text-lg font-bold text-foreground">{mode.title}</h3>
                       <p className="text-xs text-muted-foreground">{mode.subtitle}</p>
                     </div>
                   </div>
@@ -96,11 +92,7 @@ const StickyModesSection = () => {
 
             {/* Right: sticky image */}
             <div className="sticky top-32 self-start">
-              <div className="relative rounded-2xl overflow-hidden glass aspect-square flex items-center justify-center">
-                {/* Studio glow */}
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <div className="w-3/4 h-3/4 bg-primary/[0.08] rounded-full blur-[80px]" />
-                </div>
+              <div className="relative rounded-2xl overflow-hidden border border-border shadow-md aspect-square flex items-center justify-center bg-secondary">
                 <AnimatePresence mode="wait">
                   <motion.img
                     key={modes[activeIndex].id}
@@ -115,7 +107,6 @@ const StickyModesSection = () => {
                 </AnimatePresence>
               </div>
 
-              {/* Mode indicators */}
               <div className="flex justify-center gap-2 mt-4">
                 {modes.map((_, i) => (
                   <button
@@ -137,7 +128,7 @@ const StickyModesSection = () => {
             {modes.map((mode, i) => (
               <motion.div
                 key={mode.id}
-                className="glass rounded-2xl overflow-hidden"
+                className="rounded-2xl overflow-hidden border border-border shadow-sm bg-card"
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -153,7 +144,7 @@ const StickyModesSection = () => {
                     <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center">
                       <mode.icon className="w-4 h-4 text-primary" />
                     </div>
-                    <h3 className="text-lg font-bold">{mode.title}</h3>
+                    <h3 className="text-lg font-bold text-foreground">{mode.title}</h3>
                   </div>
                   <p className="text-muted-foreground text-sm leading-relaxed">
                     {mode.description}

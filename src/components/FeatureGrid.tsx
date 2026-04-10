@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import voiceRecording from "@/assets/voice-recording.jpg";
 import touchControls from "@/assets/touch-controls.jpg";
 import productGallery from "@/assets/product-gallery.jpg";
-import TiltCard from "./TiltCard";
 
 const features = [
   {
@@ -12,7 +11,7 @@ const features = [
     description: "Transcrição e resumos automáticos via ChatGPT. Fim das atas manuais.",
     image: voiceRecording,
     imageAlt: "Gravação de áudio com microfone de alta precisão integrado",
-    span: "md:col-span-2 md:row-span-1", // wide
+    span: "md:col-span-2 md:row-span-1",
   },
   {
     icon: Mouse,
@@ -48,19 +47,16 @@ const containerVariants = {
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 50, rotateX: 12 },
+  hidden: { opacity: 0, y: 50 },
   visible: {
     opacity: 1,
     y: 0,
-    rotateX: 0,
     transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
   },
 };
 
 const FeatureGrid = () => (
-  <section className="py-24 relative">
-    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-primary/[0.04] rounded-full blur-[120px] pointer-events-none" />
-
+  <section className="py-24 relative section-alt">
     <div className="container mx-auto px-4 relative z-10">
       <motion.div
         className="text-center mb-16"
@@ -72,15 +68,13 @@ const FeatureGrid = () => (
         <p className="text-primary font-semibold text-sm tracking-[0.2em] uppercase mb-3">
           1+1+1+1+1 = CheerDots 2
         </p>
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
-          O Canivete Suíço da <span className="text-gradient-cyan">Produtividade</span>
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
+          O Canivete Suíço da <span className="text-gradient-blue">Produtividade</span>
         </h2>
       </motion.div>
 
-      {/* Bento Grid - asymmetric */}
       <motion.div
         className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-5xl mx-auto"
-        style={{ perspective: "1200px" }}
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -88,7 +82,7 @@ const FeatureGrid = () => (
       >
         {features.map((f) => (
           <motion.div key={f.title} variants={cardVariants} className={f.span}>
-            <TiltCard className="h-full overflow-hidden">
+            <div className="h-full overflow-hidden bg-card rounded-2xl border border-border shadow-sm hover:shadow-md transition-shadow duration-300">
               {f.image && (
                 <div className={`overflow-hidden ${f.span.includes("col-span-2") ? "h-52" : "h-40"}`}>
                   <img
@@ -102,17 +96,16 @@ const FeatureGrid = () => (
                 <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                   <f.icon className="w-5 h-5 text-primary" />
                 </div>
-                <h3 className="text-lg font-bold mb-1.5">{f.title}</h3>
+                <h3 className="text-lg font-bold mb-1.5 text-foreground">{f.title}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">{f.description}</p>
               </div>
-            </TiltCard>
+            </div>
           </motion.div>
         ))}
       </motion.div>
 
-      {/* Desktop authority */}
       <motion.div
-        className="max-w-5xl mx-auto mt-10 rounded-2xl overflow-hidden glass"
+        className="max-w-5xl mx-auto mt-10 rounded-2xl overflow-hidden shadow-md border border-border"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}

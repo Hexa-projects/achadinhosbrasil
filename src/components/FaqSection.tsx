@@ -15,7 +15,7 @@ const faqs = [
 ];
 
 const FaqSection = () => (
-  <section className="py-24 relative">
+  <section className="py-24 relative section-alt">
     <div className="container mx-auto px-4">
       <motion.div
         className="text-center mb-14"
@@ -24,8 +24,8 @@ const FaqSection = () => (
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <h2 className="text-3xl md:text-4xl font-bold">
-          Perguntas <span className="text-gradient-cyan">Frequentes</span>
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+          Perguntas <span className="text-gradient-blue">Frequentes</span>
         </h2>
       </motion.div>
 
@@ -41,9 +41,9 @@ const FaqSection = () => (
             <AccordionItem
               key={i}
               value={`faq-${i}`}
-              className="glass rounded-xl px-6 overflow-hidden"
+              className="bg-card rounded-xl px-6 overflow-hidden border border-border shadow-sm"
             >
-              <AccordionTrigger className="text-left font-semibold hover:no-underline py-5">
+              <AccordionTrigger className="text-left font-semibold hover:no-underline py-5 text-foreground">
                 {faq.q}
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground pb-5">

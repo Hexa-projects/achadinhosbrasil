@@ -1,43 +1,8 @@
 import { Mic, Mouse, Presentation, Smartphone } from "lucide-react";
 import { motion } from "framer-motion";
 import voiceRecording from "@/assets/voice-recording.webp";
-import touchControls from "@/assets/touch-controls.webp";
-import heroProduct from "@/assets/hero-product.webp";
-
-const features = [
-  {
-    icon: Mic,
-    title: "Gravador com IA",
-    description: "Transcrição e resumos automáticos via ChatGPT. Fim das atas manuais.",
-    image: voiceRecording,
-    imageAlt: "Gravação de áudio com microfone de alta precisão integrado",
-    span: "md:col-span-2 md:row-span-1",
-  },
-  {
-    icon: Mouse,
-    title: "Air Mouse Magnético",
-    description: "Controle o cursor por gestos no ar. Design 2-em-1 que se divide ao meio.",
-    image: heroProduct,
-    imageAlt: "CheerDots 2 em modo Air Mouse",
-    span: "md:col-span-1 md:row-span-1",
-  },
-  {
-    icon: Smartphone,
-    title: "Scroller Inteligente",
-    description: "Controle TikTok, Kindle e YouTube do sofá. Role páginas à distância.",
-    image: touchControls,
-    imageAlt: "CheerDots 2 controlando tela do celular",
-    span: "md:col-span-1 md:row-span-1",
-  },
-  {
-    icon: Presentation,
-    title: "Apresentador Premium",
-    description: "Controle de slides avançado com ponteiro integrado e timer tátil. Perfeito para palestras.",
-    image: null,
-    imageAlt: "",
-    span: "md:col-span-2 md:row-span-1",
-  },
-];
+import magneticDesign from "@/assets/magnetic-design.png";
+import scrollerMode from "@/assets/scroller-mode.webp";
 
 const containerVariants = {
   hidden: {},
@@ -93,7 +58,7 @@ const FeatureGrid = () => (
               </p>
             </div>
             <div className="md:w-1/2 bg-gray-50 min-h-[250px] relative overflow-hidden">
-               <img src={voiceRecording} alt="Gravador IA" className="absolute inset-0 w-full h-full object-cover" />
+               <img src={voiceRecording} alt="Gravador IA em Português" className="absolute inset-0 w-full h-full object-cover" />
             </div>
           </div>
         </motion.div>
@@ -105,13 +70,13 @@ const FeatureGrid = () => (
               <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
                 <Mouse className="w-6 h-6 text-primary" />
               </div>
-              <h3 className="text-2xl font-bold mb-3 text-foreground leading-tight">Air Mouse Magnético</h3>
+              <h3 className="text-2xl font-bold mb-3 text-foreground leading-tight">Design Magnético</h3>
               <p className="text-muted-foreground text-base leading-relaxed">
-                Controle o cursor por gestos no ar com o giroscópio.
+                O corpo se divide ao meio para virar um Air Mouse ultra-leve.
               </p>
             </div>
-            <div className="flex-grow mt-4 relative min-h-[200px]">
-               <img src={heroProduct} alt="Air Mouse" className="absolute inset-0 w-full h-full object-cover object-top" />
+            <div className="flex-grow mt-4 relative min-h-[200px] flex items-center justify-center">
+               <img src={magneticDesign} alt="Design Magnético" className="w-[80%] h-auto object-contain drop-shadow-xl" />
             </div>
           </div>
         </motion.div>
@@ -128,8 +93,8 @@ const FeatureGrid = () => (
                 Role o TikTok, Kindle e YouTube direto do sofá.
               </p>
             </div>
-            <div className="flex-grow mt-4 relative min-h-[200px] bg-gray-50">
-               <img src={touchControls} alt="Touchpad e Scroller" className="absolute inset-0 w-full h-full object-cover object-center" />
+            <div className="flex-grow relative min-h-[200px] bg-gray-50">
+               <img src={scrollerMode} alt="Touchpad e Scroller" className="absolute inset-0 w-full h-full object-cover object-top" />
             </div>
           </div>
         </motion.div>
@@ -137,15 +102,20 @@ const FeatureGrid = () => (
         {/* Card 4: Apresentador - Horizontal Largo */}
         <motion.div variants={cardVariants} className="lg:col-span-2 h-full">
           <div className="h-full bg-primary rounded-3xl shadow-md transition-all duration-300 overflow-hidden flex flex-col md:flex-row relative">
-            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
-            <div className="p-8 flex flex-col justify-center relative z-10 w-full">
+            <div className="absolute inset-0 opacity-10 mix-blend-overlay bg-black"></div>
+            <div className="p-8 flex flex-col justify-center relative z-10 w-full md:w-1/2">
               <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center mb-5 backdrop-blur-sm">
                 <Presentation className="w-6 h-6 text-white" />
               </div>
               <h3 className="text-2xl font-bold mb-3 text-white leading-tight">Apresentador Laser Digital</h3>
-              <p className="text-primary-foreground/80 text-base leading-relaxed max-w-xl">
-                Laser pointer digital integrado, marcação em tela e avanço de slides preciso. Transmita autoridade nas suas apresentações corporativas ou palestras acadêmicas.
+              <p className="text-primary-foreground/90 text-base leading-relaxed">
+                Laser pointer digital integrado, marcação em tela e avanço de slides preciso. Transmita autoridade nas suas apresentações.
               </p>
+            </div>
+            <div className="relative z-10 md:w-1/2 flex items-center justify-center p-6">
+                <div className="w-full h-full border-2 border-white/20 rounded-2xl bg-black/20 backdrop-blur-md flex items-center justify-center">
+                    <span className="text-white/80 font-medium">✨ Spotlight Mode Ativado</span>
+                </div>
             </div>
           </div>
         </motion.div>

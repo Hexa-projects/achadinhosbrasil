@@ -1,4 +1,4 @@
-import heroProduct from "@/assets/hero-product.webp";
+import heroProduct from "@/assets/hero-product.png";
 import { Star, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
 import { useCheckoutRedirect } from "@/hooks/useCheckoutRedirect";
@@ -78,16 +78,16 @@ const HeroSection = () => {
       </motion.div>
 
       <motion.div
-        className="max-w-4xl mx-auto"
+        className="max-w-5xl mx-auto"
         initial={{ opacity: 0, scale: 0.95, y: 40 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ delay: 0.4, duration: 1, ease: [0.16, 1, 0.3, 1] }}
       >
-        <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-200/50 bg-gray-50">
+        <div className="relative rounded-3xl overflow-hidden bg-white flex justify-center py-10">
            <img
             src={heroProduct}
-            alt="CheerDots 2 - Mouse com Inteligência Artificial"
-            className="w-full h-auto object-cover"
+            alt="CheerDots 2 - Design Completo com Laser e Touchpad"
+            className="w-full max-w-3xl h-auto object-contain transform hover:scale-105 transition-transform duration-700"
           />
         </div>
       </motion.div>

@@ -1,37 +1,37 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Crosshair, MonitorSmartphone, Hand } from "lucide-react";
-import heroProduct from "@/assets/hero-product.webp";
-import touchControls from "@/assets/touch-controls.webp";
-import productGallery from "@/assets/product-gallery.webp";
+import airMouse from "@/assets/air-mouse.png";
+import presentationMode from "@/assets/presentation-mode.webp";
+import magneticDesign from "@/assets/magnetic-design.png";
 
 const modes = [
   {
     id: "laser",
     icon: Crosshair,
-    title: "Laser Mode",
-    subtitle: "Apresentações sem fio",
+    title: "Apresentador Laser",
+    subtitle: "Apresentações corporativas",
     description:
-      "Laser pointer digital integrado com destaque de spotlight. Aponte para qualquer ponto da tela a até 20 metros de distância. Perfeito para salas de reunião e auditórios.",
-    image: productGallery,
+      "Aponte para qualquer tela a até 20 metros de distância. O laser digital permite destacar áreas importantes durante reuniões de diretoria ou palestras.",
+    image: presentationMode,
   },
   {
     id: "air",
     icon: Hand,
-    title: "Air Mouse Mode",
+    title: "Air Mouse Integrado",
     subtitle: "Controle pelo ar",
     description:
-      "Segure no ar e controle o cursor com movimentos naturais da mão. Giroscópio de 6 eixos com precisão sub-milimétrica. Ideal para apresentações dinâmicas.",
-    image: heroProduct,
+      "Segure no ar e controle o cursor com movimentos naturais da mão. Possui giroscópio de 6 eixos com precisão cirúrgica. Ideal para quem não quer ficar preso à mesa.",
+    image: airMouse,
   },
   {
     id: "desktop",
     icon: MonitorSmartphone,
-    title: "Desktop Mode",
-    subtitle: "Mouse magnético",
+    title: "Desktop Touchpad",
+    subtitle: "Trabalho silencioso",
     description:
-      "Encaixe as duas metades magneticamente e use como um trackpad de precisão sobre qualquer superfície. Sensor óptico com controle de gestos integrado.",
-    image: touchControls,
+      "Junte as duas partes magnéticas e transforme-o em um touchpad portátil e silencioso. Sem cliques barulhentos irritando colegas de escritório.",
+    image: magneticDesign,
   },
 ];
 
@@ -80,7 +80,7 @@ const StickyModesSection = () => {
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-foreground leading-tight">{mode.title}</h3>
-                      <p className="text-sm text-muted-foreground font-medium">{mode.subtitle}</p>
+                      <p className="text-sm text-muted-foreground font-medium uppercase tracking-wider">{mode.subtitle}</p>
                     </div>
                   </div>
                   <p className="text-muted-foreground text-base leading-relaxed">
@@ -92,13 +92,13 @@ const StickyModesSection = () => {
 
             {/* Right: sticky image */}
             <div className="sticky top-32 self-start">
-              <div className="relative rounded-3xl overflow-hidden border border-border shadow-xl aspect-square flex items-center justify-center bg-white">
+              <div className="relative rounded-3xl overflow-hidden border border-border/60 shadow-xl aspect-square flex items-center justify-center bg-gray-50/50">
                 <AnimatePresence mode="wait">
                   <motion.img
                     key={modes[activeIndex].id}
                     src={modes[activeIndex].image}
                     alt={modes[activeIndex].title}
-                    className="w-full h-full object-cover relative z-10"
+                    className="w-[90%] h-[90%] object-contain relative z-10 drop-shadow-2xl"
                     initial={{ opacity: 0, scale: 0.95, filter: "blur(4px)" }}
                     animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
                     exit={{ opacity: 0, scale: 1.05, filter: "blur(4px)" }}
@@ -134,11 +134,13 @@ const StickyModesSection = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
               >
-                <img
-                  src={mode.image}
-                  alt={mode.title}
-                  className="w-full aspect-square object-cover"
-                />
+                <div className="w-full aspect-square bg-gray-50 flex items-center justify-center p-6">
+                  <img
+                    src={mode.image}
+                    alt={mode.title}
+                    className="w-full h-full object-contain drop-shadow-xl"
+                  />
+                </div>
                 <div className="p-6">
                   <div className="flex items-center gap-3 mb-3">
                     <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-primary-foreground">

@@ -35,7 +35,7 @@ const personas = [
 ];
 
 const UseCasesSection = () => (
-  <section className="py-24 section-alt">
+  <section className="py-16 md:py-24 section-alt">
     <div className="container mx-auto px-4">
       <motion.div
         className="text-center mb-16 max-w-2xl mx-auto"

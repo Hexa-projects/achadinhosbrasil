@@ -13,7 +13,7 @@ const benefits = [
 const PricingSection = () => {
   const { isRedirecting, handleCheckoutRedirect } = useCheckoutRedirect();
   return (
-    <section id="oferta" className="py-24 relative overflow-hidden section-alt">
+    <section id="oferta" className="py-16 md:py-24 relative overflow-hidden section-alt">
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           className="text-center mb-14 max-w-2xl mx-auto"

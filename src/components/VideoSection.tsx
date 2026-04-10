@@ -4,7 +4,7 @@ import { useCheckoutRedirect } from "@/hooks/useCheckoutRedirect";
 const VideoSection = () => {
   const { isRedirecting, handleCheckoutRedirect } = useCheckoutRedirect();
   return (
-    <section className="py-20 relative overflow-hidden section-alt">
+    <section className="py-16 md:py-20 relative overflow-hidden section-alt">
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           className="text-center mb-10"

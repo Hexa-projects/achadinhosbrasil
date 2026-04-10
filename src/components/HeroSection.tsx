@@ -1,37 +1,66 @@
 import heroProduct from "@/assets/hero-product.jpg";
 import { Star } from "lucide-react";
+import { motion } from "framer-motion";
 
 const HeroSection = () => (
-  <section className="relative overflow-hidden py-16 md:py-24 lg:py-32">
-    {/* Background glow */}
-    <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent pointer-events-none" />
-    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+  <section className="relative overflow-hidden py-20 md:py-28 lg:py-36">
+    {/* Aurora glows */}
+    <div className="absolute inset-0 aurora-bg pointer-events-none" />
+    <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/[0.07] rounded-full blur-[160px] pointer-events-none" />
+    <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-cyan-soft/[0.05] rounded-full blur-[120px] pointer-events-none" />
 
     <div className="container mx-auto px-4 relative z-10">
-      <div className="text-center max-w-4xl mx-auto mb-12">
-        <p className="text-primary font-semibold text-sm tracking-widest uppercase mb-4 animate-fade-up">
+      <motion.div
+        className="text-center max-w-4xl mx-auto mb-16"
+        initial={{ opacity: 0, scale: 0.85, y: 40 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <motion.p
+          className="text-primary font-semibold text-sm tracking-[0.2em] uppercase mb-5"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+        >
           Cheerdots 2 — 6 em 1
-        </p>
-        <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight mb-6 animate-fade-up" style={{ animationDelay: "0.1s" }}>
+        </motion.p>
+
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.05] mb-7 text-glow">
           O Mouse Evoluiu.{" "}
           <span className="text-gradient-cyan">
             O 1º Assistente de IA de Bolso.
           </span>
         </h1>
-        <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mb-8 animate-fade-up" style={{ animationDelay: "0.2s" }}>
-          Grava reuniões, transcreve áudios com ChatGPT, controla apresentações e telas à distância. O futuro da produtividade está nas suas mãos.
-        </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up" style={{ animationDelay: "0.3s" }}>
+        <motion.p
+          className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4, duration: 0.8 }}
+        >
+          Grava reuniões, transcreve áudios com ChatGPT, controla apresentações e telas à distância. O futuro da produtividade está nas suas mãos.
+        </motion.p>
+
+        <motion.div
+          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.6 }}
+        >
           <a
             href="#oferta"
-            className="bg-primary text-primary-foreground px-8 py-4 rounded-lg text-lg font-bold animate-pulse-glow hover:brightness-110 transition-all"
+            className="relative bg-primary text-primary-foreground px-10 py-5 rounded-xl text-lg font-bold transition-all hover:brightness-110 shadow-[0_0_30px_hsl(190_100%_50%/0.4),inset_0_1px_0_hsl(0_0%_100%/0.2)] animate-pulse-glow"
           >
             Garantir Lote Promocional
           </a>
-        </div>
+        </motion.div>
 
-        <div className="flex items-center justify-center gap-4 mt-6 text-sm text-muted-foreground animate-fade-up" style={{ animationDelay: "0.4s" }}>
+        <motion.div
+          className="flex items-center justify-center gap-4 mt-7 text-sm text-muted-foreground"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.7, duration: 0.6 }}
+        >
           <span className="flex items-center gap-1">
             {[...Array(5)].map((_, i) => (
               <Star key={i} className="w-4 h-4 fill-primary text-primary" />
@@ -41,16 +70,25 @@ const HeroSection = () => (
           <span>(1.240 Avaliações)</span>
           <span className="hidden sm:inline">•</span>
           <span className="hidden sm:inline">Compra Segura</span>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
-      <div className="max-w-3xl mx-auto animate-fade-up" style={{ animationDelay: "0.5s" }}>
-        <img
+      <motion.div
+        className="max-w-3xl mx-auto"
+        initial={{ opacity: 0, scale: 0.9, y: 60 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ delay: 0.4, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <motion.img
           src={heroProduct}
           alt="CheerDots 2 - Mouse com Inteligência Artificial"
-          className="w-full rounded-2xl animate-float"
+          className="w-full rounded-2xl"
+          animate={{ y: [0, -12, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
         />
-      </div>
+        {/* Reflection glow under image */}
+        <div className="h-20 bg-gradient-to-b from-primary/10 to-transparent blur-2xl -mt-10 mx-10 rounded-full" />
+      </motion.div>
     </div>
   </section>
 );

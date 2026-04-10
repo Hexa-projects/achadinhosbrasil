@@ -9,7 +9,7 @@ import FaqSection from "@/components/FaqSection";
 import FooterSection from "@/components/FooterSection";
 
 const Index = () => (
-  <div className="min-h-screen bg-background text-foreground">
+  <div className="min-h-screen aurora-bg text-foreground">
     <AnnouncementBar />
     <HeroSection />
     <ProblemSection />

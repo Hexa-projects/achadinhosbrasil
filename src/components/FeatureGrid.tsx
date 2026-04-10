@@ -67,7 +67,7 @@ const features = [
 ];
 
 const FeatureGrid = () => (
-  <section id="funcoes" className="py-24 bg-white">
+  <section id="funcoes" className="py-16 md:py-24 bg-white">
     <div className="container mx-auto px-4">
       <motion.div
         className="text-center mb-16 max-w-2xl mx-auto"

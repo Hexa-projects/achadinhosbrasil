@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import voiceRecording from "@/assets/voice-recording.webp";
 
 const ProblemSection = () => (
-  <section className="py-24 relative overflow-hidden section-alt">
+  <section className="py-16 md:py-24 relative overflow-hidden section-alt">
     <div className="container mx-auto px-4 relative z-10">
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
         <motion.div

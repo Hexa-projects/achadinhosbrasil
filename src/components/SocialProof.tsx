@@ -39,7 +39,7 @@ const cardVariants = {
 };
 
 const SocialProof = () => (
-  <section className="py-24 relative bg-white">
+  <section className="py-16 md:py-24 relative bg-white">
     <div className="container mx-auto px-4 relative z-10">
       <motion.div
         className="text-center mb-16 max-w-2xl mx-auto"

@@ -34,6 +34,8 @@ const FooterSection = () => (
         </p>
       </div>
     </div>
+    {/* Spacer for mobile sticky CTA */}
+    <div className="h-16 md:hidden" />
   </footer>
 );
 

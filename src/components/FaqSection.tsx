@@ -50,7 +50,7 @@ const faqs = [
 ];
 
 const FaqSection = () => (
-  <section id="faq" className="py-24 relative section-alt">
+  <section id="faq" className="py-16 md:py-24 relative section-alt">
     <div className="container mx-auto px-4">
       <motion.div
         className="text-center mb-14 max-w-2xl mx-auto"

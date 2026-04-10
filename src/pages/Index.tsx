@@ -2,7 +2,7 @@ import AnnouncementBar from "@/components/AnnouncementBar";
 import HeroSection from "@/components/HeroSection";
 import ProblemSection from "@/components/ProblemSection";
 import FeatureGrid from "@/components/FeatureGrid";
-import ProductShowcase from "@/components/ProductShowcase";
+import PortabilitySection from "@/components/PortabilitySection";
 import SocialProof from "@/components/SocialProof";
 import PricingSection from "@/components/PricingSection";
 import FaqSection from "@/components/FaqSection";
@@ -14,7 +14,7 @@ const Index = () => (
     <HeroSection />
     <ProblemSection />
     <FeatureGrid />
-    <ProductShowcase />
+    <PortabilitySection />
     <SocialProof />
     <PricingSection />
     <FaqSection />

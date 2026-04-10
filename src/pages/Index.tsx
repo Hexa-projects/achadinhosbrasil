@@ -2,6 +2,8 @@ import AnnouncementBar from "@/components/AnnouncementBar";
 import HeroSection from "@/components/HeroSection";
 import ProblemSection from "@/components/ProblemSection";
 import FeatureGrid from "@/components/FeatureGrid";
+import StickyModesSection from "@/components/StickyModesSection";
+import ComparisonTable from "@/components/ComparisonTable";
 import PortabilitySection from "@/components/PortabilitySection";
 import SocialProof from "@/components/SocialProof";
 import PricingSection from "@/components/PricingSection";
@@ -14,6 +16,8 @@ const Index = () => (
     <HeroSection />
     <ProblemSection />
     <FeatureGrid />
+    <StickyModesSection />
+    <ComparisonTable />
     <PortabilitySection />
     <SocialProof />
     <PricingSection />

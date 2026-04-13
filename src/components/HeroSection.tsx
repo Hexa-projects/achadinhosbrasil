@@ -48,7 +48,7 @@ const HeroSection = () => {
               </button>
               <a
                 href="#funcoes"
-                className="w-full sm:w-auto text-center px-8 py-4 rounded-xl text-base font-semibold text-foreground border border-border hover:bg-muted/50 transition-all"
+                className="w-full sm:w-auto text-center px-8 py-4 rounded-xl text-base font-semibold text-muted-foreground border border-border/60 bg-transparent hover:bg-muted/40 hover:text-foreground transition-all"
               >
                 Ver Funções
               </a>
@@ -81,11 +81,11 @@ const HeroSection = () => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="relative rounded-3xl bg-secondary/50 p-8 flex justify-center items-center">
+            <div className="relative rounded-3xl bg-secondary/50 p-6 md:p-10 flex justify-center items-center">
               <img
                 src={heroProduct}
                 alt="CheerDots 2 — Assistente de Produtividade Portátil"
-                className="w-full max-w-md h-auto object-contain drop-shadow-lg"
+                className="w-full max-w-lg h-auto object-contain drop-shadow-[0_20px_40px_rgba(37,99,235,0.15)]"
               />
             </div>
           </motion.div>

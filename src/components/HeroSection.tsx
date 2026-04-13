@@ -1,4 +1,4 @@
-import heroProduct from "@/assets/hero-product.png";
+// Hero product image from CheerDots official CDN
 import { Star, ShieldCheck, Truck, CreditCard, Monitor } from "lucide-react";
 import { motion } from "framer-motion";
 import { useCheckoutRedirect } from "@/hooks/useCheckoutRedirect";
@@ -83,7 +83,7 @@ const HeroSection = () => {
           >
             <div className="relative rounded-3xl bg-secondary/50 p-6 md:p-10 flex justify-center items-center">
               <img
-                src={heroProduct}
+                src="https://cheerdots.com/cdn/shop/files/2048_aaeac6a8-c973-4cfb-b146-8562390970ca.png?v=1718094900&width=823"
                 alt="CheerDots 2 — Assistente de Produtividade Portátil"
                 className="w-full max-w-lg h-auto object-contain drop-shadow-[0_20px_40px_rgba(37,99,235,0.15)]"
               />

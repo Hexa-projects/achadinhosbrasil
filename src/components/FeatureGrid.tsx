@@ -117,7 +117,7 @@ const FeatureGrid = () => (
                   <img
                     src={f.image}
                     alt={f.title}
-                    className="w-full h-auto max-h-[300px] object-contain"
+                    className="w-full h-auto object-contain"
                     loading="lazy"
                   />
                 </div>

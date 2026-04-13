@@ -1,28 +1,36 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Crosshair, MonitorSmartphone, Hand } from "lucide-react";
-import airMouse from "@/assets/air-mouse.png";
-import presentationMode from "@/assets/presentation-mode.webp";
-import magneticDesign from "@/assets/magnetic-design.png";
+import { Crosshair, MonitorSmartphone, Hand, Lightbulb } from "lucide-react";
+
+const CDN = "https://cdn.shopify.com/s/files/1/0577/3076/0913/files";
 
 const modes = [
   {
-    id: "laser",
+    id: "spotlight",
     icon: Crosshair,
-    title: "Modo Apresentação",
-    subtitle: "Reuniões e palestras",
+    title: "Spotlight",
+    subtitle: "Destaque áreas da apresentação",
     description:
-      "Controle slides, aponte com laser digital e domine a atenção da audiência a até 20 metros. Sem fios, sem complicação.",
-    image: presentationMode,
+      "Realce qualquer área da tela com um círculo de foco. Ideal para direcionar a atenção do público durante apresentações.",
+    image: `${CDN}/05-5-min_360x.gif?v=1716600022`,
   },
   {
-    id: "air",
+    id: "laser",
     icon: Hand,
-    title: "Modo Air Mouse",
-    subtitle: "Controle pelo ar",
+    title: "Laser Pointer",
+    subtitle: "Ponteiro laser digital",
     description:
-      "Giroscópio de 6 eixos para mover o cursor com movimentos naturais da mão. Ideal para apresentações de pé ou controle à distância.",
-    image: airMouse,
+      "Aponte com precisão para qualquer elemento na tela. Funciona em qualquer projetor ou monitor sem precisar de laser físico.",
+    image: `${CDN}/05-7-min_360x.gif?v=1716600022`,
+  },
+  {
+    id: "digital",
+    icon: Lightbulb,
+    title: "Digital Light",
+    subtitle: "Iluminação digital de conteúdo",
+    description:
+      "Escurece o restante da tela e ilumina apenas a área selecionada. Perfeito para destacar dados, gráficos e textos importantes.",
+    image: `${CDN}/05-1-min_360x.gif?v=1716600023`,
   },
   {
     id: "desktop",
@@ -30,8 +38,8 @@ const modes = [
     title: "Modo Desktop",
     subtitle: "Touchpad silencioso",
     description:
-      "Junte as duas partes magnéticas e use como touchpad portátil e silencioso. Perfeito para escritórios, bibliotecas e trabalho focado.",
-    image: magneticDesign,
+      "Junte as duas partes magnéticas e use como touchpad portátil e silencioso. Personalize gestos para scroll, zoom e multitarefa.",
+    image: `${CDN}/Cheerdots2_Desktop_Mode_500x.jpg?v=1716638803`,
   },
 ];
 
@@ -49,12 +57,15 @@ const StickyModesSection = () => {
           transition={{ duration: 0.6 }}
         >
           <p className="text-primary font-semibold text-xs tracking-[0.2em] uppercase mb-3">
-            3 Modos de Operação
+            Modos de Apresentação
           </p>
           <h2 className="text-3xl md:text-4xl font-extrabold text-foreground tracking-tight">
-            Um dispositivo.{" "}
-            <span className="text-gradient-blue">Três formas de trabalhar.</span>
+            Três formas de{" "}
+            <span className="text-gradient-blue">destacar conteúdo.</span>
           </h2>
+          <p className="text-muted-foreground text-base mt-4 leading-relaxed">
+            Alterne entre Spotlight, Laser Pointer e Digital Light para dominar qualquer apresentação.
+          </p>
         </motion.div>
 
         <div className="max-w-5xl mx-auto">
@@ -98,7 +109,7 @@ const StickyModesSection = () => {
                     key={modes[activeIndex].id}
                     src={modes[activeIndex].image}
                     alt={modes[activeIndex].title}
-                    className="w-[85%] h-[85%] object-contain drop-shadow-lg"
+                    className="w-full h-full object-contain"
                     initial={{ opacity: 0, scale: 0.96 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 1.04 }}
@@ -131,7 +142,7 @@ const StickyModesSection = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
               >
-                <div className="w-full aspect-[4/3] bg-secondary/30 flex items-center justify-center p-6">
+                <div className="w-full aspect-[4/3] bg-secondary/30 flex items-center justify-center overflow-hidden">
                   <img src={mode.image} alt={mode.title} className="w-full h-full object-contain" loading="lazy" />
                 </div>
                 <div className="p-6">

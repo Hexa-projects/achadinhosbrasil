@@ -1,10 +1,7 @@
 import { Mic, Mouse, Presentation, Smartphone, Hand, Crosshair } from "lucide-react";
 import { motion } from "framer-motion";
-import voiceRecording from "@/assets/voice-recording.webp";
-import magneticDesign from "@/assets/magnetic-design.png";
-import scrollerMode from "@/assets/scroller-mode.webp";
-import presentationMode from "@/assets/presentation-mode.webp";
-import airMouse from "@/assets/air-mouse.png";
+
+const CDN = "https://cdn.shopify.com/s/files/1/0577/3076/0913/files";
 
 const containerVariants = {
   hidden: {},
@@ -26,43 +23,43 @@ const features = [
     title: "Gravador Inteligente com IA",
     desc: "Aperte um botão, grave a reunião inteira. O software com ChatGPT integrado transcreve o áudio e gera atas e resumos automaticamente.",
     benefit: "Nunca mais perca um insight de reunião.",
-    image: voiceRecording,
+    image: `${CDN}/Cheerdots_2_excels_at_accurately_capturing_voice_audio_making_it_a_versatile_tool_for_productivity._Whether_you_re_practicing_a_presentation_for_an_upcoming_event_archiving_the_audio_500x.png?v=1716629852`,
     wide: true,
   },
   {
     icon: Mouse,
-    title: "Mouse Bluetooth",
-    desc: "Na mesa, funciona como um touchpad preciso e silencioso. Design magnético que une as duas metades.",
+    title: "Mouse & Touchpad Magnético",
+    desc: "Design magnético 2-em-1 que se separa e se une com elegância. Na mesa, funciona como touchpad preciso e silencioso.",
     benefit: "Trabalho silencioso em qualquer superfície.",
-    image: magneticDesign,
+    image: `${CDN}/6a0f48436f03bf48e8c7f28f9f150b4c_500x.png?v=1716626684`,
   },
   {
     icon: Hand,
     title: "Air Mouse",
-    desc: "Destaque e mova o cursor no ar com giroscópio de 6 eixos. Controle natural e intuitivo.",
+    desc: "Destaque e mova o cursor no ar com giroscópio de 6 eixos. Controle natural e intuitivo para apresentações e controle à distância.",
     benefit: "Liberdade para apresentar de pé.",
-    image: airMouse,
+    image: "https://cheerdots.com/cdn/shop/files/5_9135b81b-6631-4ca5-beeb-244085a95fef.png?v=1733238889&width=800",
   },
   {
     icon: Presentation,
-    title: "Apresentador de Slides",
-    desc: "Avance slides, volte páginas e controle apresentações a até 20 metros de distância via Bluetooth.",
+    title: "Apresentador de Slides Profissional",
+    desc: "Avance slides, volte páginas e controle apresentações a até 20 metros. Spotlight, laser digital e digital light para destacar conteúdo.",
     benefit: "Domine qualquer palco ou sala de reunião.",
-    image: presentationMode,
+    image: `${CDN}/WechatIMG180_500x.jpg?v=1716639080`,
     wide: true,
   },
   {
     icon: Crosshair,
-    title: "Ponteiro Laser Digital",
-    desc: "Destaque áreas da tela com precisão cirúrgica. Sem laser físico — funciona em qualquer projetor ou TV.",
-    benefit: "Destaque o que importa na sua apresentação.",
+    title: "Ponteiro Laser de Longo Alcance",
+    desc: "Laser vermelho intenso integrado para atrair atenção em apresentações e palestras. Funciona em qualquer ambiente.",
+    benefit: "Destaque o que importa com precisão.",
   },
   {
     icon: Smartphone,
-    title: "Scroller Remoto",
-    desc: "Role TikTok, Kindle, YouTube e feeds do sofá. Use como controle remoto do celular ou tablet.",
+    title: "Controle Remoto Portátil",
+    desc: "Role TikTok, Kindle, YouTube e feeds do sofá. Use como controle do celular, tablet ou smart TV via Bluetooth.",
     benefit: "Seu momento de descanso também merece conforto.",
-    image: scrollerMode,
+    image: `${CDN}/Cheerdots2_Desktop_Mode_500x.jpg?v=1716638803`,
   },
 ];
 

@@ -1,6 +1,7 @@
 import { Zap, Clock, MousePointerClick } from "lucide-react";
 import { motion } from "framer-motion";
-import voiceRecording from "@/assets/voice-recording.webp";
+
+const CDN = "https://cdn.shopify.com/s/files/1/0577/3076/0913/files";
 
 const ProblemSection = () => (
   <section className="py-16 md:py-24 relative overflow-hidden section-alt">
@@ -18,8 +19,8 @@ const ProblemSection = () => (
               <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" /> Gravando...
             </div>
             <img
-              src={voiceRecording}
-              alt="Gravação de reunião com transcrição IA"
+              src={`${CDN}/Cheerdots_2_excels_at_accurately_capturing_voice_audio_making_it_a_versatile_tool_for_productivity._Whether_you_re_practicing_a_presentation_for_an_upcoming_event_archiving_the_audio_500x.png?v=1716629852`}
+              alt="Gravação de reunião com transcrição IA — CheerDots 2"
               className="w-full h-auto object-contain"
             />
           </div>
@@ -50,7 +51,7 @@ const ProblemSection = () => (
               <div>
                 <h4 className="font-bold text-foreground mb-1">Gravação instantânea</h4>
                 <p className="text-muted-foreground text-sm leading-relaxed">
-                  Um botão. O microfone capta o ambiente e a IA transcreve em tempo real.
+                  Um botão. O microfone de alta sensibilidade capta o ambiente e a IA transcreve em tempo real.
                 </p>
               </div>
             </div>
@@ -70,9 +71,9 @@ const ProblemSection = () => (
                 <Clock className="w-5 h-5 text-primary" />
               </div>
               <div>
-                <h4 className="font-bold text-foreground mb-1">Horas de volta por semana</h4>
+                <h4 className="font-bold text-foreground mb-1">Transcrição para texto com 1 clique</h4>
                 <p className="text-muted-foreground text-sm leading-relaxed">
-                  Delegue a anotação para a IA. Foque na conversa que importa.
+                  Transforme conversas faladas em texto escrito preciso. Reconhecimento de voz e idioma em tempo real.
                 </p>
               </div>
             </div>

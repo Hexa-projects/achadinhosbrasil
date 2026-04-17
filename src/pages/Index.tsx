@@ -4,7 +4,7 @@ import HeroSection from "@/components/HeroSection";
 import VideoSection from "@/components/VideoSection";
 import MagneticDesignSection from "@/components/MagneticDesignSection";
 import ProblemSection from "@/components/ProblemSection";
-import FeatureGrid from "@/components/FeatureGrid";
+
 import StickyModesSection from "@/components/StickyModesSection";
 import SocialProof from "@/components/SocialProof";
 import ComparisonTable from "@/components/ComparisonTable";
@@ -21,7 +21,7 @@ const Index = () => (
     <VideoSection />
     <MagneticDesignSection />
     <ProblemSection />
-    <FeatureGrid />
+    
     <StickyModesSection />
     <SocialProof />
     <ComparisonTable />

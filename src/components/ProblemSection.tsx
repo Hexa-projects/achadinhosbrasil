@@ -1,84 +1,49 @@
-import { Zap, Clock, MousePointerClick } from "lucide-react";
-import { motion } from "framer-motion";
+import { Mic, Sparkles, Clock } from "lucide-react";
+import { BentoCard } from "@/components/ui/BentoCard";
+import { FadeIn } from "@/components/ui/FadeIn";
 
-const CDN = "https://cdn.shopify.com/s/files/1/0577/3076/0913/files";
+const pains = [
+  {
+    icon: <Mic className="w-6 h-6" />,
+    title: "Gravação instantânea",
+    description: "Um toque inicia. Capture toda a reunião sem distrair sua atenção do que importa.",
+  },
+  {
+    icon: <Sparkles className="w-6 h-6" />,
+    title: "Resumo com ChatGPT",
+    description: "IA transcreve, organiza tópicos e gera resumos acionáveis em segundos.",
+  },
+  {
+    icon: <Clock className="w-6 h-6" />,
+    title: "Horas de volta",
+    description: "Pare de digitar atas. Ganhe 5h por semana e foque em decisões de verdade.",
+  },
+];
 
 const ProblemSection = () => (
-  <section className="py-16 md:py-24 relative overflow-hidden section-alt">
-    <div className="container mx-auto px-4 relative z-10">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
-        <motion.div
-          className="rounded-2xl overflow-hidden shadow-lg border border-border/50 bg-white"
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="relative">
-            <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm text-xs font-semibold text-foreground z-10 flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" /> Gravando...
-            </div>
-            <img
-              src={`${CDN}/Cheerdots_2_excels_at_accurately_capturing_voice_audio_making_it_a_versatile_tool_for_productivity._Whether_you_re_practicing_a_presentation_for_an_upcoming_event_archiving_the_audio_500x.png?v=1716629852`}
-              alt="Gravação de reunião com transcrição IA — CheerDots 2"
-              className="w-full h-auto object-contain"
-            />
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-        >
-          <p className="text-primary font-semibold text-xs tracking-[0.2em] uppercase mb-3">
+  <section className="relative py-16 md:py-28">
+    <div className="container mx-auto px-4">
+      <FadeIn>
+        <div className="text-center mb-12 md:mb-14 max-w-3xl mx-auto">
+          <p className="text-indigo-400 font-semibold text-xs tracking-[0.2em] uppercase mb-4">
             O problema
           </p>
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-5 text-foreground tracking-tight leading-tight">
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-slate-50">
             Você ainda perde tempo{" "}
             <span className="text-gradient-blue">anotando reuniões manualmente?</span>
           </h2>
-          <p className="text-muted-foreground text-base leading-relaxed mb-8">
+          <p className="text-slate-300 text-base md:text-lg mt-5 leading-relaxed font-light max-w-2xl mx-auto">
             Profissionais gastam horas por semana digitando atas, perdendo detalhes e retrabalho. O CheerDots 2 resolve isso em um clique.
           </p>
+        </div>
+      </FadeIn>
 
-          <div className="space-y-5">
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <Zap className="w-5 h-5 text-primary" />
-              </div>
-              <div>
-                <h4 className="font-bold text-foreground mb-1">Gravação instantânea</h4>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  Um botão. O microfone de alta sensibilidade capta o ambiente e a IA transcreve em tempo real.
-                </p>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <MousePointerClick className="w-5 h-5 text-primary" />
-              </div>
-              <div>
-                <h4 className="font-bold text-foreground mb-1">Resumo com ChatGPT integrado</h4>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  O software do CheerDots 2 usa ChatGPT para gerar atas e resumos executivos — sem pagar mensalidade extra.
-                </p>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <Clock className="w-5 h-5 text-primary" />
-              </div>
-              <div>
-                <h4 className="font-bold text-foreground mb-1">Transcrição para texto com 1 clique</h4>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  Transforme conversas faladas em texto escrito preciso. Reconhecimento de voz e idioma em tempo real.
-                </p>
-              </div>
-            </div>
-          </div>
-        </motion.div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 max-w-6xl mx-auto">
+        {pains.map((p, i) => (
+          <FadeIn key={p.title} delay={i * 0.1}>
+            <BentoCard {...p} className="h-full" />
+          </FadeIn>
+        ))}
       </div>
     </div>
   </section>

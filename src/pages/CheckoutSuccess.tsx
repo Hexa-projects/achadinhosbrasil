@@ -20,7 +20,8 @@ type OrderInfo = {
 
 export default function CheckoutSuccess() {
   const [params] = useSearchParams();
-  const sessionId = params.get("session_id");
+  // Stripe appends `payment_intent` and `payment_intent_client_secret` to the return_url
+  const piId = params.get("payment_intent");
   const [loading, setLoading] = useState(true);
   const [paid, setPaid] = useState(false);
   const [order, setOrder] = useState<OrderInfo | null>(null);
@@ -31,8 +32,8 @@ export default function CheckoutSuccess() {
   }, []);
 
   useEffect(() => {
-    if (!sessionId) {
-      setError("Sessão não encontrada");
+    if (!piId) {
+      setError("Pagamento não identificado");
       setLoading(false);
       return;
     }
@@ -43,8 +44,8 @@ export default function CheckoutSuccess() {
     async function poll() {
       attempts += 1;
       try {
-        const url = `get-order-status?session_id=${encodeURIComponent(
-          sessionId,
+        const url = `get-order-status?payment_intent=${encodeURIComponent(
+          piId!,
         )}&env=${stripeEnvironment}`;
         const { data, error: fnErr } = await supabase.functions.invoke(url, {
           method: "GET",
@@ -54,11 +55,10 @@ export default function CheckoutSuccess() {
 
         const status = data?.payment_status;
         const ord = data?.order as OrderInfo | undefined;
-        if (status === "paid" && ord) {
+        if (status === "succeeded" && ord) {
           setOrder(ord);
           setPaid(true);
           setLoading(false);
-          // Fire client-side Purchase deduplicated by event_id
           trackPixel(
             "Purchase",
             {
@@ -92,7 +92,7 @@ export default function CheckoutSuccess() {
     return () => {
       cancelled = true;
     };
-  }, [sessionId]);
+  }, [piId]);
 
   return (
     <div className="min-h-screen bg-background text-foreground flex items-center justify-center px-4 py-10">
@@ -149,7 +149,7 @@ export default function CheckoutSuccess() {
             </div>
             <p className="text-xs text-slate-400 mb-5">
               Em breve você receberá o código de rastreio no WhatsApp e email.
-              Prazo médio de envio: 1-2 dias úteis.
+              Prazo médio de envio: 1–2 dias úteis.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <a
@@ -175,7 +175,7 @@ export default function CheckoutSuccess() {
             <h1 className="text-xl font-bold text-white mb-2">Pagamento pendente</h1>
             <p className="text-sm text-slate-400 mb-5">
               {error ||
-                "Seu pagamento ainda não foi confirmado. Se você usou PIX/boleto, pode levar alguns minutos."}
+                "Seu pagamento ainda não foi confirmado. Se você usou Pix/boleto, pode levar alguns minutos."}
             </p>
             <Link
               to="/"

@@ -6,48 +6,52 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 220 14% 10%;
+    /* Dark Mode Premium — OpenAI/Vercel/21st.dev inspired */
+    --background: 240 10% 3.9%;          /* zinc-950 */
+    --foreground: 0 0% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 220 14% 10%;
+    --card: 240 8% 6%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 14% 10%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 221 83% 53%;
+    /* Indigo/violet accent like ChatGPT */
+    --primary: 239 84% 67%;              /* indigo-500 */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 14% 97%;
-    --secondary-foreground: 220 14% 10%;
+    --primary-glow: 258 90% 66%;         /* violet-500 */
 
-    --muted: 220 14% 96%;
-    --muted-foreground: 220 9% 46%;
+    --secondary: 240 6% 10%;
+    --secondary-foreground: 0 0% 98%;
 
-    --accent: 220 14% 96%;
-    --accent-foreground: 220 14% 10%;
+    --muted: 240 5% 12%;
+    --muted-foreground: 240 5% 64.9%;    /* slate-400 ish */
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
+    --accent: 240 6% 14%;
+    --accent-foreground: 0 0% 98%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 221 83% 53%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
 
-    --radius: 0.75rem;
+    --border: 240 6% 16%;
+    --input: 240 6% 16%;
+    --ring: 239 84% 67%;
 
-    --green-accent: 150 60% 40%;
+    --radius: 1rem;
+
     --success: 142 71% 45%;
     --success-foreground: 0 0% 100%;
+    --green-accent: 142 71% 45%;
 
-    --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 220 14% 10%;
-    --sidebar-primary: 221 83% 53%;
+    --sidebar-background: 240 10% 3.9%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 239 84% 67%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 14% 96%;
-    --sidebar-accent-foreground: 220 14% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 221 83% 53%;
+    --sidebar-accent: 240 6% 14%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 240 6% 16%;
+    --sidebar-ring: 239 84% 67%;
   }
 }
 
@@ -56,7 +60,7 @@
     @apply border-border;
   }
 
-  body {
+  html, body {
     @apply bg-background text-foreground;
     font-family: 'Inter', sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -65,18 +69,66 @@
 
   html {
     scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  body {
+    background-image:
+      radial-gradient(ellipse 80% 60% at 50% -10%, hsl(239 84% 67% / 0.18), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 90% 10%, hsl(258 90% 66% / 0.12), transparent 60%);
+    background-attachment: fixed;
   }
 }
 
 @layer utilities {
+  .text-gradient-violet {
+    background: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(239 84% 80%) 50%, hsl(258 90% 80%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
   .text-gradient-blue {
-    background: linear-gradient(135deg, hsl(221, 83%, 53%), hsl(240, 70%, 55%));
+    background: linear-gradient(135deg, hsl(239 84% 75%), hsl(258 90% 75%));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   .section-alt {
-    background-color: hsl(220, 20%, 97%);
+    background-color: hsl(240 8% 5%);
   }
+
+  /* Subtle dotted grid background for hero/sections */
+  .bg-grid {
+    background-image:
+      radial-gradient(hsl(0 0% 100% / 0.06) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .glow-primary {
+    box-shadow:
+      0 0 0 1px hsl(239 84% 67% / 0.2),
+      0 10px 40px -10px hsl(239 84% 67% / 0.5),
+      0 0 80px -20px hsl(258 90% 66% / 0.4);
+  }
+
+  .border-glow {
+    border: 1px solid hsl(0 0% 100% / 0.08);
+  }
+}
+
+/* Marquee — infinite horizontal scroll */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* Conic spin for shimmer button border */
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
 }

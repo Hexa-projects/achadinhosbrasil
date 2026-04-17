@@ -1,95 +1,76 @@
-// Hero product image from CheerDots official CDN
-import { Star, ShieldCheck, Truck, CreditCard, Monitor } from "lucide-react";
 import { motion } from "framer-motion";
+import { Sparkles } from "lucide-react";
 import { useCheckoutRedirect } from "@/hooks/useCheckoutRedirect";
-
-const trustBadges = [
-  { icon: ShieldCheck, label: "Garantia 12 meses" },
-  { icon: Truck, label: "Frete com rastreio" },
-  { icon: CreditCard, label: "12x sem juros" },
-  { icon: Monitor, label: "Mac & Windows" },
-];
+import { ShimmerButton } from "@/components/ui/ShimmerButton";
+import { FadeIn } from "@/components/ui/FadeIn";
 
 const HeroSection = () => {
   const { isRedirecting, handleCheckoutRedirect } = useCheckoutRedirect();
+
   return (
-    <section className="relative overflow-hidden pt-10 pb-12 md:pt-20 md:pb-24 bg-white">
+    <section className="relative overflow-hidden pt-28 pb-16 md:pt-36 md:pb-24">
+      {/* Decorative grid + glow */}
+      <div className="absolute inset-0 bg-grid opacity-40 pointer-events-none" />
+      <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[600px] rounded-full bg-primary/20 blur-[120px] pointer-events-none" />
+      <div className="absolute top-20 right-0 w-[400px] h-[400px] rounded-full bg-violet-500/15 blur-[100px] pointer-events-none" />
+
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Copy */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/5 text-primary font-semibold text-xs tracking-wide uppercase mb-6 border border-primary/10">
-              <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-              Lançamento Oficial no Brasil
-            </div>
-
-            <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.08] tracking-tight mb-5 text-foreground">
-              O mouse evoluiu.{" "}
-              <span className="text-gradient-blue">
-                Sua produtividade também.
+        <div className="max-w-4xl mx-auto text-center">
+          <FadeIn>
+            <motion.div
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md text-xs font-medium text-slate-200 mb-7"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
+              <Sparkles className="w-3.5 h-3.5 text-primary animate-pulse-glow" />
+              <span className="bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
+                Lançamento Oficial no Brasil
               </span>
+            </motion.div>
+          </FadeIn>
+
+          <FadeIn delay={0.1}>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight mb-6 text-gradient-violet">
+              O mouse evoluiu.
+              <br />
+              <span className="text-white/90">Sua produtividade também.</span>
             </h1>
+          </FadeIn>
 
-            <p className="text-muted-foreground text-lg md:text-xl leading-relaxed mb-8 max-w-xl">
-              Mouse, touchpad, air mouse, apresentador de slides, ponteiro laser e gravador com IA — tudo em um dispositivo de 70g que cabe no bolso.
+          <FadeIn delay={0.2}>
+            <p className="text-slate-400 text-base md:text-lg lg:text-xl leading-relaxed mb-10 max-w-2xl mx-auto font-light">
+              Mouse, touchpad, air mouse, apresentador, ponteiro laser e gravador com IA — tudo em <span className="text-white font-medium">70g</span> que cabe no bolso.
             </p>
+          </FadeIn>
 
-            <div className="flex flex-col sm:flex-row items-start gap-3 mb-8">
-              <button
-                onClick={handleCheckoutRedirect}
-                disabled={isRedirecting}
-                className="w-full sm:w-auto bg-primary text-primary-foreground px-8 py-4 rounded-xl text-base font-bold transition-all hover:bg-primary/90 shadow-md hover:shadow-lg hover:-translate-y-0.5 disabled:opacity-70 disabled:hover:translate-y-0"
-              >
-                {isRedirecting ? "Redirecionando..." : "Comprar com 50% OFF"}
-              </button>
-              <a
-                href="#funcoes"
-                className="w-full sm:w-auto text-center px-8 py-4 rounded-xl text-base font-semibold text-muted-foreground border border-border/60 bg-transparent hover:bg-muted/40 hover:text-foreground transition-all"
-              >
-                Ver Funções
-              </a>
+          <FadeIn delay={0.3}>
+            <div className="flex flex-col items-center gap-3 mb-14">
+              <ShimmerButton onClick={handleCheckoutRedirect} disabled={isRedirecting} size="lg">
+                {isRedirecting ? "Redirecionando..." : "Garantir Lote com 50% OFF"}
+              </ShimmerButton>
+              <p className="text-sm text-slate-500 font-light">
+                Frete grátis com rastreio • 12x sem juros
+              </p>
             </div>
-
-            <div className="flex items-center gap-2 mb-6">
-              <div className="flex -space-x-0.5">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                ))}
-              </div>
-              <span className="text-sm font-semibold text-foreground">4.9</span>
-              <span className="text-sm text-muted-foreground">(1.240+ avaliações)</span>
-            </div>
-
-            <div className="grid grid-cols-2 gap-3">
-              {trustBadges.map((b) => (
-                <div key={b.label} className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <b.icon className="w-4 h-4 text-primary/70 flex-shrink-0" />
-                  <span className="font-medium">{b.label}</span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Product Image */}
-          <motion.div
-            className="relative"
-            initial={{ opacity: 0, scale: 0.95, y: 30 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <div className="relative rounded-3xl bg-secondary/50 p-6 md:p-10 flex justify-center items-center">
-              <img
-                src="https://cheerdots.com/cdn/shop/files/2048_aaeac6a8-c973-4cfb-b146-8562390970ca.png?v=1718094900&width=823"
-                alt="CheerDots 2 — Assistente de Produtividade Portátil"
-                className="w-full max-w-lg h-auto object-contain drop-shadow-[0_20px_40px_rgba(37,99,235,0.15)]"
-              />
-            </div>
-          </motion.div>
+          </FadeIn>
         </div>
+
+        {/* Floating product image */}
+        <FadeIn delay={0.4}>
+          <motion.div
+            className="relative max-w-3xl mx-auto"
+            animate={{ y: [0, -15, 0] }}
+            transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
+          >
+            <div className="absolute inset-0 bg-gradient-radial from-primary/30 via-violet-500/10 to-transparent blur-3xl pointer-events-none" style={{ background: "radial-gradient(ellipse at center, hsl(239 84% 67% / 0.25) 0%, hsl(258 90% 66% / 0.1) 40%, transparent 70%)" }} />
+            <img
+              src="https://cheerdots.com/cdn/shop/files/2048_aaeac6a8-c973-4cfb-b146-8562390970ca.png?v=1718094900&width=1200"
+              alt="CheerDots 2 — Mouse inteligente 6-em-1 com IA"
+              className="relative w-full h-auto object-contain drop-shadow-[0_30px_60px_rgba(99,102,241,0.4)]"
+            />
+          </motion.div>
+        </FadeIn>
       </div>
     </section>
   );

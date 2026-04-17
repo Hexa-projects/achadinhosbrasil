@@ -28,7 +28,7 @@ const Cell = ({ value, highlight = false }: { value: boolean; highlight?: boolea
     </div>
   ) : (
     <div className="w-7 h-7 rounded-full bg-white/[0.03] flex items-center justify-center mx-auto">
-      <X className="w-4 h-4 text-slate-600" strokeWidth={2} />
+      <X className="w-4 h-4 text-slate-500" strokeWidth={2} />
     </div>
   );
 
@@ -59,10 +59,10 @@ const ComparisonTable = () => (
                 <p className="text-xs md:text-sm font-bold text-white leading-tight">CheerDots 2</p>
               </div>
               <div className="p-4 md:p-5 text-center">
-                <p className="text-[10px] md:text-xs font-semibold text-slate-500 leading-tight">Mouse Comum</p>
+                <p className="text-[10px] md:text-xs font-semibold text-slate-400 leading-tight">Mouse Comum</p>
               </div>
               <div className="p-4 md:p-5 text-center">
-                <p className="text-[10px] md:text-xs font-semibold text-slate-500 leading-tight">Apresentador</p>
+                <p className="text-[10px] md:text-xs font-semibold text-slate-400 leading-tight">Apresentador</p>
               </div>
             </div>
 

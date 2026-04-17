@@ -30,14 +30,14 @@ const HeroSection = () => {
 
           <FadeIn delay={0.1}>
             <h1 className="text-[1.85rem] leading-[1.1] sm:text-5xl md:text-6xl lg:text-7xl font-bold sm:leading-[1.05] tracking-tight mb-4 sm:mb-6 text-slate-50 text-balance">
-              O mouse evoluiu.{" "}
-              <span className="text-gradient-blue">Sua produtividade também.</span>
+              O cérebro do ChatGPT.{" "}
+              <span className="text-gradient-blue">Na palma da sua mão.</span>
             </h1>
           </FadeIn>
 
           <FadeIn delay={0.2}>
             <p className="text-slate-300 text-[15px] md:text-lg lg:text-xl leading-relaxed mb-7 sm:mb-10 max-w-2xl mx-auto font-light text-balance">
-              Mouse, touchpad, air mouse, apresentador, ponteiro laser e gravador com IA — tudo em <span className="text-white font-medium">70g</span> que cabe no bolso.
+              O primeiro hardware <span className="text-white font-medium">6-em-1</span> do mundo que transforma conversas em atas automáticas, controla suas apresentações e cabe no bolso.
             </p>
           </FadeIn>
 
@@ -67,28 +67,18 @@ const HeroSection = () => {
                   "radial-gradient(ellipse at center, hsl(239 84% 67% / 0.3) 0%, hsl(258 90% 66% / 0.12) 40%, transparent 70%)",
               }}
             />
-            <img
-              src="https://cheerdots.com/cdn/shop/files/2048_aaeac6a8-c973-4cfb-b146-8562390970ca.png?v=1718094900&width=1200"
-              alt="CheerDots 2 — Mouse inteligente 6-em-1 com IA"
-              className="relative w-full h-auto object-contain drop-shadow-[0_30px_60px_rgba(99,102,241,0.45)]"
-              loading="eager"
-            />
+            <div className="relative rounded-3xl overflow-hidden border border-white/10 bg-white/[0.03] backdrop-blur-md shadow-[0_30px_80px_-20px_hsl(239_84%_67%/0.5)]">
+              <img
+                src="https://img.youtube.com/vi/BeKNoXNdA4M/maxresdefault.jpg"
+                alt="CheerDots 2 com integração ChatGPT — hardware 6-em-1"
+                className="relative w-full h-auto object-cover scale-105"
+                loading="eager"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/40 via-transparent to-transparent pointer-events-none" />
+            </div>
           </motion.div>
         </FadeIn>
 
-        {/* Secondary lifestyle image */}
-        <FadeIn delay={0.5}>
-          <div className="mt-12 md:mt-16 max-w-md sm:max-w-lg mx-auto">
-            <div className="relative rounded-3xl overflow-hidden border border-white/10 bg-white/[0.03] backdrop-blur-md p-2 shadow-[0_20px_60px_-20px_rgba(99,102,241,0.4)]">
-              <img
-                src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?q=80&w=1000&auto=format&fit=crop"
-                alt="Tecnologia de produtividade premium"
-                className="w-full h-auto object-cover rounded-2xl animate-[pulse_4s_ease-in-out_infinite]"
-                loading="lazy"
-              />
-            </div>
-          </div>
-        </FadeIn>
       </div>
     </section>
   );

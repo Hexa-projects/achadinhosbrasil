@@ -29,25 +29,24 @@ const HeroSection = () => {
           </FadeIn>
 
           <FadeIn delay={0.1}>
-            <h1 className="text-[2rem] leading-[1.1] sm:text-5xl md:text-6xl lg:text-7xl font-bold sm:leading-[1.05] tracking-tight mb-5 sm:mb-6 text-slate-50">
-              O mouse evoluiu.
-              <br />
+            <h1 className="text-[1.85rem] leading-[1.1] sm:text-5xl md:text-6xl lg:text-7xl font-bold sm:leading-[1.05] tracking-tight mb-4 sm:mb-6 text-slate-50 text-balance">
+              O mouse evoluiu.{" "}
               <span className="text-gradient-blue">Sua produtividade também.</span>
             </h1>
           </FadeIn>
 
           <FadeIn delay={0.2}>
-            <p className="text-slate-300 text-base md:text-lg lg:text-xl leading-relaxed mb-10 max-w-2xl mx-auto font-light">
+            <p className="text-slate-300 text-[15px] md:text-lg lg:text-xl leading-relaxed mb-7 sm:mb-10 max-w-2xl mx-auto font-light text-balance">
               Mouse, touchpad, air mouse, apresentador, ponteiro laser e gravador com IA — tudo em <span className="text-white font-medium">70g</span> que cabe no bolso.
             </p>
           </FadeIn>
 
           <FadeIn delay={0.3}>
-            <div className="flex flex-col items-center gap-3 mb-10 sm:mb-14">
-              <ShimmerButton onClick={handleCheckoutRedirect} disabled={isRedirecting} size="lg">
+            <div className="flex flex-col items-center gap-3 mb-8 sm:mb-14">
+              <ShimmerButton onClick={handleCheckoutRedirect} disabled={isRedirecting} size="lg" className="w-full max-w-sm sm:w-auto">
                 {isRedirecting ? "Redirecionando..." : "Garantir Lote com 50% OFF"}
               </ShimmerButton>
-              <p className="text-sm text-slate-400 font-light">
+              <p className="text-xs sm:text-sm text-slate-400 font-light">
                 Frete grátis com rastreio • 12x sem juros
               </p>
             </div>

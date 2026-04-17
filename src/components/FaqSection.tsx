@@ -1,10 +1,5 @@
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { MobileAccordion } from "@/components/ui/MobileAccordion";
 
 const faqs = [
   { q: "Funciona em Mac e Windows?", a: "Sim. Compatível com macOS 10.15+ e Windows 10/11 via Bluetooth. Também funciona como mouse/controle em iPads e smartphones." },
@@ -34,23 +29,10 @@ const FaqSection = () => (
       </FadeIn>
 
       <FadeIn delay={0.1}>
-        <div className="max-w-2xl mx-auto">
-          <Accordion type="single" collapsible className="space-y-3">
-            {faqs.map((faq, i) => (
-              <AccordionItem
-                key={i}
-                value={`faq-${i}`}
-                className="rounded-2xl px-6 overflow-hidden border border-white/10 bg-white/[0.03] backdrop-blur-md hover:border-white/20 transition-colors"
-              >
-                <AccordionTrigger className="text-left font-medium hover:no-underline py-5 text-white text-sm md:text-base">
-                  {faq.q}
-                </AccordionTrigger>
-                <AccordionContent className="text-slate-400 pb-5 text-sm leading-relaxed font-light">
-                  {faq.a}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+        <div className="max-w-2xl mx-auto space-y-3">
+          {faqs.map((faq, i) => (
+            <MobileAccordion key={i} question={faq.q} answer={faq.a} defaultOpen={i === 0} />
+          ))}
         </div>
       </FadeIn>
     </div>

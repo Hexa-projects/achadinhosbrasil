@@ -27,7 +27,7 @@ const MobileCTA = () => {
           <button
             onClick={handleCheckoutRedirect}
             disabled={isRedirecting}
-            className="relative w-full h-14 rounded-full overflow-hidden p-[1.5px] shadow-[0_10px_40px_-10px_hsl(239_84%_67%/0.7)] disabled:opacity-70 active:scale-[0.98] transition-transform"
+            className="relative w-full h-14 rounded-full overflow-hidden p-[1.5px] shadow-[0_10px_40px_-10px_hsl(239_84%_67%/0.7)] disabled:opacity-70 active:scale-[0.98] transition-transform animate-pulse-glow"
             aria-label="Comprar CheerDots 2 com 50% de desconto"
           >
             {/* Spinning conic border */}

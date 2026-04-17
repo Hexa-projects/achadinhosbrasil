@@ -29,15 +29,15 @@ const HeroSection = () => {
           </FadeIn>
 
           <FadeIn delay={0.1}>
-            <h1 className="text-[1.85rem] leading-[1.1] sm:text-5xl md:text-6xl lg:text-7xl font-bold sm:leading-[1.05] tracking-tight mb-4 sm:mb-6 text-slate-50 text-balance">
+            <h1 className="font-sora font-semibold tracking-[-0.03em] leading-[0.95] text-[2.25rem] sm:text-5xl md:text-6xl lg:text-[64px] mb-4 sm:mb-6 text-slate-50 text-balance">
               O cérebro do ChatGPT.{" "}
               <span className="text-gradient-blue">Na palma da sua mão.</span>
             </h1>
           </FadeIn>
 
           <FadeIn delay={0.2}>
-            <p className="text-slate-300 text-[15px] md:text-lg lg:text-xl leading-relaxed mb-7 sm:mb-10 max-w-2xl mx-auto font-light text-balance">
-              O primeiro hardware <span className="text-white font-medium">6-em-1</span> do mundo que transforma conversas em atas automáticas, controla suas apresentações e cabe no bolso.
+            <p className="font-inter font-normal text-slate-300 text-base md:text-lg leading-relaxed mb-7 sm:mb-10 max-w-xl mx-auto text-balance">
+              O primeiro hardware <span className="text-white font-semibold">6-em-1</span> do mundo que transforma conversas em atas automáticas, controla suas apresentações e cabe no bolso.
             </p>
           </FadeIn>
 
@@ -46,7 +46,7 @@ const HeroSection = () => {
               <ShimmerButton onClick={handleCheckoutRedirect} disabled={isRedirecting} size="lg" className="w-full max-w-sm sm:w-auto">
                 {isRedirecting ? "Redirecionando..." : "Garantir Lote com 50% OFF"}
               </ShimmerButton>
-              <p className="text-xs sm:text-sm text-slate-400 font-light">
+              <p className="font-inter text-xs sm:text-sm text-slate-400 font-medium">
                 Frete grátis com rastreio • 12x sem juros
               </p>
             </div>

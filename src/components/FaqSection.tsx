@@ -20,14 +20,14 @@ const faqs = [
 ];
 
 const FaqSection = () => (
-  <section id="faq" className="relative py-20 md:py-28">
+  <section id="faq" className="relative py-14 md:py-28">
     <div className="container mx-auto px-4">
       <FadeIn>
         <div className="text-center mb-12 max-w-2xl mx-auto">
           <p className="text-primary font-semibold text-xs tracking-[0.2em] uppercase mb-4">
             Tire suas dúvidas
           </p>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white">
+          <h2 className="text-[1.75rem] leading-tight sm:text-3xl md:text-5xl font-bold tracking-tight text-white">
             Perguntas <span className="text-gradient-blue">frequentes</span>
           </h2>
         </div>

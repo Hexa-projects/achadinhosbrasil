@@ -29,7 +29,7 @@ const HeroSection = () => {
           </FadeIn>
 
           <FadeIn delay={0.1}>
-            <h1 className="text-[2.25rem] sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight mb-6 text-slate-50">
+            <h1 className="text-[2rem] leading-[1.1] sm:text-5xl md:text-6xl lg:text-7xl font-bold sm:leading-[1.05] tracking-tight mb-5 sm:mb-6 text-slate-50">
               O mouse evoluiu.
               <br />
               <span className="text-gradient-blue">Sua produtividade também.</span>

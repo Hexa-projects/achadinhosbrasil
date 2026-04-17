@@ -3,14 +3,14 @@ import { BentoCard } from "@/components/ui/BentoCard";
 import { FadeIn } from "@/components/ui/FadeIn";
 
 const FeatureGrid = () => (
-  <section id="funcoes" className="relative py-16 md:py-28">
+  <section id="funcoes" className="relative py-14 md:py-28">
     <div className="container mx-auto px-4">
       <FadeIn>
         <div className="text-center mb-12 md:mb-14 max-w-3xl mx-auto">
           <p className="text-indigo-400 font-semibold text-xs tracking-[0.2em] uppercase mb-4">
             Funcionalidades
           </p>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-slate-50">
+          <h2 className="text-[1.75rem] leading-tight sm:text-3xl md:text-5xl font-bold tracking-tight text-slate-50">
             Tudo o que você precisa.
             <br />
             <span className="text-gradient-blue">Nada que não precisa.</span>

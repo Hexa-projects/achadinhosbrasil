@@ -32,9 +32,9 @@ const StickyHeader = () => {
           scrolled ? "shadow-[0_8px_30px_-12px_rgba(0,0,0,0.6)] bg-zinc-950/80" : ""
         }`}
       >
-        <div className="flex items-center justify-between h-12 sm:h-14 pl-4 pr-2 sm:pl-5 sm:pr-2">
-          <a href="#" className="flex items-center gap-2 group">
-            <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-primary to-violet-500 flex items-center justify-center shadow-[0_0_20px_-4px_hsl(239_84%_67%/0.7)]">
+        <div className="flex items-center justify-between h-12 sm:h-14 pl-3 pr-2 sm:pl-5 sm:pr-2">
+          <a href="#" className="flex items-center gap-2 group min-w-0">
+            <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-500 flex items-center justify-center shadow-[0_0_20px_-4px_hsl(239_84%_67%/0.7)] shrink-0">
               <span className="text-white font-black text-xs">C2</span>
             </div>
             <span className="font-semibold text-white text-sm tracking-tight hidden sm:inline">
@@ -63,7 +63,7 @@ const StickyHeader = () => {
               {isRedirecting ? "..." : "Comprar"}
             </button>
             <button
-              className="md:hidden h-10 w-10 inline-flex items-center justify-center text-white"
+              className="md:hidden h-9 w-9 inline-flex items-center justify-center text-white rounded-full hover:bg-white/5"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Menu"
             >

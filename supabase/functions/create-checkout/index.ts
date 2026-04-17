@@ -13,7 +13,6 @@ const BodySchema = z.object({
   priceId: z.string().regex(/^[a-zA-Z0-9_-]+$/),
   quantity: z.number().int().min(1).max(5).default(1),
   environment: z.enum(["sandbox", "live"]).default("sandbox"),
-  returnUrl: z.string().url().optional(),
   customer: z.object({
     name: z.string().trim().min(2).max(120),
     email: z.string().trim().email().max(255),
@@ -55,8 +54,7 @@ serve(async (req) => {
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } },
       );
     }
-    const { priceId, quantity, environment, returnUrl, customer, shipping, tracking } =
-      parsed.data;
+    const { priceId, quantity, environment, customer, shipping, tracking } = parsed.data;
     const env = environment as StripeEnv;
     const stripe = createStripeClient(env);
 
@@ -70,6 +68,7 @@ serve(async (req) => {
     }
     const stripePrice = prices.data[0];
     const amountCents = (stripePrice.unit_amount ?? 0) * quantity;
+    const currency = stripePrice.currency;
     const eventId = tracking?.eventId ?? crypto.randomUUID();
 
     const clientIp =
@@ -77,21 +76,33 @@ serve(async (req) => {
       req.headers.get("cf-connecting-ip") ||
       null;
     const clientUserAgent = req.headers.get("user-agent");
-
-    // Create Stripe Embedded Checkout session
     const origin = req.headers.get("origin") ?? "https://achadinhosbrasil.lovable.app";
-    const session = await stripe.checkout.sessions.create({
-      line_items: [{ price: stripePrice.id, quantity }],
-      mode: "payment",
-      ui_mode: "embedded",
-      return_url:
-        returnUrl ?? `${origin}/checkout/sucesso?session_id={CHECKOUT_SESSION_ID}`,
-      customer_email: customer.email,
-      payment_method_types: ["card"],
+
+    // Create PaymentIntent — automatic_payment_methods enables Card + Apple Pay + Google Pay + Link
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: amountCents,
+      currency,
+      automatic_payment_methods: { enabled: true },
+      receipt_email: customer.email,
+      shipping: {
+        name: customer.name,
+        phone: customer.phone,
+        address: {
+          line1: `${shipping.street}, ${shipping.number}`,
+          line2: shipping.complement ?? undefined,
+          city: shipping.city,
+          state: shipping.state,
+          postal_code: shipping.zip,
+          country: "BR",
+        },
+      },
       metadata: {
         event_id: eventId,
         cpf: customer.cpf,
         phone: customer.phone,
+        price_id: priceId,
+        quantity: String(quantity),
+        env,
       },
     });
 
@@ -113,8 +124,8 @@ serve(async (req) => {
         price_id: priceId,
         quantity,
         amount_cents: amountCents,
-        currency: stripePrice.currency,
-        stripe_session_id: session.id,
+        currency,
+        stripe_payment_intent_id: paymentIntent.id,
         status: "pending",
         environment: env,
         meta_event_id: eventId,
@@ -146,7 +157,7 @@ serve(async (req) => {
       eventId,
       eventSourceUrl: origin + "/checkout",
       value: amountCents / 100,
-      currency: stripePrice.currency,
+      currency,
       contentIds: [priceId],
       contentType: "product",
       contentName: "CheerDots 2",
@@ -168,7 +179,14 @@ serve(async (req) => {
     }).catch((e) => console.error("CAPI InitiateCheckout failed:", e));
 
     return new Response(
-      JSON.stringify({ clientSecret: session.client_secret, orderId: order.id, eventId }),
+      JSON.stringify({
+        clientSecret: paymentIntent.client_secret,
+        paymentIntentId: paymentIntent.id,
+        orderId: order.id,
+        eventId,
+        amountCents,
+        currency,
+      }),
       { headers: { ...corsHeaders, "Content-Type": "application/json" } },
     );
   } catch (e) {

@@ -12,10 +12,10 @@ serve(async (req) => {
 
   try {
     const url = new URL(req.url);
-    const sessionId = url.searchParams.get("session_id");
+    const piId = url.searchParams.get("payment_intent");
     const environment = (url.searchParams.get("env") || "sandbox") as StripeEnv;
-    if (!sessionId || !/^cs_[a-zA-Z0-9_]+$/.test(sessionId)) {
-      return new Response(JSON.stringify({ error: "Invalid session_id" }), {
+    if (!piId || !/^pi_[a-zA-Z0-9_]+$/.test(piId)) {
+      return new Response(JSON.stringify({ error: "Invalid payment_intent" }), {
         status: 400,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
@@ -23,20 +23,19 @@ serve(async (req) => {
 
     // Fast path: poll Stripe directly for the freshest status (webhook may lag a few seconds)
     const stripe = createStripeClient(environment);
-    const session = await stripe.checkout.sessions.retrieve(sessionId);
+    const intent = await stripe.paymentIntents.retrieve(piId);
 
     const { data: order } = await supabase
       .from("orders")
       .select(
         "id,status,amount_cents,currency,customer_name,customer_email,price_id,meta_event_id,capi_purchase_sent",
       )
-      .eq("stripe_session_id", sessionId)
+      .eq("stripe_payment_intent_id", piId)
       .maybeSingle();
 
     return new Response(
       JSON.stringify({
-        stripe_status: session.status,
-        payment_status: session.payment_status,
+        payment_status: intent.status, // succeeded | processing | requires_payment_method | ...
         order,
       }),
       { headers: { ...corsHeaders, "Content-Type": "application/json" } },

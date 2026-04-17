@@ -7,10 +7,10 @@ const FeatureGrid = () => (
     <div className="container mx-auto px-4">
       <FadeIn>
         <div className="text-center mb-12 md:mb-14 max-w-3xl mx-auto">
-          <p className="text-indigo-400 font-semibold text-xs tracking-[0.2em] uppercase mb-4">
+          <p className="font-inter text-indigo-400 font-semibold text-xs tracking-[0.18em] uppercase mb-4">
             Funcionalidades
           </p>
-          <h2 className="text-[1.75rem] leading-tight sm:text-3xl md:text-5xl font-bold tracking-tight text-slate-50">
+          <h2 className="font-sora font-semibold tracking-[-0.02em] leading-[1.05] text-[1.9rem] sm:text-3xl md:text-5xl text-slate-50">
             Tudo o que você precisa.
             <br />
             <span className="text-gradient-blue">Nada que não precisa.</span>
@@ -35,10 +35,10 @@ const FeatureGrid = () => (
               <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white/[0.08] text-indigo-400 shadow-[0_0_20px_-3px_hsl(239_84%_67%/0.5)] self-start">
                 <Sparkles className="w-6 h-6" />
               </div>
-              <h3 className="mb-2 text-xl md:text-2xl font-bold tracking-tight text-slate-50">
+              <h3 className="mb-2 font-sora font-semibold tracking-[-0.02em] text-xl md:text-2xl text-slate-50">
                 Transcrição e resumo com IA
               </h3>
-              <p className="text-slate-300 leading-relaxed font-light text-sm md:text-base">
+              <p className="font-inter text-slate-300 leading-relaxed font-normal text-[15px] md:text-base">
                 Grave qualquer reunião com um toque. O CheerDots envia o áudio para o ChatGPT e devolve transcrição, tópicos e ações pendentes. Pare de digitar atas — comece a decidir.
               </p>
             </div>
@@ -79,10 +79,10 @@ const FeatureGrid = () => (
                 <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white/[0.08] text-indigo-400 shadow-[0_0_20px_-3px_hsl(239_84%_67%/0.5)] self-start">
                   <Presentation className="w-6 h-6" />
                 </div>
-                <h3 className="mb-2 text-xl md:text-2xl font-bold tracking-tight text-slate-50">
+                <h3 className="mb-2 font-sora font-semibold tracking-[-0.02em] text-xl md:text-2xl text-slate-50">
                   Apresentador de slides
                 </h3>
-                <p className="text-slate-300 leading-relaxed font-light text-sm md:text-base">
+                <p className="font-inter text-slate-300 leading-relaxed font-normal text-[15px] md:text-base">
                   Avance, recue e use spotlight, ponteiro laser ou caneta digital sem encostar no teclado.
                 </p>
               </div>

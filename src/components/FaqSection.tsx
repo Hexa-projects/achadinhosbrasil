@@ -19,10 +19,10 @@ const FaqSection = () => (
     <div className="container mx-auto px-4">
       <FadeIn>
         <div className="text-center mb-12 max-w-2xl mx-auto">
-          <p className="text-primary font-semibold text-xs tracking-[0.2em] uppercase mb-4">
+          <p className="font-inter text-primary font-semibold text-xs tracking-[0.18em] uppercase mb-4">
             Tire suas dúvidas
           </p>
-          <h2 className="text-[1.75rem] leading-tight sm:text-3xl md:text-5xl font-bold tracking-tight text-white">
+          <h2 className="font-sora font-semibold tracking-[-0.02em] leading-[1.05] text-[1.9rem] sm:text-3xl md:text-5xl text-white">
             Perguntas <span className="text-gradient-blue">frequentes</span>
           </h2>
         </div>

@@ -16,14 +16,14 @@ const MagneticDesignSection = () => {
                 <Magnet className="w-3.5 h-3.5" />
                 Design Magnético
               </div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-50 mb-5 leading-[1.1] text-balance">
+              <h2 className="font-sora font-semibold tracking-[-0.02em] leading-[1.05] text-[2rem] sm:text-4xl md:text-5xl text-slate-50 mb-5 text-balance">
                 Dois mundos.{" "}
                 <span className="text-gradient-blue">Um clique magnético.</span>
               </h2>
-              <p className="text-slate-300 text-base md:text-lg leading-relaxed font-light text-balance">
+              <p className="font-inter font-normal text-slate-300 text-base md:text-[17px] leading-relaxed text-balance">
                 Uma engenharia de precisão. Na mesa, um mouse bluetooth. Separe as
                 metades magnéticas e ele se transforma no{" "}
-                <span className="text-white font-medium">touchpad portátil mais fino já criado.</span>
+                <span className="text-white font-semibold">touchpad portátil mais fino já criado.</span>
               </p>
             </div>
           </FadeIn>

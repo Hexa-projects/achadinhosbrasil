@@ -24,10 +24,10 @@ export const BentoCard = ({ title, description, icon, className, children }: Ben
         </div>
       )}
       {title && (
-        <h3 className="mb-2 text-xl md:text-2xl font-bold tracking-tight text-white">{title}</h3>
+        <h3 className="mb-2 font-sora font-semibold tracking-[-0.02em] text-xl md:text-2xl text-white">{title}</h3>
       )}
       {description && (
-        <p className="text-slate-400 leading-relaxed font-light text-sm md:text-base">{description}</p>
+        <p className="font-inter text-slate-400 leading-relaxed font-normal text-[15px] md:text-base">{description}</p>
       )}
       {children}
     </div>

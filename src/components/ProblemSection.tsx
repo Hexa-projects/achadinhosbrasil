@@ -25,14 +25,14 @@ const ProblemSection = () => (
     <div className="container mx-auto px-4">
       <FadeIn>
         <div className="text-center mb-12 md:mb-14 max-w-3xl mx-auto">
-          <p className="text-indigo-400 font-semibold text-xs tracking-[0.2em] uppercase mb-4">
+          <p className="font-inter text-indigo-400 font-semibold text-xs tracking-[0.18em] uppercase mb-4">
             O problema
           </p>
-          <h2 className="text-[1.75rem] leading-tight sm:text-3xl md:text-5xl font-bold tracking-tight text-slate-50">
+          <h2 className="font-sora font-semibold tracking-[-0.02em] leading-[1.05] text-[1.9rem] sm:text-3xl md:text-5xl text-slate-50">
             Você ainda perde tempo{" "}
             <span className="text-gradient-blue">anotando reuniões manualmente?</span>
           </h2>
-          <p className="text-slate-300 text-base md:text-lg mt-5 leading-relaxed font-light max-w-2xl mx-auto">
+          <p className="font-inter font-normal text-slate-300 text-base md:text-[17px] mt-5 leading-relaxed max-w-xl mx-auto">
             Profissionais gastam horas por semana digitando atas, perdendo detalhes e retrabalho. O CheerDots 2 resolve isso em um clique.
           </p>
         </div>

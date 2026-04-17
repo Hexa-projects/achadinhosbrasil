@@ -64,9 +64,9 @@ export function ScarcityTimer() {
     <div className="rounded-xl bg-indigo-500/10 border border-indigo-500/30 p-3 text-xs text-indigo-200 flex items-center justify-between gap-2">
       <div className="flex items-center gap-2">
         <Clock className="w-4 h-4 text-indigo-300" />
-        <span className="font-medium">Reserva expira em</span>
+        <span className="font-inter font-medium">Reserva expira em</span>
       </div>
-      <span className="font-mono font-bold text-base text-white tabular-nums">
+      <span className="num-display text-base text-white tabular-nums">
         {m}:{s}
       </span>
     </div>

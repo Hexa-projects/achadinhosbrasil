@@ -37,10 +37,10 @@ const ComparisonTable = () => (
     <div className="container mx-auto px-4">
       <FadeIn>
         <div className="text-center mb-12 md:mb-16 max-w-3xl mx-auto">
-          <p className="text-primary font-semibold text-xs tracking-[0.2em] uppercase mb-4">
+          <p className="font-inter text-primary font-semibold text-xs tracking-[0.18em] uppercase mb-4">
             Comparativo honesto
           </p>
-          <h2 className="text-[1.75rem] leading-tight sm:text-3xl md:text-5xl font-bold tracking-tight text-white">
+          <h2 className="font-sora font-semibold tracking-[-0.02em] leading-[1.05] text-[1.9rem] sm:text-3xl md:text-5xl text-white">
             CheerDots 2 vs{" "}
             <span className="text-gradient-blue">soluções tradicionais</span>
           </h2>
@@ -52,17 +52,17 @@ const ComparisonTable = () => (
           <div className="min-w-[480px] rounded-3xl border border-white/10 bg-white/[0.02] backdrop-blur-md overflow-hidden">
             {/* Header */}
             <div className="grid grid-cols-[1fr_90px_90px_90px] md:grid-cols-[1.5fr_140px_140px_140px] border-b border-white/10">
-              <div className="p-4 md:p-5 text-xs md:text-sm font-semibold text-slate-400 uppercase tracking-wider">
+              <div className="font-inter p-4 md:p-5 text-xs md:text-sm font-semibold text-slate-400 uppercase tracking-wider">
                 Funcionalidade
               </div>
               <div className="p-4 md:p-5 text-center bg-gradient-to-b from-primary/10 to-transparent">
-                <p className="text-xs md:text-sm font-bold text-white leading-tight">CheerDots 2</p>
+                <p className="font-inter text-xs md:text-sm font-semibold text-white leading-tight">CheerDots 2</p>
               </div>
               <div className="p-4 md:p-5 text-center">
-                <p className="text-[10px] md:text-xs font-semibold text-slate-400 leading-tight">Mouse Comum</p>
+                <p className="font-inter text-[10px] md:text-xs font-semibold text-slate-400 leading-tight">Mouse Comum</p>
               </div>
               <div className="p-4 md:p-5 text-center">
-                <p className="text-[10px] md:text-xs font-semibold text-slate-400 leading-tight">Apresentador</p>
+                <p className="font-inter text-[10px] md:text-xs font-semibold text-slate-400 leading-tight">Apresentador</p>
               </div>
             </div>
 
@@ -74,7 +74,7 @@ const ComparisonTable = () => (
                   i < rows.length - 1 ? "border-b border-white/5" : ""
                 } hover:bg-white/[0.02] transition-colors`}
               >
-                <div className="p-4 md:p-5 flex items-center text-xs md:text-sm text-slate-200 font-medium">
+                <div className="font-inter p-4 md:p-5 flex items-center text-[13px] md:text-[15px] text-slate-200 font-medium">
                   {row.feature}
                 </div>
                 <div className="p-4 md:p-5 flex items-center justify-center bg-gradient-to-b from-primary/[0.04] to-transparent">

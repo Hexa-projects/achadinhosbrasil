@@ -15,7 +15,7 @@ export const MobileAccordion = ({ question, answer, defaultOpen = false }: Mobil
     <div className="rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-md px-5 py-4 transition-colors hover:border-white/20">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex w-full items-center justify-between gap-4 text-left text-slate-50 font-medium text-[15px] md:text-base"
+        className="flex w-full items-center justify-between gap-4 text-left text-slate-50 font-inter font-semibold text-[15px] md:text-base"
         aria-expanded={isOpen}
       >
         <span className="flex-1">{question}</span>
@@ -36,7 +36,7 @@ export const MobileAccordion = ({ question, answer, defaultOpen = false }: Mobil
             transition={{ duration: 0.3, ease: [0.21, 0.47, 0.32, 0.98] }}
             className="overflow-hidden"
           >
-            <p className="pt-3 text-sm text-slate-300 font-light leading-relaxed">
+            <p className="pt-3 font-inter text-[15px] text-slate-300 font-normal leading-relaxed">
               {answer}
             </p>
           </motion.div>

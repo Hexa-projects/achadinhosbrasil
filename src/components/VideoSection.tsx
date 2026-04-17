@@ -18,14 +18,14 @@ const VideoSection = () => {
       <div className="container mx-auto px-4 relative z-10">
         <FadeIn>
           <div className="text-center mb-10 md:mb-14 max-w-3xl mx-auto">
-            <p className="text-indigo-400 font-semibold text-xs tracking-[0.2em] uppercase mb-4">
+            <p className="font-inter text-indigo-400 font-semibold text-xs tracking-[0.18em] uppercase mb-4">
               Demonstração oficial
             </p>
-            <h2 className="text-[1.85rem] leading-tight sm:text-3xl md:text-5xl font-bold tracking-tight text-slate-50 text-balance">
+            <h2 className="font-sora font-semibold tracking-[-0.02em] leading-[1.05] text-[2rem] sm:text-4xl md:text-5xl text-slate-50 text-balance">
               Veja o CheerDots 2{" "}
               <span className="text-gradient-blue">em ação</span>
             </h2>
-            <p className="text-slate-300 text-[15px] md:text-lg mt-4 leading-relaxed font-light max-w-2xl mx-auto">
+            <p className="font-inter font-normal text-slate-300 text-base md:text-[17px] mt-4 leading-relaxed max-w-xl mx-auto">
               90 segundos para entender como um único dispositivo substitui mouse, apresentador e gravador com IA.
             </p>
           </div>

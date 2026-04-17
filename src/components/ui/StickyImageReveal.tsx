@@ -41,14 +41,14 @@ export const StickyImageReveal = ({ features }: StickyImageRevealProps) => {
                 </span>
               )}
               <h3
-                className={`text-xl sm:text-2xl font-bold mb-2 tracking-tight transition-colors ${
+                className={`font-sora font-semibold tracking-[-0.02em] text-xl sm:text-2xl mb-2 transition-colors ${
                   isActive ? "text-white" : "text-slate-400"
                 }`}
               >
                 {feature.title}
               </h3>
               <p
-                className={`text-sm sm:text-base font-light leading-relaxed transition-colors ${
+                className={`font-inter text-[15px] sm:text-base font-normal leading-relaxed transition-colors ${
                   isActive ? "text-slate-200" : "text-slate-500"
                 }`}
               >

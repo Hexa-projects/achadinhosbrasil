@@ -19,19 +19,20 @@ serve(async (req) => {
     const event = await verifyWebhook(req, env);
     console.log("[webhook] event:", event.type, "env:", env);
 
-    if (event.type === "checkout.session.completed" || event.type === "checkout.session.async_payment_succeeded") {
-      const session = event.data.object;
-      await handlePaid(session, env);
-    } else if (event.type === "checkout.session.expired") {
-      await supabase
-        .from("orders")
-        .update({ status: "expired" })
-        .eq("stripe_session_id", event.data.object.id);
-    } else if (event.type === "checkout.session.async_payment_failed") {
+    if (event.type === "payment_intent.succeeded") {
+      await handlePaid(event.data.object, env);
+    } else if (event.type === "payment_intent.payment_failed") {
       await supabase
         .from("orders")
         .update({ status: "failed" })
-        .eq("stripe_session_id", event.data.object.id);
+        .eq("stripe_payment_intent_id", event.data.object.id)
+        .eq("environment", env);
+    } else if (event.type === "payment_intent.canceled") {
+      await supabase
+        .from("orders")
+        .update({ status: "canceled" })
+        .eq("stripe_payment_intent_id", event.data.object.id)
+        .eq("environment", env);
     }
 
     return new Response(JSON.stringify({ received: true }), {
@@ -44,20 +45,14 @@ serve(async (req) => {
   }
 });
 
-async function handlePaid(session: any, env: StripeEnv) {
-  if (session.payment_status !== "paid") {
-    console.log("[webhook] session not paid yet:", session.payment_status);
-    return;
-  }
-
+async function handlePaid(intent: any, env: StripeEnv) {
   const { data: order, error } = await supabase
     .from("orders")
     .update({
       status: "paid",
       paid_at: new Date().toISOString(),
-      stripe_payment_intent_id: session.payment_intent ?? null,
     })
-    .eq("stripe_session_id", session.id)
+    .eq("stripe_payment_intent_id", intent.id)
     .eq("environment", env)
     .select("*")
     .single();

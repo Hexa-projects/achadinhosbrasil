@@ -2,6 +2,7 @@ import AnnouncementBar from "@/components/AnnouncementBar";
 import StickyHeader from "@/components/StickyHeader";
 import HeroSection from "@/components/HeroSection";
 import VideoSection from "@/components/VideoSection";
+import MagneticDesignSection from "@/components/MagneticDesignSection";
 import ProblemSection from "@/components/ProblemSection";
 import FeatureGrid from "@/components/FeatureGrid";
 import StickyModesSection from "@/components/StickyModesSection";
@@ -18,6 +19,7 @@ const Index = () => (
     <StickyHeader />
     <HeroSection />
     <VideoSection />
+    <MagneticDesignSection />
     <ProblemSection />
     <FeatureGrid />
     <StickyModesSection />

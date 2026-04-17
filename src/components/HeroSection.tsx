@@ -69,7 +69,7 @@ const HeroSection = () => {
               }}
             />
             <img
-              src="https://cheerdots.com/cdn/shop/files/2048_aaeac6a8-c973-4cfb-b146-8562390970ca.png?v=1718094900&width=1200"
+              src="https://img.youtube.com/vi/BeKNoXNdA4M/maxresdefault.jpg"
               alt="CheerDots 2 — Mouse inteligente 6-em-1 com IA"
               className="relative w-full h-auto object-contain drop-shadow-[0_30px_60px_rgba(99,102,241,0.45)]"
               loading="eager"
@@ -82,7 +82,7 @@ const HeroSection = () => {
           <div className="mt-12 md:mt-16 max-w-md sm:max-w-lg mx-auto">
             <div className="relative rounded-3xl overflow-hidden border border-white/10 bg-white/[0.03] backdrop-blur-md p-2 shadow-[0_20px_60px_-20px_rgba(99,102,241,0.4)]">
               <img
-                src="https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?q=80&w=1000&auto=format&fit=crop"
+                src="https://img.youtube.com/vi/4CaA54NPeCo/maxresdefault.jpg"
                 alt="Tecnologia de produtividade premium"
                 className="w-full h-auto object-cover rounded-2xl animate-[pulse_4s_ease-in-out_infinite]"
                 loading="lazy"

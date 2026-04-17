@@ -278,7 +278,7 @@ export default function CheckoutPage() {
             transition={{ duration: 0.3 }}
             className="mb-6 text-center sm:text-left"
           >
-            <h1 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+            <h1 className="font-sora font-semibold tracking-[-0.02em] leading-tight text-2xl sm:text-3xl text-white">
               Finalize seu CheerDots 2
             </h1>
             <p className="text-sm text-slate-400 mt-1">
@@ -489,7 +489,7 @@ function SectionCard({
           {step}
         </div>
         <div>
-          <h2 className="text-base sm:text-lg font-semibold text-white tracking-tight leading-none">
+          <h2 className="font-sora font-semibold tracking-[-0.02em] text-base sm:text-lg text-white leading-none">
             {title}
           </h2>
           {hint && <p className="text-xs text-slate-400 mt-1">{hint}</p>}
@@ -552,7 +552,7 @@ function ExpressBlock() {
     >
       <div className="flex items-center gap-2 mb-3">
         <Sparkles className="w-4 h-4 text-indigo-300" />
-        <h2 className="text-sm font-semibold text-white tracking-tight">
+        <h2 className="font-sora font-semibold tracking-[-0.02em] text-sm text-white">
           Finalizar em 1 clique
         </h2>
       </div>
@@ -708,7 +708,7 @@ function OrderSummary() {
         <div className="border-t border-white/10 pt-4 flex items-baseline justify-between">
           <span className="text-slate-300 text-sm">Total</span>
           <div className="text-right">
-            <p className="text-2xl font-black text-white tracking-tight">
+            <p className="num-display text-2xl text-white">
               R$ {PRICE_BRL},00
             </p>
             <p className="text-[11px] text-slate-500">ou 12x sem juros no cartão</p>

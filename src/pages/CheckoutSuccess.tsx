@@ -107,7 +107,7 @@ export default function CheckoutSuccess() {
         {loading && (
           <>
             <Loader2 className="w-12 h-12 text-indigo-400 animate-spin mx-auto mb-4" />
-            <h1 className="text-xl font-bold text-white mb-2">Confirmando pagamento…</h1>
+            <h1 className="font-sora font-semibold tracking-[-0.02em] text-xl text-white mb-2">Confirmando pagamento…</h1>
             <p className="text-sm text-slate-400">
               Aguarde, estamos validando sua transação.
             </p>
@@ -124,7 +124,7 @@ export default function CheckoutSuccess() {
             >
               <CheckCircle2 className="w-10 h-10 text-emerald-400" />
             </motion.div>
-            <h1 className="text-3xl font-black text-white tracking-tight mb-2">
+            <h1 className="font-sora font-semibold tracking-[-0.03em] leading-[0.95] text-3xl text-white mb-2">
               Pedido confirmado!
             </h1>
             <p className="text-slate-300 text-sm mb-6">
@@ -172,7 +172,7 @@ export default function CheckoutSuccess() {
 
         {!loading && !paid && (
           <>
-            <h1 className="text-xl font-bold text-white mb-2">Pagamento pendente</h1>
+            <h1 className="font-sora font-semibold tracking-[-0.02em] text-xl text-white mb-2">Pagamento pendente</h1>
             <p className="text-sm text-slate-400 mb-5">
               {error ||
                 "Seu pagamento ainda não foi confirmado. Se você usou Pix/boleto, pode levar alguns minutos."}

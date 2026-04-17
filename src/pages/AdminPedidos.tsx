@@ -158,7 +158,7 @@ export default function AdminPedidos() {
           <div className="w-12 h-12 rounded-full bg-indigo-500/15 border border-indigo-500/30 flex items-center justify-center mx-auto mb-4">
             <Lock className="w-5 h-5 text-indigo-300" />
           </div>
-          <h1 className="text-xl font-bold text-white text-center tracking-tight">
+          <h1 className="font-sora font-semibold tracking-[-0.02em] text-xl text-white text-center">
             Painel Admin
           </h1>
           <p className="text-xs text-slate-400 text-center mt-1 mb-5">
@@ -195,7 +195,7 @@ export default function AdminPedidos() {
     <div className="min-h-screen bg-background text-foreground">
       <header className="border-b border-white/10 bg-zinc-950/80 backdrop-blur-xl sticky top-0 z-20">
         <div className="container mx-auto px-4 h-14 flex items-center justify-between">
-          <h1 className="text-base font-semibold text-white tracking-tight">
+          <h1 className="font-sora font-semibold tracking-[-0.02em] text-base text-white">
             Painel · Pedidos
           </h1>
           <div className="flex items-center gap-2">
@@ -342,8 +342,8 @@ export default function AdminPedidos() {
 function Stat({ label, value, accent }: { label: string; value: string; accent?: string }) {
   return (
     <div className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl p-4">
-      <p className="text-[11px] uppercase tracking-wider text-slate-400">{label}</p>
-      <p className={`text-2xl font-bold mt-1 ${accent || "text-white"}`}>{value}</p>
+      <p className="font-inter text-[11px] uppercase tracking-wider text-slate-400 font-medium">{label}</p>
+      <p className={`num-display text-2xl mt-1 ${accent || "text-white"}`}>{value}</p>
     </div>
   );
 }

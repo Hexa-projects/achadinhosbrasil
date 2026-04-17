@@ -33,7 +33,7 @@ const Cell = ({ value, highlight = false }: { value: boolean; highlight?: boolea
   );
 
 const ComparisonTable = () => (
-  <section id="comparativo" className="relative py-20 md:py-28">
+  <section id="comparativo" className="relative py-14 md:py-28">
     <div className="container mx-auto px-4">
       <FadeIn>
         <div className="text-center mb-12 md:mb-16 max-w-3xl mx-auto">

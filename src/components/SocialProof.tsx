@@ -13,7 +13,7 @@ const audiences = [
 ];
 
 const SocialProof = () => (
-  <section className="relative py-16 md:py-24 overflow-hidden">
+  <section className="relative py-14 md:py-24 overflow-hidden">
     <div className="container mx-auto px-4 mb-10">
       <FadeIn>
         <div className="text-center max-w-2xl mx-auto">

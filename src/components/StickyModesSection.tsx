@@ -41,7 +41,7 @@ const StickyModesSection = () => {
   const current = modes.find((m) => m.id === active)!;
 
   return (
-    <section id="modos" className="relative py-16 md:py-28 section-alt">
+    <section id="modos" className="relative py-14 md:py-28 section-alt">
       <div className="container mx-auto px-4">
         <FadeIn>
           <div className="text-center mb-10 md:mb-12 max-w-3xl mx-auto">

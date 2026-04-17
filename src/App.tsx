@@ -7,6 +7,7 @@ import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import CheckoutPage from "./pages/Checkout.tsx";
 import CheckoutSuccess from "./pages/CheckoutSuccess.tsx";
+import AdminPedidos from "./pages/AdminPedidos.tsx";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/checkout/sucesso" element={<CheckoutSuccess />} />
+          <Route path="/admin/pedidos" element={<AdminPedidos />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

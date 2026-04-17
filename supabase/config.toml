@@ -17,3 +17,12 @@ verify_jwt = false
 
 [functions.get-pixel-config]
 verify_jwt = false
+
+[functions.list-orders]
+verify_jwt = false
+
+[functions.send-abandoned-cart]
+verify_jwt = false
+
+[functions.dispatch-abandoned-carts]
+verify_jwt = false

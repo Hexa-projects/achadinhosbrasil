@@ -40,7 +40,7 @@ const ComparisonTable = () => (
           <p className="text-primary font-semibold text-xs tracking-[0.2em] uppercase mb-4">
             Comparativo honesto
           </p>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white">
+          <h2 className="text-[1.75rem] leading-tight sm:text-3xl md:text-5xl font-bold tracking-tight text-white">
             CheerDots 2 vs{" "}
             <span className="text-gradient-blue">soluções tradicionais</span>
           </h2>

@@ -48,7 +48,7 @@ const StickyModesSection = () => {
             <p className="text-indigo-400 font-semibold text-xs tracking-[0.2em] uppercase mb-4">
               Modos de operação
             </p>
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-slate-50">
+            <h2 className="text-[1.75rem] leading-tight sm:text-3xl md:text-5xl font-bold tracking-tight text-slate-50">
               Três dispositivos.{" "}
               <span className="text-gradient-blue">Um só hardware.</span>
             </h2>

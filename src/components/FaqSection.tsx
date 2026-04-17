@@ -27,7 +27,7 @@ const FaqSection = () => (
           <p className="text-primary font-semibold text-xs tracking-[0.2em] uppercase mb-4">
             Tire suas dúvidas
           </p>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white">
+          <h2 className="text-[1.75rem] leading-tight sm:text-3xl md:text-5xl font-bold tracking-tight text-white">
             Perguntas <span className="text-gradient-blue">frequentes</span>
           </h2>
         </div>

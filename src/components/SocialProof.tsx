@@ -20,7 +20,7 @@ const SocialProof = () => (
           <p className="text-indigo-400 font-semibold text-xs tracking-[0.2em] uppercase mb-4">
             Para quem importa
           </p>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-slate-50">
+          <h2 className="text-[1.75rem] leading-tight sm:text-3xl md:text-5xl font-bold tracking-tight text-slate-50">
             Para quem vive{" "}
             <span className="text-gradient-blue">em movimento</span>
           </h2>

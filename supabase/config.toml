@@ -1,1 +1,16 @@
 project_id = "asyqpfwphveggkllwptb"
+
+[functions.create-checkout]
+verify_jwt = false
+
+[functions.get-stripe-price]
+verify_jwt = false
+
+[functions.payments-webhook]
+verify_jwt = false
+
+[functions.get-order-status]
+verify_jwt = false
+
+[functions.meta-capi]
+verify_jwt = false

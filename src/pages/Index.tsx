@@ -1,6 +1,7 @@
 import AnnouncementBar from "@/components/AnnouncementBar";
 import StickyHeader from "@/components/StickyHeader";
 import HeroSection from "@/components/HeroSection";
+import VideoSection from "@/components/VideoSection";
 import ProblemSection from "@/components/ProblemSection";
 import FeatureGrid from "@/components/FeatureGrid";
 import StickyModesSection from "@/components/StickyModesSection";
@@ -16,6 +17,7 @@ const Index = () => (
     <AnnouncementBar />
     <StickyHeader />
     <HeroSection />
+    <VideoSection />
     <ProblemSection />
     <FeatureGrid />
     <StickyModesSection />

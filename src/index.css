@@ -26,7 +26,7 @@
     --secondary-foreground: 0 0% 98%;
 
     --muted: 240 5% 12%;
-    --muted-foreground: 240 5% 64.9%;    /* slate-400 ish */
+    --muted-foreground: 215 20% 75%;     /* slate-300 — high contrast on dark */
 
     --accent: 240 6% 14%;
     --accent-foreground: 0 0% 98%;
@@ -65,6 +65,8 @@
     font-family: 'Inter', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    max-width: 100vw;
   }
 
   html {

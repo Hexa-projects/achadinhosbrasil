@@ -42,7 +42,7 @@ const PricingSection = () => {
               </div>
 
               <div className="p-8 md:p-10 text-center">
-                <p className="text-slate-500 line-through text-base mb-1">De R$ 997,00</p>
+                <p className="text-slate-400 line-through text-base mb-1">De R$ 997,00</p>
                 <p className="text-6xl md:text-7xl font-black text-white tracking-tight mb-2">
                   R$ <span className="text-gradient-blue">497</span>
                 </p>
@@ -72,7 +72,7 @@ const PricingSection = () => {
               </div>
             </div>
 
-            <p className="text-center text-xs text-slate-500 mt-5 font-light">
+            <p className="text-center text-xs text-slate-400 mt-5 font-light">
               Condição válida enquanto durar o lote promocional de lançamento no Brasil.
             </p>
           </div>

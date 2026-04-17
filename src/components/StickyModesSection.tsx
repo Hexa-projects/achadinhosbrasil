@@ -1,165 +1,121 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Crosshair, MonitorSmartphone, Hand, Lightbulb } from "lucide-react";
-
-const CDN = "https://cdn.shopify.com/s/files/1/0577/3076/0913/files";
+import { Monitor, Wand2, Presentation } from "lucide-react";
+import { FadeIn } from "@/components/ui/FadeIn";
 
 const modes = [
   {
-    id: "spotlight",
-    icon: Crosshair,
-    title: "Spotlight",
-    subtitle: "Destaque áreas da apresentação",
-    description:
-      "Realce qualquer área da tela com um círculo de foco. Ideal para direcionar a atenção do público durante apresentações.",
-    image: `${CDN}/05-5-min_360x.gif?v=1716600022`,
-  },
-  {
-    id: "laser",
-    icon: Hand,
-    title: "Laser Pointer",
-    subtitle: "Ponteiro laser digital",
-    description:
-      "Aponte com precisão para qualquer elemento na tela. Funciona em qualquer projetor ou monitor sem precisar de laser físico.",
-    image: `${CDN}/05-7-min_360x.gif?v=1716600022`,
-  },
-  {
-    id: "digital",
-    icon: Lightbulb,
-    title: "Digital Light",
-    subtitle: "Iluminação digital de conteúdo",
-    description:
-      "Escurece o restante da tela e ilumina apenas a área selecionada. Perfeito para destacar dados, gráficos e textos importantes.",
-    image: `${CDN}/05-1-min_360x.gif?v=1716600023`,
-  },
-  {
     id: "desktop",
-    icon: MonitorSmartphone,
-    title: "Modo Desktop",
-    subtitle: "Touchpad silencioso",
+    label: "Modo Desktop",
+    icon: Monitor,
+    title: "Touchpad de precisão no seu bolso",
     description:
-      "Junte as duas partes magnéticas e use como touchpad portátil e silencioso. Personalize gestos para scroll, zoom e multitarefa.",
-    image: `${CDN}/Cheerdots2_Desktop_Mode_500x.jpg?v=1716638803`,
+      "Apoie a base e use como mouse Bluetooth. Toque, deslize e use gestos multitoque iguais aos de um trackpad premium — em qualquer superfície.",
+    image:
+      "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?q=80&w=800&auto=format&fit=crop",
+  },
+  {
+    id: "air",
+    label: "Modo Air Mouse",
+    icon: Wand2,
+    title: "Controle pelo ar com sensores 6-axis",
+    description:
+      "Levante o CheerDots e mova o cursor com gestos naturais. Ideal para apresentações de pé, salas de aula e demos a distância.",
+    image:
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800&auto=format&fit=crop",
+  },
+  {
+    id: "present",
+    label: "Modo Apresentação",
+    icon: Presentation,
+    title: "Spotlight, laser e caneta digital",
+    description:
+      "Avance slides, destaque trechos com spotlight, aponte com laser virtual ou desenhe sobre a tela em tempo real. Seu pitch nunca mais será o mesmo.",
+    image:
+      "https://images.unsplash.com/photo-1542744094-24638eff58bb?q=80&w=800&auto=format&fit=crop",
   },
 ];
 
 const StickyModesSection = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [active, setActive] = useState(modes[0].id);
+  const current = modes.find((m) => m.id === active)!;
 
   return (
-    <section id="modos" className="py-16 md:py-24 relative overflow-hidden bg-white">
-      <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          className="text-center mb-16 max-w-2xl mx-auto"
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <p className="text-primary font-semibold text-xs tracking-[0.2em] uppercase mb-3">
-            Modos de Apresentação
-          </p>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-foreground tracking-tight">
-            Três formas de{" "}
-            <span className="text-gradient-blue">destacar conteúdo.</span>
-          </h2>
-          <p className="text-muted-foreground text-base mt-4 leading-relaxed">
-            Alterne entre Spotlight, Laser Pointer e Digital Light para dominar qualquer apresentação.
-          </p>
-        </motion.div>
+    <section id="modos" className="relative py-16 md:py-28 section-alt">
+      <div className="container mx-auto px-4">
+        <FadeIn>
+          <div className="text-center mb-10 md:mb-12 max-w-3xl mx-auto">
+            <p className="text-indigo-400 font-semibold text-xs tracking-[0.2em] uppercase mb-4">
+              Modos de operação
+            </p>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-slate-50">
+              Três dispositivos.{" "}
+              <span className="text-gradient-blue">Um só hardware.</span>
+            </h2>
+          </div>
+        </FadeIn>
 
-        <div className="max-w-5xl mx-auto">
-          {/* Desktop */}
-          <div className="hidden md:grid grid-cols-2 gap-10">
-            <div className="space-y-4">
-              {modes.map((mode, i) => (
-                <motion.div
-                  key={mode.id}
-                  className={`rounded-2xl p-7 cursor-pointer transition-all duration-300 border ${
-                    activeIndex === i
-                      ? "bg-primary/5 border-primary/30 shadow-sm"
-                      : "bg-secondary/30 border-border/50 hover:bg-secondary/60"
-                  }`}
-                  onClick={() => setActiveIndex(i)}
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                >
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${
-                      activeIndex === i ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"
-                    }`}>
-                      <mode.icon className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-bold text-foreground">{mode.title}</h3>
-                      <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">{mode.subtitle}</p>
-                    </div>
-                  </div>
-                  <p className="text-muted-foreground text-sm leading-relaxed">{mode.description}</p>
-                </motion.div>
-              ))}
-            </div>
-
-            <div className="sticky top-32 self-start">
-              <div className="relative rounded-2xl overflow-hidden border border-border/50 shadow-md aspect-square flex items-center justify-center bg-secondary/30">
-                <AnimatePresence mode="wait">
-                  <motion.img
-                    key={modes[activeIndex].id}
-                    src={modes[activeIndex].image}
-                    alt={modes[activeIndex].title}
-                    className="w-full h-full object-contain"
-                    initial={{ opacity: 0, scale: 0.96 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 1.04 }}
-                    transition={{ duration: 0.35 }}
-                  />
-                </AnimatePresence>
-              </div>
-              <div className="flex justify-center gap-2 mt-5">
-                {modes.map((_, i) => (
+        {/* Tabs — horizontally scrollable on tiny screens */}
+        <FadeIn delay={0.1}>
+          <div className="flex justify-center mb-8 md:mb-10 px-1">
+            <div className="inline-flex flex-wrap justify-center items-center gap-1.5 p-1.5 rounded-full bg-white/[0.06] border border-white/10 backdrop-blur-md max-w-full">
+              {modes.map((m) => {
+                const Icon = m.icon;
+                const isActive = m.id === active;
+                return (
                   <button
-                    key={i}
-                    onClick={() => setActiveIndex(i)}
-                    className={`h-1.5 rounded-full transition-all duration-300 ${
-                      activeIndex === i ? "w-8 bg-primary" : "w-3 bg-muted-foreground/20"
+                    key={m.id}
+                    onClick={() => setActive(m.id)}
+                    className={`relative inline-flex items-center gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium transition-colors whitespace-nowrap ${
+                      isActive ? "text-white" : "text-slate-300 hover:text-white"
                     }`}
-                  />
-                ))}
-              </div>
+                  >
+                    {isActive && (
+                      <motion.span
+                        layoutId="modes-active-pill"
+                        className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-500 to-violet-500 shadow-[0_0_20px_-2px_hsl(239_84%_67%/0.6)]"
+                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                      />
+                    )}
+                    <Icon className="w-4 h-4 relative z-10" />
+                    <span className="relative z-10">{m.label}</span>
+                  </button>
+                );
+              })}
             </div>
           </div>
+        </FadeIn>
 
-          {/* Mobile */}
-          <div className="md:hidden space-y-6">
-            {modes.map((mode, i) => (
-              <motion.div
-                key={mode.id}
-                className="rounded-2xl overflow-hidden border border-border/50 bg-white shadow-sm"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-              >
-                <div className="w-full aspect-[4/3] bg-secondary/30 flex items-center justify-center overflow-hidden">
-                  <img src={mode.image} alt={mode.title} className="w-full h-full object-contain" loading="lazy" />
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="w-9 h-9 rounded-xl bg-primary flex items-center justify-center text-primary-foreground">
-                      <mode.icon className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-bold text-foreground">{mode.title}</h3>
-                      <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">{mode.subtitle}</p>
-                    </div>
-                  </div>
-                  <p className="text-muted-foreground text-sm leading-relaxed mt-2">{mode.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+        {/* Content */}
+        <div className="max-w-5xl mx-auto">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={current.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.4, ease: [0.21, 0.47, 0.32, 0.98] }}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center"
+            >
+              <div className="order-2 lg:order-1">
+                <h3 className="text-2xl md:text-4xl font-bold tracking-tight text-slate-50 mb-4">
+                  {current.title}
+                </h3>
+                <p className="text-slate-300 text-base md:text-lg leading-relaxed font-light">
+                  {current.description}
+                </p>
+              </div>
+              <div className="order-1 lg:order-2 relative">
+                <div className="absolute -inset-6 bg-gradient-to-br from-indigo-500/25 to-violet-500/15 blur-3xl pointer-events-none" />
+                <img
+                  src={current.image}
+                  alt={current.title}
+                  className="relative w-full aspect-video md:aspect-square object-cover rounded-3xl border border-white/10"
+                  loading="lazy"
+                />
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
     </section>

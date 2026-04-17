@@ -687,8 +687,13 @@ function OrderSummary() {
       <div className="p-5 space-y-4">
         <ScarcityTimer />
         <div className="flex items-start gap-3">
-          <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-indigo-500/20 to-violet-500/20 border border-white/10 flex items-center justify-center text-2xl">
-            🖱️
+          <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-indigo-500/20 to-violet-500/20 border border-white/10 overflow-hidden flex items-center justify-center">
+            <img
+              src="/lovable-uploads/cheerdots-product.jpg"
+              alt="CheerDots 2"
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
           </div>
           <div className="flex-1 min-w-0">
             <p className="text-white text-sm font-semibold">CheerDots 2</p>

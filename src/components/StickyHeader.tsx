@@ -29,9 +29,9 @@ const StickyHeader = () => {
         initial={{ opacity: 0, y: -12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: [0.21, 0.47, 0.32, 0.98] }}
-        className={`pointer-events-auto w-full max-w-3xl rounded-full border border-white/10 bg-zinc-950/60 backdrop-blur-xl transition-all duration-300 ${
-          scrolled ? "shadow-[0_8px_30px_-12px_rgba(0,0,0,0.6)] bg-zinc-950/80" : ""
-        }`}
+        className={`pointer-events-auto w-full max-w-3xl border border-white/10 bg-zinc-950/80 backdrop-blur-xl transition-all duration-300 overflow-hidden ${
+          mobileOpen ? "rounded-3xl" : "rounded-full"
+        } ${scrolled ? "shadow-[0_8px_30px_-12px_rgba(0,0,0,0.6)] bg-zinc-950/90" : ""}`}
       >
         <div className="flex items-center justify-between h-12 sm:h-14 pl-3 pr-2 sm:pl-5 sm:pr-2">
           <a href="#" className="flex items-center gap-2 group min-w-0">

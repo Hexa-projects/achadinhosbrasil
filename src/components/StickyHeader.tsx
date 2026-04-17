@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useCheckoutRedirect } from "@/hooks/useCheckoutRedirect";
 import { ShimmerButton } from "@/components/ui/ShimmerButton";
+import logo from "@/assets/logo-achadinhos.png";
 
 const links = [
   { label: "Funções", href: "#funcoes" },
@@ -23,7 +24,7 @@ const StickyHeader = () => {
   }, []);
 
   return (
-    <div className="fixed top-3 sm:top-4 inset-x-0 z-50 flex justify-center px-3 pointer-events-none">
+    <div className="fixed top-10 sm:top-12 inset-x-0 z-50 flex justify-center px-3 pointer-events-none">
       <motion.header
         initial={{ opacity: 0, y: -12 }}
         animate={{ opacity: 1, y: 0 }}
@@ -34,11 +35,11 @@ const StickyHeader = () => {
       >
         <div className="flex items-center justify-between h-12 sm:h-14 pl-3 pr-2 sm:pl-5 sm:pr-2">
           <a href="#" className="flex items-center gap-2 group min-w-0">
-            <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-500 flex items-center justify-center shadow-[0_0_20px_-4px_hsl(239_84%_67%/0.7)] shrink-0">
-              <span className="text-white font-black text-xs">C2</span>
+            <div className="w-8 h-8 rounded-lg overflow-hidden bg-violet-500 flex items-center justify-center shadow-[0_0_20px_-4px_hsl(258_90%_66%/0.7)] shrink-0">
+              <img src={logo} alt="Achadinhos Shopping" className="w-full h-full object-cover" />
             </div>
             <span className="font-semibold text-white text-sm tracking-tight hidden sm:inline">
-              CheerDots 2
+              Achadinhos Shopping
             </span>
           </a>
 

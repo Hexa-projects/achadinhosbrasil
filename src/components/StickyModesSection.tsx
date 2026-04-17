@@ -12,7 +12,7 @@ const modes = [
     description:
       "Apoie a base e use como mouse Bluetooth. Toque, deslize e use gestos multitoque iguais aos de um trackpad premium — em qualquer superfície.",
     image:
-      "https://img.youtube.com/vi/wEraBtFURds/maxresdefault.jpg",
+      "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?q=80&w=800&auto=format&fit=crop",
   },
   {
     id: "air",
@@ -22,7 +22,7 @@ const modes = [
     description:
       "Levante o CheerDots e mova o cursor com gestos naturais. Ideal para apresentações de pé, salas de aula e demos a distância.",
     image:
-      "https://img.youtube.com/vi/bZ1XmvvEysI/maxresdefault.jpg",
+      "https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=800&auto=format&fit=crop",
   },
   {
     id: "present",
@@ -32,7 +32,7 @@ const modes = [
     description:
       "Avance slides, destaque trechos com spotlight, aponte com laser virtual ou desenhe sobre a tela em tempo real. Seu pitch nunca mais será o mesmo.",
     image:
-      "https://img.youtube.com/vi/dErz21ioikA/maxresdefault.jpg",
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800&auto=format&fit=crop",
   },
 ];
 

@@ -26,7 +26,7 @@ const FeatureGrid = () => (
             className="h-full min-h-[420px] !p-0 overflow-hidden"
           >
             <img
-              src="https://img.youtube.com/vi/T-WwWcun2uY/maxresdefault.jpg"
+              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop"
               alt="Reunião sendo transcrita por IA"
               className="w-full h-40 md:h-48 object-cover opacity-80"
               loading="lazy"
@@ -70,7 +70,7 @@ const FeatureGrid = () => (
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 h-full">
               <img
-                src="https://img.youtube.com/vi/bZ1XmvvEysI/maxresdefault.jpg"
+                src="https://images.unsplash.com/photo-1542744094-24638eff58bb?q=80&w=600&auto=format&fit=crop"
                 alt="Apresentação profissional com slides"
                 className="w-full h-44 sm:h-full object-cover opacity-75"
                 loading="lazy"

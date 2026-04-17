@@ -34,6 +34,7 @@ import {
   maskCep,
 } from "@/lib/checkoutSchemas";
 import logo from "@/assets/logo-achadinhos.png";
+import { ScarcityTimer } from "@/components/ScarcityTimer";
 
 const PRICE_ID = "cheerdots_2_lote_promo";
 const PRICE_BRL = 497;
@@ -684,6 +685,7 @@ function OrderSummary() {
         </p>
       </div>
       <div className="p-5 space-y-4">
+        <ScarcityTimer />
         <div className="flex items-start gap-3">
           <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-indigo-500/20 to-violet-500/20 border border-white/10 flex items-center justify-center text-2xl">
             🖱️

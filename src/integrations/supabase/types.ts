@@ -34,6 +34,7 @@ export type Database = {
           paid_at: string | null
           price_id: string
           quantity: number
+          recovery_email_sent: boolean
           shipping_city: string
           shipping_complement: string | null
           shipping_neighborhood: string
@@ -70,6 +71,7 @@ export type Database = {
           paid_at?: string | null
           price_id: string
           quantity?: number
+          recovery_email_sent?: boolean
           shipping_city: string
           shipping_complement?: string | null
           shipping_neighborhood: string
@@ -106,6 +108,7 @@ export type Database = {
           paid_at?: string | null
           price_id?: string
           quantity?: number
+          recovery_email_sent?: boolean
           shipping_city?: string
           shipping_complement?: string | null
           shipping_neighborhood?: string

@@ -14,7 +14,117 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      orders: {
+        Row: {
+          amount_cents: number
+          capi_purchase_sent: boolean
+          client_ip: string | null
+          client_user_agent: string | null
+          created_at: string
+          currency: string
+          customer_cpf: string
+          customer_email: string
+          customer_name: string
+          customer_phone: string
+          environment: string
+          fbc: string | null
+          fbp: string | null
+          id: string
+          meta_event_id: string
+          paid_at: string | null
+          price_id: string
+          quantity: number
+          shipping_city: string
+          shipping_complement: string | null
+          shipping_neighborhood: string
+          shipping_number: string
+          shipping_state: string
+          shipping_street: string
+          shipping_zip: string
+          status: string
+          stripe_payment_intent_id: string | null
+          stripe_session_id: string | null
+          updated_at: string
+          utm_campaign: string | null
+          utm_content: string | null
+          utm_medium: string | null
+          utm_source: string | null
+          utm_term: string | null
+        }
+        Insert: {
+          amount_cents: number
+          capi_purchase_sent?: boolean
+          client_ip?: string | null
+          client_user_agent?: string | null
+          created_at?: string
+          currency?: string
+          customer_cpf: string
+          customer_email: string
+          customer_name: string
+          customer_phone: string
+          environment?: string
+          fbc?: string | null
+          fbp?: string | null
+          id?: string
+          meta_event_id: string
+          paid_at?: string | null
+          price_id: string
+          quantity?: number
+          shipping_city: string
+          shipping_complement?: string | null
+          shipping_neighborhood: string
+          shipping_number: string
+          shipping_state: string
+          shipping_street: string
+          shipping_zip: string
+          status?: string
+          stripe_payment_intent_id?: string | null
+          stripe_session_id?: string | null
+          updated_at?: string
+          utm_campaign?: string | null
+          utm_content?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+          utm_term?: string | null
+        }
+        Update: {
+          amount_cents?: number
+          capi_purchase_sent?: boolean
+          client_ip?: string | null
+          client_user_agent?: string | null
+          created_at?: string
+          currency?: string
+          customer_cpf?: string
+          customer_email?: string
+          customer_name?: string
+          customer_phone?: string
+          environment?: string
+          fbc?: string | null
+          fbp?: string | null
+          id?: string
+          meta_event_id?: string
+          paid_at?: string | null
+          price_id?: string
+          quantity?: number
+          shipping_city?: string
+          shipping_complement?: string | null
+          shipping_neighborhood?: string
+          shipping_number?: string
+          shipping_state?: string
+          shipping_street?: string
+          shipping_zip?: string
+          status?: string
+          stripe_payment_intent_id?: string | null
+          stripe_session_id?: string | null
+          updated_at?: string
+          utm_campaign?: string | null
+          utm_content?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+          utm_term?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

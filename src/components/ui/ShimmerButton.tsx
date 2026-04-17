@@ -19,8 +19,11 @@ export const ShimmerButton = forwardRef<HTMLButtonElement, ShimmerButtonProps>(
         )}
         {...props}
       >
-        <span className="absolute inset-[-1000%] animate-[spin-slow_2.5s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#A5B4FC_0%,#6366F1_25%,#A78BFA_50%,#6366F1_75%,#A5B4FC_100%)]" />
-        <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-zinc-950 px-7 text-sm sm:text-base font-semibold text-white backdrop-blur-3xl">
+        <span
+          aria-hidden
+          className="absolute inset-[-100%] animate-[spin-slow_2.5s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#A5B4FC_0%,#6366F1_25%,#A78BFA_50%,#6366F1_75%,#A5B4FC_100%)] pointer-events-none"
+        />
+        <span className="relative z-10 inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-zinc-950 px-7 text-sm sm:text-base font-semibold text-white">
           {children}
         </span>
       </button>

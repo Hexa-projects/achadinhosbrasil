@@ -1,128 +1,104 @@
-import { Mic, Mouse, Presentation, Smartphone, Hand, Crosshair } from "lucide-react";
-import { motion } from "framer-motion";
-
-const CDN = "https://cdn.shopify.com/s/files/1/0577/3076/0913/files";
-
-const containerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.1 } },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const },
-  },
-};
-
-const features = [
-  {
-    icon: Mic,
-    title: "Gravador Inteligente com IA",
-    desc: "Aperte um botão, grave a reunião inteira. O software com ChatGPT integrado transcreve o áudio e gera atas e resumos automaticamente.",
-    benefit: "Nunca mais perca um insight de reunião.",
-    image: `${CDN}/Cheerdots_2_excels_at_accurately_capturing_voice_audio_making_it_a_versatile_tool_for_productivity._Whether_you_re_practicing_a_presentation_for_an_upcoming_event_archiving_the_audio_500x.png?v=1716629852`,
-    wide: true,
-  },
-  {
-    icon: Mouse,
-    title: "Mouse & Touchpad Magnético",
-    desc: "Design magnético 2-em-1 que se separa e se une com elegância. Na mesa, funciona como touchpad preciso e silencioso.",
-    benefit: "Trabalho silencioso em qualquer superfície.",
-    image: `${CDN}/6a0f48436f03bf48e8c7f28f9f150b4c_500x.png?v=1716626684`,
-  },
-  {
-    icon: Hand,
-    title: "Air Mouse",
-    desc: "Destaque e mova o cursor no ar com giroscópio de 6 eixos. Controle natural e intuitivo para apresentações e controle à distância.",
-    benefit: "Liberdade para apresentar de pé.",
-    image: "https://cheerdots.com/cdn/shop/files/5_9135b81b-6631-4ca5-beeb-244085a95fef.png?v=1733238889&width=800",
-  },
-  {
-    icon: Presentation,
-    title: "Apresentador de Slides Profissional",
-    desc: "Avance slides, volte páginas e controle apresentações a até 20 metros. Spotlight, laser digital e digital light para destacar conteúdo.",
-    benefit: "Domine qualquer palco ou sala de reunião.",
-    image: `${CDN}/WechatIMG180_500x.jpg?v=1716639080`,
-    wide: true,
-  },
-  {
-    icon: Crosshair,
-    title: "Ponteiro Laser de Longo Alcance",
-    desc: "Laser vermelho intenso integrado para atrair atenção em apresentações e palestras. Funciona em qualquer ambiente.",
-    benefit: "Destaque o que importa com precisão.",
-  },
-  {
-    icon: Smartphone,
-    title: "Controle Remoto Portátil",
-    desc: "Role TikTok, Kindle, YouTube e feeds do sofá. Use como controle do celular, tablet ou smart TV via Bluetooth.",
-    benefit: "Seu momento de descanso também merece conforto.",
-    image: `${CDN}/Cheerdots2_Desktop_Mode_500x.jpg?v=1716638803`,
-  },
-];
+import { Sparkles, Mouse, Hand, Presentation, ScrollText } from "lucide-react";
+import { BentoCard } from "@/components/ui/BentoCard";
+import { FadeIn } from "@/components/ui/FadeIn";
 
 const FeatureGrid = () => (
-  <section id="funcoes" className="py-16 md:py-24 bg-white">
+  <section id="funcoes" className="relative py-16 md:py-28">
     <div className="container mx-auto px-4">
-      <motion.div
-        className="text-center mb-16 max-w-2xl mx-auto"
-        initial={{ opacity: 0, y: 25 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-      >
-        <p className="text-primary font-semibold text-xs tracking-[0.2em] uppercase mb-3">
-          6 funções em 1 dispositivo
-        </p>
-        <h2 className="text-3xl md:text-4xl font-extrabold text-foreground tracking-tight">
-          Cada função resolve{" "}
-          <span className="text-gradient-blue">um problema real</span>
-        </h2>
-        <p className="text-muted-foreground text-base mt-4 leading-relaxed">
-          Não é sobre ter muitas funções. É sobre ter as funções certas para quem trabalha em movimento.
-        </p>
-      </motion.div>
+      <FadeIn>
+        <div className="text-center mb-12 md:mb-14 max-w-3xl mx-auto">
+          <p className="text-indigo-400 font-semibold text-xs tracking-[0.2em] uppercase mb-4">
+            Funcionalidades
+          </p>
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-slate-50">
+            Tudo o que você precisa.
+            <br />
+            <span className="text-gradient-blue">Nada que não precisa.</span>
+          </h2>
+        </div>
+      </FadeIn>
 
-      <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-6xl mx-auto"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.1 }}
-      >
-        {features.map((f) => (
-          <motion.div
-            key={f.title}
-            variants={cardVariants}
-            className={`group bg-secondary/40 rounded-2xl border border-border/50 overflow-hidden hover:shadow-md hover:border-primary/15 transition-all duration-300 ${
-              f.wide ? "md:col-span-2" : ""
-            }`}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 max-w-6xl mx-auto">
+        {/* Hero card — IA */}
+        <FadeIn className="md:col-span-2 md:row-span-2">
+          <BentoCard
+            icon={<Sparkles className="w-6 h-6" />}
+            className="h-full min-h-[420px] !p-0 overflow-hidden"
           >
-            <div className={`flex flex-col ${f.wide && f.image ? "md:flex-row" : ""}`}>
-              <div className={`p-8 ${f.wide && f.image ? "md:w-1/2" : ""} flex flex-col justify-center`}>
-                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                  <f.icon className="w-5 h-5 text-primary" />
-                </div>
-                <h3 className="text-xl font-bold text-foreground mb-2">{f.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-3">{f.desc}</p>
-                <p className="text-primary text-sm font-semibold">{f.benefit}</p>
+            <img
+              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop"
+              alt="Reunião sendo transcrita por IA"
+              className="w-full h-40 md:h-48 object-cover opacity-80"
+              loading="lazy"
+            />
+            <div className="p-7 md:p-8 flex flex-col flex-1">
+              <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white/[0.08] text-indigo-400 shadow-[0_0_20px_-3px_hsl(239_84%_67%/0.5)] self-start">
+                <Sparkles className="w-6 h-6" />
               </div>
-              {f.image && (
-                <div className={`${f.wide ? "md:w-1/2" : ""} bg-muted/30 flex items-center justify-center p-6 overflow-hidden`}>
-                  <img
-                    src={f.image}
-                    alt={f.title}
-                    className="w-full h-auto object-contain"
-                    loading="lazy"
-                  />
-                </div>
-              )}
+              <h3 className="mb-2 text-xl md:text-2xl font-bold tracking-tight text-slate-50">
+                Transcrição e resumo com IA
+              </h3>
+              <p className="text-slate-300 leading-relaxed font-light text-sm md:text-base">
+                Grave qualquer reunião com um toque. O CheerDots envia o áudio para o ChatGPT e devolve transcrição, tópicos e ações pendentes. Pare de digitar atas — comece a decidir.
+              </p>
             </div>
-          </motion.div>
-        ))}
-      </motion.div>
+          </BentoCard>
+        </FadeIn>
+
+        <FadeIn delay={0.1}>
+          <BentoCard
+            icon={<Mouse className="w-6 h-6" />}
+            title="Mouse Bluetooth"
+            description="Touchpad multitoque preciso para Mac e Windows. Conecta em 3 segundos."
+            className="h-full"
+          />
+        </FadeIn>
+
+        <FadeIn delay={0.15}>
+          <BentoCard
+            icon={<Hand className="w-6 h-6" />}
+            title="Air Mouse"
+            description="Levante o dispositivo e controle o cursor pelo ar com sensores 6-axis."
+            className="h-full"
+          />
+        </FadeIn>
+
+        <FadeIn delay={0.2}>
+          <BentoCard
+            icon={<Presentation className="w-6 h-6" />}
+            className="h-full !p-0 overflow-hidden md:col-span-2"
+          >
+            <div className="grid grid-cols-1 sm:grid-cols-2 h-full">
+              <img
+                src="https://images.unsplash.com/photo-1542744094-24638eff58bb?q=80&w=600&auto=format&fit=crop"
+                alt="Apresentação profissional com slides"
+                className="w-full h-44 sm:h-full object-cover opacity-75"
+                loading="lazy"
+              />
+              <div className="p-7 md:p-8 flex flex-col justify-center">
+                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white/[0.08] text-indigo-400 shadow-[0_0_20px_-3px_hsl(239_84%_67%/0.5)] self-start">
+                  <Presentation className="w-6 h-6" />
+                </div>
+                <h3 className="mb-2 text-xl md:text-2xl font-bold tracking-tight text-slate-50">
+                  Apresentador de slides
+                </h3>
+                <p className="text-slate-300 leading-relaxed font-light text-sm md:text-base">
+                  Avance, recue e use spotlight, ponteiro laser ou caneta digital sem encostar no teclado.
+                </p>
+              </div>
+            </div>
+          </BentoCard>
+        </FadeIn>
+
+        <FadeIn delay={0.25}>
+          <BentoCard
+            icon={<ScrollText className="w-6 h-6" />}
+            title="Scroller remoto"
+            description="Role teleprompter, slides e documentos sem encostar no notebook."
+            className="h-full"
+          />
+        </FadeIn>
+      </div>
     </div>
   </section>
 );

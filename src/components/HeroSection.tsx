@@ -69,7 +69,7 @@ const HeroSection = () => {
             />
             <div className="relative rounded-3xl overflow-hidden border border-white/10 bg-white/[0.03] backdrop-blur-md shadow-[0_30px_80px_-20px_hsl(239_84%_67%/0.5)]">
               <img
-                src="https://img.youtube.com/vi/BeKNoXNdA4M/maxresdefault.jpg"
+                src="/lovable-uploads/hero-product.jpg"
                 alt="CheerDots 2 com integração ChatGPT — hardware 6-em-1"
                 className="relative w-full h-auto object-cover scale-105"
                 loading="eager"

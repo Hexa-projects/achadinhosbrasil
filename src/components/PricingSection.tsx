@@ -43,11 +43,12 @@ const PricingSection = () => {
 
               <div className="p-6 sm:p-8 md:p-10 text-center">
                 <p className="text-slate-400 line-through text-base mb-1">De R$ 997,00</p>
+                <p className="text-slate-300 text-sm font-light mb-1">12x de</p>
                 <p className="text-5xl sm:text-6xl md:text-7xl font-black text-white tracking-tight mb-2">
-                  R$ <span className="text-gradient-blue">497</span>
+                  R$ <span className="text-gradient-blue">49,90</span>
                 </p>
                 <p className="text-slate-300 text-sm font-light mb-3">
-                  ou 12x de R$ 49,90 sem juros
+                  sem juros — ou R$ 497 à vista
                 </p>
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-7 sm:mb-8">
                   <span className="text-xs font-semibold text-emerald-400">Economia de R$ 500,00</span>

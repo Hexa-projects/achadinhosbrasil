@@ -22,6 +22,7 @@ export default function CheckoutSuccess() {
   const [params] = useSearchParams();
   // Stripe appends `payment_intent` and `payment_intent_client_secret` to the return_url
   const piId = params.get("payment_intent");
+  const sessionId = params.get("session_id");
   const [loading, setLoading] = useState(true);
   const [paid, setPaid] = useState(false);
   const [order, setOrder] = useState<OrderInfo | null>(null);
@@ -32,7 +33,7 @@ export default function CheckoutSuccess() {
   }, []);
 
   useEffect(() => {
-    if (!piId) {
+    if (!piId && !sessionId) {
       setError("Pagamento não identificado");
       setLoading(false);
       return;
@@ -44,9 +45,10 @@ export default function CheckoutSuccess() {
     async function poll() {
       attempts += 1;
       try {
-        const url = `get-order-status?payment_intent=${encodeURIComponent(
-          piId!,
-        )}&env=${stripeEnvironment}`;
+        const paymentRef = piId
+          ? `payment_intent=${encodeURIComponent(piId)}`
+          : `session_id=${encodeURIComponent(sessionId!)}`;
+        const url = `get-order-status?${paymentRef}&env=${stripeEnvironment}`;
         const { data, error: fnErr } = await supabase.functions.invoke(url, {
           method: "GET",
         });
@@ -92,7 +94,7 @@ export default function CheckoutSuccess() {
     return () => {
       cancelled = true;
     };
-  }, [piId]);
+  }, [piId, sessionId]);
 
   return (
     <div className="min-h-screen bg-background text-foreground flex items-center justify-center px-4 py-10">

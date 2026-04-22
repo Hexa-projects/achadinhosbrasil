@@ -80,6 +80,32 @@ serve(async (req) => {
     const clientUserAgent = req.headers.get("user-agent");
     const origin = req.headers.get("origin") ?? "https://achadinhosbrasil.lovable.app";
 
+    if (mode === "hosted") {
+      const session = await stripe.checkout.sessions.create({
+        line_items: [{ price: stripePrice.id, quantity }],
+        mode: "payment",
+        success_url: returnUrl || `${origin}/checkout/sucesso?session_id={CHECKOUT_SESSION_ID}`,
+        cancel_url: `${origin}/checkout`,
+        metadata: {
+          event_id: eventId,
+          price_id: priceId,
+          quantity: String(quantity),
+          env,
+        },
+      });
+
+      return new Response(JSON.stringify({ url: session.url }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    if (!customer || !shipping) {
+      return new Response(JSON.stringify({ error: "Customer and shipping are required" }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
     // Create PaymentIntent — automatic_payment_methods enables Card + Apple Pay + Google Pay + Link
     const paymentIntent = await stripe.paymentIntents.create({
       amount: amountCents,

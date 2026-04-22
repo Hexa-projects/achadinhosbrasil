@@ -7,8 +7,9 @@ export function useCheckoutRedirect() {
 
   const handleCheckoutRedirect = useCallback(() => {
     setIsRedirecting(true);
-    const search = window.location.search;
-    navigate(`/checkout${search}`);
+    const params = new URLSearchParams(window.location.search);
+    params.set("stripe", "direct");
+    navigate(`/checkout?${params.toString()}`);
   }, [navigate]);
 
   return { isRedirecting, handleCheckoutRedirect };

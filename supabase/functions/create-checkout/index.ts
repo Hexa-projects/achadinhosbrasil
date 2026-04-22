@@ -10,6 +10,7 @@ const supabase = createClient(
 );
 
 const BodySchema = z.object({
+  mode: z.enum(["payment_intent", "hosted"]).default("payment_intent"),
   priceId: z.string().regex(/^[a-zA-Z0-9_-]+$/),
   quantity: z.number().int().min(1).max(5).default(1),
   environment: z.enum(["sandbox", "live"]).default("sandbox"),
@@ -18,7 +19,7 @@ const BodySchema = z.object({
     email: z.string().trim().email().max(255),
     phone: z.string().trim().min(10).max(20),
     cpf: z.string().trim().min(11).max(14),
-  }),
+  }).optional(),
   shipping: z.object({
     zip: z.string().trim().min(8).max(9),
     street: z.string().trim().min(2).max(200),
@@ -27,7 +28,8 @@ const BodySchema = z.object({
     neighborhood: z.string().trim().min(2).max(120),
     city: z.string().trim().min(2).max(120),
     state: z.string().trim().length(2),
-  }),
+  }).optional(),
+  returnUrl: z.string().url().optional(),
   tracking: z
     .object({
       eventId: z.string().min(8).max(80),
@@ -54,7 +56,7 @@ serve(async (req) => {
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } },
       );
     }
-    const { priceId, quantity, environment, customer, shipping, tracking } = parsed.data;
+    const { mode, priceId, quantity, environment, customer, shipping, tracking, returnUrl } = parsed.data;
     const env = environment as StripeEnv;
     const stripe = createStripeClient(env);
 

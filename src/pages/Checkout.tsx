@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   ChevronLeft,
@@ -57,6 +57,7 @@ type CreateCheckoutResp = {
 
 export default function CheckoutPage() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const [identification, setIdentification] = useState<IdentificationData>({
     name: "", email: "", phone: "", cpf: "",
   });
@@ -72,6 +73,7 @@ export default function CheckoutPage() {
 
   // Track latest typed values to debounce intent creation
   const debounceRef = useRef<number | null>(null);
+  const directRedirectRef = useRef(false);
 
   useEffect(() => {
     initPixel().then(() => {
@@ -84,6 +86,13 @@ export default function CheckoutPage() {
       });
     });
   }, []);
+
+  useEffect(() => {
+    if (searchParams.get("stripe") !== "direct" || directRedirectRef.current) return;
+    directRedirectRef.current = true;
+    createHostedCheckout();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams]);
 
   // ViaCEP autofill
   useEffect(() => {

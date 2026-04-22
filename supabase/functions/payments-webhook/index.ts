@@ -19,7 +19,9 @@ serve(async (req) => {
     const event = await verifyWebhook(req, env);
     console.log("[webhook] event:", event.type, "env:", env);
 
-    if (event.type === "payment_intent.succeeded") {
+    if (event.type === "checkout.session.completed") {
+      await handleCheckoutSessionCompleted(event.data.object, env);
+    } else if (event.type === "payment_intent.succeeded") {
       await handlePaid(event.data.object, env);
     } else if (event.type === "payment_intent.payment_failed") {
       await supabase
@@ -44,6 +46,52 @@ serve(async (req) => {
     return new Response("Webhook error", { status: 400 });
   }
 });
+
+async function handleCheckoutSessionCompleted(session: any, env: StripeEnv) {
+  if (session.payment_status !== "paid" || !session.payment_intent) return;
+
+  const existing = await supabase
+    .from("orders")
+    .select("id")
+    .eq("stripe_session_id", session.id)
+    .maybeSingle();
+
+  if (existing.data?.id) return;
+
+  const details = session.customer_details ?? {};
+  const shipping = details.address ?? session.shipping_details?.address ?? {};
+  const cpf = session.custom_fields?.find((field: any) => field.key === "cpf")?.text?.value ?? "Não informado";
+  const amountCents = session.amount_total ?? 0;
+  const eventId = session.metadata?.event_id ?? crypto.randomUUID();
+  const priceId = session.metadata?.price_id ?? "cheerdots_2_lote_promo";
+  const quantity = Number(session.metadata?.quantity ?? 1);
+
+  const { error } = await supabase.from("orders").insert({
+    customer_name: details.name ?? "Cliente Stripe",
+    customer_email: details.email ?? "sem-email@stripe.local",
+    customer_phone: details.phone ?? "Não informado",
+    customer_cpf: cpf,
+    shipping_zip: shipping.postal_code ?? "Não informado",
+    shipping_street: shipping.line1 ?? "Não informado",
+    shipping_number: "S/N",
+    shipping_complement: shipping.line2 ?? null,
+    shipping_neighborhood: "Não informado",
+    shipping_city: shipping.city ?? "Não informado",
+    shipping_state: shipping.state ?? "BR",
+    price_id: priceId,
+    quantity,
+    amount_cents: amountCents,
+    currency: session.currency ?? "brl",
+    stripe_payment_intent_id: session.payment_intent,
+    stripe_session_id: session.id,
+    status: "paid",
+    environment: env,
+    meta_event_id: eventId,
+    paid_at: new Date().toISOString(),
+  });
+
+  if (error) console.error("[webhook] could not insert hosted checkout order:", error);
+}
 
 async function handlePaid(intent: any, env: StripeEnv) {
   const { data: order, error } = await supabase

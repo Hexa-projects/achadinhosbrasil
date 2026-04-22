@@ -10,6 +10,7 @@ const supabase = createClient(
 );
 
 const BodySchema = z.object({
+  mode: z.enum(["payment_intent", "hosted"]).default("payment_intent"),
   priceId: z.string().regex(/^[a-zA-Z0-9_-]+$/),
   quantity: z.number().int().min(1).max(5).default(1),
   environment: z.enum(["sandbox", "live"]).default("sandbox"),
@@ -18,7 +19,7 @@ const BodySchema = z.object({
     email: z.string().trim().email().max(255),
     phone: z.string().trim().min(10).max(20),
     cpf: z.string().trim().min(11).max(14),
-  }),
+  }).optional(),
   shipping: z.object({
     zip: z.string().trim().min(8).max(9),
     street: z.string().trim().min(2).max(200),
@@ -27,7 +28,8 @@ const BodySchema = z.object({
     neighborhood: z.string().trim().min(2).max(120),
     city: z.string().trim().min(2).max(120),
     state: z.string().trim().length(2),
-  }),
+  }).optional(),
+  returnUrl: z.string().url().optional(),
   tracking: z
     .object({
       eventId: z.string().min(8).max(80),
@@ -54,7 +56,7 @@ serve(async (req) => {
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } },
       );
     }
-    const { priceId, quantity, environment, customer, shipping, tracking } = parsed.data;
+    const { mode, priceId, quantity, environment, customer, shipping, tracking, returnUrl } = parsed.data;
     const env = environment as StripeEnv;
     const stripe = createStripeClient(env);
 
@@ -77,6 +79,43 @@ serve(async (req) => {
       null;
     const clientUserAgent = req.headers.get("user-agent");
     const origin = req.headers.get("origin") ?? "https://achadinhosbrasil.lovable.app";
+
+    if (mode === "hosted") {
+      const session = await stripe.checkout.sessions.create({
+        line_items: [{ price: stripePrice.id, quantity }],
+        mode: "payment",
+        success_url: returnUrl || `${origin}/checkout/sucesso?session_id={CHECKOUT_SESSION_ID}`,
+        cancel_url: `${origin}/checkout`,
+        billing_address_collection: "required",
+        phone_number_collection: { enabled: true },
+        shipping_address_collection: { allowed_countries: ["BR"] },
+        custom_fields: [
+          {
+            key: "cpf",
+            label: { type: "custom", custom: "CPF" },
+            type: "text",
+            optional: false,
+          },
+        ],
+        metadata: {
+          event_id: eventId,
+          price_id: priceId,
+          quantity: String(quantity),
+          env,
+        },
+      });
+
+      return new Response(JSON.stringify({ url: session.url }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    if (!customer || !shipping) {
+      return new Response(JSON.stringify({ error: "Customer and shipping are required" }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
 
     // Create PaymentIntent — automatic_payment_methods enables Card + Apple Pay + Google Pay + Link
     const paymentIntent = await stripe.paymentIntents.create({

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   ChevronLeft,
@@ -55,8 +55,13 @@ type CreateCheckoutResp = {
   currency: string;
 };
 
+type HostedCheckoutResp = {
+  url: string;
+};
+
 export default function CheckoutPage() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const [identification, setIdentification] = useState<IdentificationData>({
     name: "", email: "", phone: "", cpf: "",
   });
@@ -72,6 +77,7 @@ export default function CheckoutPage() {
 
   // Track latest typed values to debounce intent creation
   const debounceRef = useRef<number | null>(null);
+  const directRedirectRef = useRef(false);
 
   useEffect(() => {
     initPixel().then(() => {
@@ -84,6 +90,13 @@ export default function CheckoutPage() {
       });
     });
   }, []);
+
+  useEffect(() => {
+    if (searchParams.get("stripe") !== "direct" || directRedirectRef.current) return;
+    directRedirectRef.current = true;
+    createHostedCheckout();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams]);
 
   // ViaCEP autofill
   useEffect(() => {
@@ -165,6 +178,47 @@ export default function CheckoutPage() {
     } catch (e) {
       setIntentError(e instanceof Error ? e.message : "Erro inesperado");
     } finally {
+      setIntentLoading(false);
+    }
+  }
+
+  async function createHostedCheckout() {
+    setIntentLoading(true);
+    setIntentError(null);
+    const evtId = `evt_${crypto.randomUUID()}`;
+    const { fbp, fbc } = getFbCookies();
+    const utm = getUtmParams();
+
+    trackPixel(
+      "InitiateCheckout",
+      {
+        content_ids: [PRICE_ID],
+        content_type: "product",
+        content_name: "CheerDots 2",
+        value: PRICE_BRL,
+        currency: "BRL",
+      },
+      { eventID: evtId },
+    );
+
+    try {
+      const { data, error } = await supabase.functions.invoke("create-checkout", {
+        body: {
+          mode: "hosted",
+          priceId: PRICE_ID,
+          quantity: 1,
+          environment: stripeEnvironment,
+          returnUrl: `${window.location.origin}/checkout/sucesso?session_id={CHECKOUT_SESSION_ID}`,
+          tracking: { eventId: evtId, fbp, fbc, ...utm },
+        },
+      });
+      if (error || !data?.url) {
+        throw new Error(error?.message || "Não foi possível abrir o checkout da Stripe");
+      }
+      window.location.assign((data as HostedCheckoutResp).url);
+    } catch (e) {
+      directRedirectRef.current = false;
+      setIntentError(e instanceof Error ? e.message : "Erro inesperado");
       setIntentLoading(false);
     }
   }

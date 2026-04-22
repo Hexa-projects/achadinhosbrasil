@@ -13,9 +13,10 @@ serve(async (req) => {
   try {
     const url = new URL(req.url);
     const piId = url.searchParams.get("payment_intent");
+    const sessionId = url.searchParams.get("session_id");
     const environment = (url.searchParams.get("env") || "sandbox") as StripeEnv;
-    if (!piId || !/^pi_[a-zA-Z0-9_]+$/.test(piId)) {
-      return new Response(JSON.stringify({ error: "Invalid payment_intent" }), {
+    if ((!piId || !/^pi_[a-zA-Z0-9_]+$/.test(piId)) && (!sessionId || !/^cs_[a-zA-Z0-9_]+$/.test(sessionId))) {
+      return new Response(JSON.stringify({ error: "Invalid payment reference" }), {
         status: 400,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
@@ -23,19 +24,24 @@ serve(async (req) => {
 
     // Fast path: poll Stripe directly for the freshest status (webhook may lag a few seconds)
     const stripe = createStripeClient(environment);
-    const intent = await stripe.paymentIntents.retrieve(piId);
+    const session = sessionId
+      ? await stripe.checkout.sessions.retrieve(sessionId)
+      : null;
+    const paymentIntentId = piId ?? (typeof session?.payment_intent === "string" ? session.payment_intent : null);
+    const intent = paymentIntentId ? await stripe.paymentIntents.retrieve(paymentIntentId) : null;
 
-    const { data: order } = await supabase
+    let query = supabase
       .from("orders")
       .select(
         "id,status,amount_cents,currency,customer_name,customer_email,price_id,meta_event_id,capi_purchase_sent",
-      )
-      .eq("stripe_payment_intent_id", piId)
-      .maybeSingle();
+      );
+
+    query = sessionId ? query.eq("stripe_session_id", sessionId) : query.eq("stripe_payment_intent_id", paymentIntentId);
+    const { data: order } = await query.maybeSingle();
 
     return new Response(
       JSON.stringify({
-        payment_status: intent.status, // succeeded | processing | requires_payment_method | ...
+        payment_status: session?.payment_status === "paid" ? "succeeded" : intent?.status,
         order,
       }),
       { headers: { ...corsHeaders, "Content-Type": "application/json" } },

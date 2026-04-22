@@ -86,6 +86,17 @@ serve(async (req) => {
         mode: "payment",
         success_url: returnUrl || `${origin}/checkout/sucesso?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${origin}/checkout`,
+        billing_address_collection: "required",
+        phone_number_collection: { enabled: true },
+        shipping_address_collection: { allowed_countries: ["BR"] },
+        custom_fields: [
+          {
+            key: "cpf",
+            label: { type: "custom", custom: "CPF" },
+            type: "text",
+            optional: false,
+          },
+        ],
         metadata: {
           event_id: eventId,
           price_id: priceId,

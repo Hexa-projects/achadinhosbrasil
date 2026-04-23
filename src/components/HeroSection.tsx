@@ -5,7 +5,7 @@ import { ShimmerButton } from "@/components/ui/ShimmerButton";
 import { FadeIn } from "@/components/ui/FadeIn";
 
 const HeroSection = () => {
-  const { isRedirecting, handleCheckoutRedirect } = useCheckoutRedirect();
+  const { scrollToOffer } = useCheckoutRedirect();
 
   return (
     <section className="relative overflow-hidden pt-24 pb-12 sm:pt-28 sm:pb-16 md:pt-36 md:pb-24">
@@ -43,8 +43,8 @@ const HeroSection = () => {
 
           <FadeIn delay={0.3}>
             <div className="flex flex-col items-center gap-3 mb-8 sm:mb-14">
-              <ShimmerButton onClick={handleCheckoutRedirect} disabled={isRedirecting} size="lg" className="w-full max-w-sm sm:w-auto">
-                {isRedirecting ? "Redirecionando..." : "Garantir Lote com 50% OFF"}
+              <ShimmerButton onClick={scrollToOffer} size="lg" className="w-full max-w-sm sm:w-auto">
+                Garantir Lote com 50% OFF
               </ShimmerButton>
               <p className="font-inter text-xs sm:text-sm text-slate-400 font-medium">
                 Frete grátis com rastreio • 12x sem juros

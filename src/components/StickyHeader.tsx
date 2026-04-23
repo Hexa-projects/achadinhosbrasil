@@ -15,7 +15,7 @@ const links = [
 const StickyHeader = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { isRedirecting, handleCheckoutRedirect } = useCheckoutRedirect();
+  const { scrollToOffer } = useCheckoutRedirect();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
@@ -57,11 +57,10 @@ const StickyHeader = () => {
 
           <div className="flex items-center gap-1.5">
             <button
-              onClick={handleCheckoutRedirect}
-              disabled={isRedirecting}
-              className="hidden sm:inline-flex items-center h-9 px-4 rounded-full bg-white text-zinc-950 text-sm font-semibold hover:bg-white/90 transition-all disabled:opacity-70"
+              onClick={scrollToOffer}
+              className="hidden sm:inline-flex items-center h-9 px-4 rounded-full bg-white text-zinc-950 text-sm font-semibold hover:bg-white/90 transition-all"
             >
-              {isRedirecting ? "..." : "Comprar"}
+              Comprar
             </button>
             <button
               className="md:hidden h-9 w-9 inline-flex items-center justify-center text-white rounded-full hover:bg-white/5"
@@ -93,11 +92,13 @@ const StickyHeader = () => {
                   </a>
                 ))}
                 <button
-                  onClick={handleCheckoutRedirect}
-                  disabled={isRedirecting}
-                  className="mt-2 bg-white text-zinc-950 py-3 rounded-full text-sm font-bold disabled:opacity-70"
+                  onClick={() => {
+                    setMobileOpen(false);
+                    scrollToOffer();
+                  }}
+                  className="mt-2 bg-white text-zinc-950 py-3 rounded-full text-sm font-bold"
                 >
-                  {isRedirecting ? "Redirecionando..." : "Comprar com 50% OFF"}
+                  Comprar com 50% OFF
                 </button>
               </div>
             </motion.div>

@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const MobileCTA = () => {
-  const { isRedirecting, handleCheckoutRedirect } = useCheckoutRedirect();
+  const { scrollToOffer } = useCheckoutRedirect();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -25,9 +25,8 @@ const MobileCTA = () => {
           style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
         >
           <button
-            onClick={handleCheckoutRedirect}
-            disabled={isRedirecting}
-            className="relative w-full h-14 rounded-full overflow-hidden p-[1.5px] shadow-[0_10px_40px_-10px_hsl(239_84%_67%/0.7)] disabled:opacity-70 active:scale-[0.98] transition-transform animate-pulse-glow"
+            onClick={scrollToOffer}
+            className="relative w-full h-14 rounded-full overflow-hidden p-[1.5px] shadow-[0_10px_40px_-10px_hsl(239_84%_67%/0.7)] active:scale-[0.98] transition-transform animate-pulse-glow"
             aria-label="Comprar CheerDots 2 com 50% de desconto"
           >
             {/* Spinning conic border */}
@@ -37,14 +36,8 @@ const MobileCTA = () => {
             />
             {/* Solid inner pill — text MUST be on top */}
             <span className="relative z-10 flex h-full w-full items-center justify-center gap-2 rounded-full bg-zinc-950 text-white text-[15px] font-bold tracking-tight">
-              {isRedirecting ? (
-                "Redirecionando..."
-              ) : (
-                <>
-                  Comprar com 50% OFF
-                  <span aria-hidden className="text-indigo-300">→</span>
-                </>
-              )}
+              Comprar com 50% OFF
+              <span aria-hidden className="text-indigo-300">↓</span>
             </span>
           </button>
         </motion.div>

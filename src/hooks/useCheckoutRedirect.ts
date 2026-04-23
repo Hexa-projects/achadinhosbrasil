@@ -5,6 +5,13 @@ export function useCheckoutRedirect() {
   const navigate = useNavigate();
   const [isRedirecting, setIsRedirecting] = useState(false);
 
+  const scrollToOffer = useCallback(() => {
+    document.getElementById("oferta")?.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
+  }, []);
+
   const handleCheckoutRedirect = useCallback(() => {
     setIsRedirecting(true);
     const params = new URLSearchParams(window.location.search);
@@ -12,5 +19,5 @@ export function useCheckoutRedirect() {
     navigate(`/checkout?${params.toString()}`);
   }, [navigate]);
 
-  return { isRedirecting, handleCheckoutRedirect };
+  return { isRedirecting, handleCheckoutRedirect, scrollToOffer };
 }

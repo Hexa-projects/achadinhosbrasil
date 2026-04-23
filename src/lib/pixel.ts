@@ -11,15 +11,17 @@ declare global {
 
 let initialized = false;
 let pixelIdCache: string | null = null;
+const DEFAULT_PIXEL_ID = "954600587526991";
 
 async function fetchPixelId(): Promise<string | null> {
   if (pixelIdCache !== null) return pixelIdCache;
   try {
     const { data } = await supabase.functions.invoke("get-pixel-config");
-    pixelIdCache = (data?.pixelId as string | undefined) ?? null;
+    pixelIdCache = (data?.pixelId as string | undefined) ?? DEFAULT_PIXEL_ID;
     return pixelIdCache;
   } catch {
-    return null;
+    pixelIdCache = DEFAULT_PIXEL_ID;
+    return pixelIdCache;
   }
 }
 

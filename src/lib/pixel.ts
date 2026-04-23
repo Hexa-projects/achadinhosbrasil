@@ -50,12 +50,13 @@ function injectPixelScript() {
 }
 
 export async function initPixel(): Promise<string | null> {
-  if (initialized) return pixelIdCache;
   const id = await fetchPixelId();
   if (!id) return null;
   injectPixelScript();
-  window.fbq?.("init", id);
-  window.fbq?.("track", "PageView");
+  if (!initialized) {
+    window.fbq?.("init", id);
+    window.fbq?.("track", "PageView");
+  }
   initialized = true;
   return id;
 }
